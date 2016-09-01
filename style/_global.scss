@@ -1,0 +1,316 @@
+@import "_common";
+
+body {
+  font-size: $font-size-1;
+}
+
+section {
+  padding: 50px 0;
+  position: relative;
+
+  .left {
+    .scale {
+      float: left;
+    }
+  }
+  .right {
+    .scale {
+      float: right;
+      margin-top: -40%;
+    }
+  }
+
+  .scale {
+    position: relative;
+    width: 40%;
+    .content {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -60%);
+      width: 62%;
+      font-size: 16px;
+      h1, h2 {
+        text-align: center;
+        color: white;
+      }
+      h2 {
+        margin-top: 10px;
+      }
+      p {
+        color: white;
+      }
+    }
+  }
+
+  /*
+   * Vision section
+   */
+  &.vision {
+    margin-top: -130px;
+  }
+
+  /*
+   * Quality section
+   */
+  &.quality {
+    margin-top: -200px;
+  }
+
+  /*
+   * Method section
+   */
+  &.method {
+    margin-top: -200px;
+    padding-bottom: 0;
+  }
+
+  /*
+   * Code section
+   */
+  &.code {
+    padding-top: 0;
+    padding-bottom: 0;
+
+    .scale .content {
+      h1, h2, p {
+        color: $text-color-black;
+      }
+      h1 {
+        font-size: $font-size-5;
+        font-weight: lighter;
+      }
+    }
+
+    .left .scale .content {
+      h1, p {
+        text-align: left;
+      }
+    }
+    .right .scale .content {
+      h1, p {
+        text-align: right;
+      }
+    }
+  }
+
+  /*
+   * Zenika section
+   */
+  &.zenika {
+    margin-top: -200px;
+    margin-bottom: -300px;
+    overflow: hidden;
+
+    .row {
+      margin: 0;
+    }
+
+    .logo {
+      margin: 100px 0 0;
+      text-align: center;
+      img {
+        width: 100%;
+        max-width: 320px;
+      }
+    }
+
+    .description {
+      color: white;
+      p {
+        margin: 50px 0 0;
+        text-align: justify;
+      }
+    }
+  }
+
+  /*
+   * Contact section
+   */
+  &.contact {
+    background-color: rgba(0, 0, 0, 0.10);
+    &:before {
+      background: url("../img/background/mountain.jpg") center center;
+      background-size: cover;
+      content: "";
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      position: absolute;
+      z-index: -1;
+    }
+
+    .right .scale .content {
+      text-align: center;
+      h1, h2, p {
+        color: $text-color-black;
+      }
+      h1 {
+        font-size: $font-size-5;
+        font-weight: lighter;
+      }
+    }
+
+    .left .scale .content {
+      .logo {
+        width: 60px;
+        margin-left: 50px;
+      }
+      font-size: 50px;
+      transform: translate(-80%, -50%);
+    }
+
+    .logo {
+      margin: 0;
+      text-align: center;
+      img {
+        width: 100%;
+        max-width: 400px;
+      }
+    }
+  }
+
+  /*
+   * Design section
+   */
+  &.design {
+    overflow-x: hidden;
+    padding-top: 0;
+    img {
+      margin: 0 -17%;
+    }
+    h1 {
+      color: white;
+      font-weight: lighter;
+      font-size: $font-size-4;
+      padding: 0 10px;
+    }
+    .content {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      transform: translate(0, -104%);
+      h1 {
+        text-align: right;
+        text-transform: uppercase;
+        margin: 0;
+      }
+      div:first-child {
+        h1 {
+          text-align: left;
+        }
+      }
+    }
+  }
+
+  &.no-margin {
+    .left, .right {
+      width: 50%;
+      float: left;
+      .scale {
+        width: 90%;
+      }
+    }
+    .right {
+      .scale {
+        float: right;
+        margin-top: 0;
+      }
+    }
+    .scale {
+      .content {
+        width: auto;
+      }
+    }
+  }
+}
+
+@media (min-width: $screen-md) and (max-width: $screen-lg) {
+  section {
+    .scale {
+      width: 45%;
+    }
+  }
+}
+
+@media (min-width: $screen-sm) and (max-width: $screen-md) {
+  section {
+    .scale {
+      width: 60%;
+    }
+  }
+}
+
+@media (max-width: $screen-sm) {
+  section {
+    .left {
+      .scale {
+        .content {
+          transform: translate(-79%, -62%);
+        }
+      }
+    }
+    .right {
+      .scale {
+        width: 50%;
+        .content {
+          transform: translate(-30%, -62%);
+          width: 70%;
+        }
+      }
+    }
+    &.no-margin {
+      .right {
+        .scale {
+          .content {
+            transform: translate(-42%, -60%);
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  section {
+    .scale {
+      width: 70%;
+    }
+    .right {
+      .scale {
+        width: 95%;
+      }
+    }
+    &.no-margin {
+      .left, .right {
+        width: 100%;
+        float: left;
+        .scale {
+          width: 90%;
+        }
+      }
+
+      .right {
+        .scale {
+          float: right;
+          margin-top: -40%;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: $screen-sm) {
+  section {
+    &.design {
+      h1 {
+        font-size: 80px;
+      }
+      .content {
+        transform: translate(0, -75%);
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "aya.com",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "node-sass style/style.scss style/style.css | node-sass --watch style/style.scss style/style.css",
+    "lite-server": "lite-server",
+    "start": "npm run lite-server | npm run sass"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.14.0",
+    "lite-server": "^2.2.2",
+    "node-sass": "^3.8.0"
+  }
+}

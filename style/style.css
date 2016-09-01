@@ -1,0 +1,264 @@
+body {
+  font-size: 18px; }
+
+section {
+  padding: 50px 0;
+  position: relative;
+  /*
+   * Vision section
+   */
+  /*
+   * Quality section
+   */
+  /*
+   * Method section
+   */
+  /*
+   * Code section
+   */
+  /*
+   * Zenika section
+   */
+  /*
+   * Contact section
+   */
+  /*
+   * Design section
+   */ }
+  section .left .scale {
+    float: left; }
+  section .right .scale {
+    float: right;
+    margin-top: -40%; }
+  section .scale {
+    position: relative;
+    width: 40%; }
+    section .scale .content {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -60%);
+      width: 62%;
+      font-size: 16px; }
+      section .scale .content h1, section .scale .content h2 {
+        text-align: center;
+        color: white; }
+      section .scale .content h2 {
+        margin-top: 10px; }
+      section .scale .content p {
+        color: white; }
+  section.vision {
+    margin-top: -130px; }
+  section.quality {
+    margin-top: -200px; }
+  section.method {
+    margin-top: -200px;
+    padding-bottom: 0; }
+  section.code {
+    padding-top: 0;
+    padding-bottom: 0; }
+    section.code .scale .content h1, section.code .scale .content h2, section.code .scale .content p {
+      color: #333333; }
+    section.code .scale .content h1 {
+      font-size: 54px;
+      font-weight: lighter; }
+    section.code .left .scale .content h1, section.code .left .scale .content p {
+      text-align: left; }
+    section.code .right .scale .content h1, section.code .right .scale .content p {
+      text-align: right; }
+  section.zenika {
+    margin-top: -200px;
+    margin-bottom: -300px;
+    overflow: hidden; }
+    section.zenika .row {
+      margin: 0; }
+    section.zenika .logo {
+      margin: 100px 0 0;
+      text-align: center; }
+      section.zenika .logo img {
+        width: 100%;
+        max-width: 320px; }
+    section.zenika .description {
+      color: white; }
+      section.zenika .description p {
+        margin: 50px 0 0;
+        text-align: justify; }
+  section.contact {
+    background-color: rgba(0, 0, 0, 0.1); }
+    section.contact:before {
+      background: url("../img/background/mountain.jpg") center center;
+      background-size: cover;
+      content: "";
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      position: absolute;
+      z-index: -1; }
+    section.contact .right .scale .content {
+      text-align: center; }
+      section.contact .right .scale .content h1, section.contact .right .scale .content h2, section.contact .right .scale .content p {
+        color: #333333; }
+      section.contact .right .scale .content h1 {
+        font-size: 54px;
+        font-weight: lighter; }
+    section.contact .left .scale .content {
+      font-size: 50px;
+      transform: translate(-80%, -50%); }
+      section.contact .left .scale .content .logo {
+        width: 60px;
+        margin-left: 50px; }
+    section.contact .logo {
+      margin: 0;
+      text-align: center; }
+      section.contact .logo img {
+        width: 100%;
+        max-width: 400px; }
+  section.design {
+    overflow-x: hidden;
+    padding-top: 0; }
+    section.design img {
+      margin: 0 -17%; }
+    section.design h1 {
+      color: white;
+      font-weight: lighter;
+      font-size: 40px;
+      padding: 0 10px; }
+    section.design .content {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      transform: translate(0, -104%); }
+      section.design .content h1 {
+        text-align: right;
+        text-transform: uppercase;
+        margin: 0; }
+      section.design .content div:first-child h1 {
+        text-align: left; }
+  section.no-margin .left, section.no-margin .right {
+    width: 50%;
+    float: left; }
+    section.no-margin .left .scale, section.no-margin .right .scale {
+      width: 90%; }
+  section.no-margin .right .scale {
+    float: right;
+    margin-top: 0; }
+  section.no-margin .scale .content {
+    width: auto; }
+
+@media (min-width: 992px) and (max-width: 1200px) {
+  section .scale {
+    width: 45%; } }
+
+@media (min-width: 768px) and (max-width: 992px) {
+  section .scale {
+    width: 60%; } }
+
+@media (max-width: 768px) {
+  section .left .scale .content {
+    transform: translate(-79%, -62%); }
+  section .right .scale {
+    width: 50%; }
+    section .right .scale .content {
+      transform: translate(-30%, -62%);
+      width: 70%; }
+  section.no-margin .right .scale .content {
+    transform: translate(-42%, -60%); } }
+
+@media (max-width: 600px) {
+  section .scale {
+    width: 70%; }
+  section .right .scale {
+    width: 95%; }
+  section.no-margin .left, section.no-margin .right {
+    width: 100%;
+    float: left; }
+    section.no-margin .left .scale, section.no-margin .right .scale {
+      width: 90%; }
+  section.no-margin .right .scale {
+    float: right;
+    margin-top: -40%; } }
+
+@media (min-width: 768px) {
+  section.design h1 {
+    font-size: 80px; }
+  section.design .content {
+    transform: translate(0, -75%); } }
+
+header {
+  position: relative;
+  background-size: cover;
+  padding-bottom: 100px;
+  text-align: center;
+  color: white; }
+  header:before {
+    background-size: cover;
+    content: "";
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1; }
+  header .logo {
+    padding: 150px 0 50px; }
+    header .logo img {
+      width: 230px; }
+  header h2 {
+    font-weight: lighter;
+    text-transform: uppercase; }
+  header .description {
+    text-align: justify;
+    padding: 0 20px; }
+
+svg.scale-mask-transparent .core, svg.scale-mask-transparent .side, svg.scale-mask-transparent .intersection {
+  fill-rule: evenodd; }
+
+svg.scale-mask-transparent .core {
+  fill: #d6d6d6; }
+
+svg.scale-mask-transparent .intersection {
+  fill: #eeeeee; }
+
+svg.scale-mask-transparent .side {
+  fill: #919191; }
+
+svg.scale-mask-opaque .core, svg.scale-mask-opaque .side, svg.scale-mask-opaque .intersection {
+  fill-rule: evenodd;
+  fill: #ffffff; }
+
+.first-background, .second-background {
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.3); }
+  .first-background:before, .second-background:before {
+    content: "";
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1; }
+
+.first-background:before {
+  background: url("../img/background/palms.jpg") center center;
+  background-size: cover; }
+
+.second-background:before {
+  background: url("../img/background/road.jpg") center center;
+  background-size: cover; }
+
+.gradient-separation {
+  width: 100%;
+  height: 600px;
+  margin-top: -300px;
+  margin-bottom: -300px;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+50,000000+100&0+0,1+50,0+100 */
+  background: -moz-linear-gradient(top, transparent 0%, black 50%, transparent 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, transparent 0%, black 50%, transparent 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, transparent 0%, black 50%, transparent 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#00000000', GradientType=0);
+  /* IE6-9 */ }

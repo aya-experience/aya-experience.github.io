@@ -1,0 +1,32 @@
+header {
+  position: relative;
+  background-size: cover;
+  padding-bottom: 100px;
+  text-align: center;
+  color: white;
+  &:before {
+    background-size: cover;
+    content: "";
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+  }
+
+  .logo {
+    padding: 150px 0 50px;
+    img {
+      width: 230px;
+    }
+  }
+  h2 {
+    font-weight: lighter;
+    text-transform: uppercase;
+  }
+  .description {
+    text-align: justify;
+    padding: 0 20px;
+  }
+}
