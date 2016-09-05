@@ -1,5 +1,7 @@
 body {
-  font-size: 18px; }
+  font-size: 18px;
+  font-weight: lighter;
+  letter-spacing: 1px; }
 
 section {
   padding: 50px 0;
@@ -17,6 +19,9 @@ section {
    * Code section
    */
   /*
+   * Aya section
+   */
+  /*
    * Zenika section
    */
   /*
@@ -27,6 +32,10 @@ section {
    */ }
   section .left .scale {
     float: left; }
+    section .left .scale h1, section .left .scale h2 {
+      text-transform: uppercase; }
+    section .left .scale h2 {
+      font-size: 34px; }
   section .right .scale {
     float: right;
     margin-top: -40%; }
@@ -43,8 +52,12 @@ section {
       section .scale .content h1, section .scale .content h2 {
         text-align: center;
         color: white; }
+      section .scale .content h1 {
+        font-size: 40px; }
       section .scale .content h2 {
-        margin-top: 10px; }
+        font-size: 22px;
+        margin-top: 10px;
+        font-weight: lighter; }
       section .scale .content p {
         color: white; }
   section.vision {
@@ -66,8 +79,38 @@ section {
       text-align: left; }
     section.code .right .scale .content h1, section.code .right .scale .content p {
       text-align: right; }
+  section.aya {
+    position: relative;
+    margin-top: -100px;
+    margin-bottom: 0; }
+    section.aya .aya {
+      position: absolute;
+      width: 100%;
+      top: 50%;
+      transform: translate(0, -50%); }
+    section.aya .row:last-child {
+      margin-top: 100px; }
+    section.aya .row {
+      margin: 0; }
+    section.aya h1, section.aya h2 {
+      text-align: center;
+      color: white; }
+    section.aya h1 {
+      font-size: 36px;
+      font-weight: 200;
+      line-height: 32px; }
+    section.aya h2 {
+      font-size: 24px;
+      font-weight: lighter; }
+    section.aya .top, section.aya .bottom {
+      width: 80px;
+      margin-left: 6px; }
+    section.aya .top {
+      transform: rotateZ(-90deg) scaleX(-0.9); }
+    section.aya .bottom {
+      transform: rotateZ(-90deg) scaleX(0.9); }
   section.zenika {
-    margin-top: -200px;
+    margin-top: 0;
     margin-bottom: -300px;
     overflow: hidden; }
     section.zenika .row {
@@ -165,6 +208,26 @@ section {
       width: 70%; }
   section.no-margin .right .scale .content {
     transform: translate(-42%, -60%); } }
+
+@media (max-width: 900px) {
+  section.aya .top, section.aya .bottom {
+    width: 60px;
+    margin-left: 6px; }
+  section.aya h1 {
+    font-size: 24px;
+    line-height: 9px; }
+  section.aya h2 {
+    font-size: 16px; } }
+
+@media (max-width: 700px) {
+  section.aya .row:last-child {
+    margin-top: 250px; } }
+
+@media (max-width: 400px) {
+  section.aya h1 {
+    font-size: 20px; }
+  section.aya h2 {
+    font-size: 14px; } }
 
 @media (max-width: 600px) {
   section .scale {

@@ -2,6 +2,8 @@
 
 body {
   font-size: $font-size-1;
+  font-weight: lighter;
+  letter-spacing: 1px;
 }
 
 section {
@@ -11,6 +13,12 @@ section {
   .left {
     .scale {
       float: left;
+      h1, h2 {
+        text-transform: uppercase;
+      }
+      h2 {
+        font-size: 34px;
+      }
     }
   }
   .right {
@@ -34,8 +42,13 @@ section {
         text-align: center;
         color: white;
       }
+      h1 {
+        font-size: 40px;
+      }
       h2 {
+        font-size: 22px;
         margin-top: 10px;
+        font-weight: lighter;
       }
       p {
         color: white;
@@ -95,10 +108,61 @@ section {
   }
 
   /*
+   * Aya section
+   */
+  &.aya {
+    position: relative;
+    margin-top: -100px;
+    margin-bottom: 0;
+
+    .aya {
+      position: absolute;
+      width: 100%;
+      top: 50%;
+      transform: translate(0, -50%);
+    }
+
+    .row:last-child {
+      margin-top: 100px;
+    }
+
+    .row {
+      margin: 0;
+    }
+
+    h1, h2 {
+      text-align: center;
+      color: white;
+    }
+
+    h1 {
+      font-size: 36px;
+      font-weight: 200;
+      line-height: 32px;
+    }
+    h2 {
+      font-size: 24px;
+      font-weight: lighter;
+    }
+
+    .top, .bottom {
+      width: 80px;
+      margin-left: 6px;
+    }
+
+    .top {
+      transform: rotateZ(-90deg) scaleX(-0.9);
+    }
+    .bottom {
+      transform: rotateZ(-90deg) scaleX(0.9);
+    }
+  }
+
+  /*
    * Zenika section
    */
   &.zenika {
-    margin-top: -200px;
+    margin-top: 0;
     margin-bottom: -300px;
     overflow: hidden;
 
@@ -268,6 +332,47 @@ section {
             transform: translate(-42%, -60%);
           }
         }
+      }
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  section {
+    &.aya {
+      .top, .bottom {
+        width: 60px;
+        margin-left: 6px;
+      }
+      h1 {
+        font-size: 24px;
+        line-height: 9px;
+      }
+      h2 {
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  section {
+    &.aya {
+      .row:last-child {
+        margin-top: 250px;
+      }
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  section {
+    &.aya {
+      h1 {
+        font-size: 20px;
+      }
+      h2 {
+        font-size: 14px;
       }
     }
   }
