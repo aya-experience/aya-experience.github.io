@@ -98,6 +98,7 @@ section {
     .left .scale .content {
       h1, p {
         text-align: left;
+        text-transform: none;
       }
     }
     .right .scale .content {
@@ -334,11 +335,32 @@ section {
         }
       }
     }
+    &.contact.no-margin{
+      .right {
+        .scale {
+          .content {
+            transform: translate(-32%, -60%);
+          }
+        }
+      }
+    }
   }
 }
 
 @media (max-width: 900px) {
   section {
+    .scale{
+      .content{
+        h1 {
+          font-size: 30px;
+        }
+        h2 {
+          font-size: 18px;
+          margin-top: 10px;
+          font-weight: lighter;
+        }
+      }
+    }
     &.aya {
       .top, .bottom {
         width: 60px;

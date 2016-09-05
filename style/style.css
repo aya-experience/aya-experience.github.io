@@ -76,7 +76,8 @@ section {
       font-size: 54px;
       font-weight: lighter; }
     section.code .left .scale .content h1, section.code .left .scale .content p {
-      text-align: left; }
+      text-align: left;
+      text-transform: none; }
     section.code .right .scale .content h1, section.code .right .scale .content p {
       text-align: right; }
   section.aya {
@@ -207,9 +208,17 @@ section {
       transform: translate(-30%, -62%);
       width: 70%; }
   section.no-margin .right .scale .content {
-    transform: translate(-42%, -60%); } }
+    transform: translate(-42%, -60%); }
+  section.contact.no-margin .right .scale .content {
+    transform: translate(-32%, -60%); } }
 
 @media (max-width: 900px) {
+  section .scale .content h1 {
+    font-size: 30px; }
+  section .scale .content h2 {
+    font-size: 18px;
+    margin-top: 10px;
+    font-weight: lighter; }
   section.aya .top, section.aya .bottom {
     width: 60px;
     margin-left: 6px; }
