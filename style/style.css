@@ -273,7 +273,8 @@ header {
     text-transform: uppercase; }
   header .description {
     text-align: justify;
-    padding: 0 20px; }
+    padding: 0 20px;
+    font-weight: 200; }
 
 svg.scale-mask-transparent .core, svg.scale-mask-transparent .side, svg.scale-mask-transparent .intersection {
   fill-rule: evenodd; }
