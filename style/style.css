@@ -111,7 +111,7 @@ section {
     section.aya .bottom {
       transform: rotateZ(-90deg) scaleX(0.9); }
   section.zenika {
-    margin-top: 0;
+    margin-top: -200px;
     margin-bottom: -300px;
     overflow: hidden; }
     section.zenika .row {
@@ -274,9 +274,10 @@ header {
     position: absolute;
     z-index: -1; }
   header .logo {
-    padding: 150px 0 50px; }
+    padding: 50px 0 20px; }
     header .logo img {
-      width: 230px; }
+      width: 100%;
+      max-width: 400px; }
   header h2 {
     font-weight: lighter;
     text-transform: uppercase; }

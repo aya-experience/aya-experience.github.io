@@ -16,9 +16,10 @@ header {
   }
 
   .logo {
-    padding: 150px 0 50px;
+    padding: 50px 0 20px;
     img {
-      width: 230px;
+      width: 100%;
+      max-width: 400px;
     }
   }
   h2 {
