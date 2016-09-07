@@ -444,6 +444,17 @@ section {
   }
 }
 
+@media (min-width: $screen-lg) {
+  header .description, section.zenika .description p{
+    text-align: justify;
+    padding: 0 20px;
+    font-weight: 100;
+    letter-spacing: 0.1em;
+    line-height: 1.2em;
+    font-size: 1.1em;
+  }
+}
+
 @media (min-width: 1580px) {
   section {
     .scale .content p {
@@ -459,9 +470,7 @@ section {
       }
     }
   }
-}
 
-@media (min-width: $screen-lg) {
   header .description, section.zenika .description p{
     text-align: justify;
     padding: 0 20px;

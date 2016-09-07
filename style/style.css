@@ -260,6 +260,15 @@ section {
   section.design .content {
     transform: translate(0, -75%); } }
 
+@media (min-width: 1200px) {
+  header .description, section.zenika .description p {
+    text-align: justify;
+    padding: 0 20px;
+    font-weight: 100;
+    letter-spacing: 0.1em;
+    line-height: 1.2em;
+    font-size: 1.1em; } }
+
 @media (min-width: 1580px) {
   section .scale .content p {
     color: #ddd;
@@ -267,9 +276,7 @@ section {
     letter-spacing: 3.8px;
     line-height: 1.6em; }
   section.aya .top, section.aya .bottom {
-    width: 5em; } }
-
-@media (min-width: 1200px) {
+    width: 5em; }
   header .description, section.zenika .description p {
     text-align: justify;
     padding: 0 20px;
@@ -304,7 +311,8 @@ header {
   header .description {
     text-align: justify;
     padding: 0 20px;
-    font-weight: 200; }
+    font-weight: 200;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4); }
 
 svg.scale-mask-transparent .core, svg.scale-mask-transparent .side, svg.scale-mask-transparent .intersection {
   fill-rule: evenodd; }
@@ -324,7 +332,7 @@ svg.scale-mask-opaque .core, svg.scale-mask-opaque .side, svg.scale-mask-opaque 
 
 .first-background, .second-background {
   position: relative;
-  background-color: rgba(0, 0, 0, 0.3); }
+  background-color: rgba(0, 0, 0, 0.4); }
   .first-background:before, .second-background:before {
     content: "";
     top: 0;
