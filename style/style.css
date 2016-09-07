@@ -59,7 +59,9 @@ section {
         margin-top: 10px;
         font-weight: lighter; }
       section .scale .content p {
-        color: white; }
+        color: #ddd;
+        font-size: 13px;
+        letter-spacing: 1.8px; }
   section.vision {
     margin-top: -130px; }
   section.quality {
@@ -257,6 +259,24 @@ section {
     font-size: 80px; }
   section.design .content {
     transform: translate(0, -75%); } }
+
+@media (min-width: 1580px) {
+  section .scale .content p {
+    color: #ddd;
+    font-size: 1.4em;
+    letter-spacing: 3.8px;
+    line-height: 1.6em; }
+  section.aya .top, section.aya .bottom {
+    width: 5em; } }
+
+@media (min-width: 1200px) {
+  header .description, section.zenika .description p {
+    text-align: justify;
+    padding: 0 20px;
+    font-weight: 100;
+    letter-spacing: 0.1em;
+    line-height: 1.2em;
+    font-size: 1.4em; } }
 
 header {
   position: relative;
