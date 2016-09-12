@@ -6,6 +6,17 @@ body {
   letter-spacing: 1px;
 }
 
+a {
+  text-decoration: none;
+  color: $text-color-black;
+
+  &:hover {
+    text-decoration: none;
+    cursor: pointer;
+    color: black;
+  }
+}
+
 section {
   padding: 50px 0;
   position: relative;
@@ -220,12 +231,23 @@ section {
     }
 
     .left .scale .content {
-      .logo {
-        width: 60px;
-        margin-left: 50px;
-      }
+      width: 150px;
       font-size: 50px;
       transform: translate(-80%, -50%);
+
+      a {
+        clear: both;
+      }
+      a:nth-child(odd) {
+        float: left;
+      }
+      a:nth-child(even) {
+        float: right;
+      }
+
+      .logo {
+        width: 60px;
+      }
     }
 
     .logo {
@@ -239,8 +261,8 @@ section {
 
     .icon-twitter {
       background-image: url('./img/twitter.svg');
-      width: 5rem;
-      height: 4rem;
+      width: 6rem;
+      height: 5rem;
       display: block;
       background-size: cover;
     }
