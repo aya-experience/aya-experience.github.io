@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Automated deploy script with Circle CI.
+
+# Exit if any subcommand fails.
+set -e
+
+# Variables
+ORIGIN_URL=`git config --get remote.origin.url`
+
+echo "Started deploying"
+
+# Checkout gh-pages branch
+git clone $ORIGIN_URL site
+cd site
+git checkout -b master
+git rm -r .
+cp -R ../dist/* .
+
+# Push to gh-pages
+git config user.name "AYA"
+git config user.email "contact@aya-experience.com"
+git add -fA
+git commit --allow-empty -m "$(git log -1 --pretty=%B) [ci skip]"
+git push -f $ORIGIN_URL master
+
+echo "Deployed Successfully!"
+
+exit 0
