@@ -4,7 +4,6 @@ const path = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const pkg = require('../package.json');
 const autoprefixer = require('autoprefixer');
 
 module.exports = {
@@ -26,7 +25,7 @@ module.exports = {
     new webpack.NoErrorsPlugin(),
     new HtmlWebpackPlugin({
       template: conf.path.src('index.html'),
-      inject: true
+      minify: require('./html-minifier.conf.json')
     }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': '"production"'

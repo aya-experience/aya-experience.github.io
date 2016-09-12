@@ -1,0 +1,11 @@
+{
+  "caseSensitive": false,
+  "collapseInlineTagWhitespace": false,
+  "collapseWhitespace": true,
+  "html5": true,
+  "removeAttributeQuotes": true,
+  "removeComments": true,
+  "preserveLineBreaks": false,
+  "removeTagWhitespace": true,
+  "useShortDoctype": true
+}
