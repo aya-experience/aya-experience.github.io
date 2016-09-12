@@ -6,7 +6,7 @@
 set -e
 
 # Variables
-ORIGIN_URL=`git config --get remote.origin.url`
+ORIGIN_URL=https://${GITHUB_TOKEN}@github.com/${GITHUB_REPO}.git
 
 echo "Started deploying"
 
@@ -18,7 +18,7 @@ git rm -r .
 cp -R ../dist/* .
 
 # Push to gh-pages
-git config user.name "AYA"
+git config user.name "AYA (Travis CI)"
 git config user.email "contact@aya-experience.com"
 git add -fA
 git commit --allow-empty -m "$(git log -1 --pretty=%B) [ci skip]"
