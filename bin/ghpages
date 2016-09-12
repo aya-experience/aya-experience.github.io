@@ -22,7 +22,7 @@ git config user.name "AYA (Travis CI)"
 git config user.email "contact@aya-experience.com"
 git add -fA
 git commit --allow-empty -m "$(git log -1 --pretty=%B) [ci skip]"
-git push -f $ORIGIN_URL master
+git push -f -q $ORIGIN_URL master
 
 echo "Deployed Successfully!"
 
