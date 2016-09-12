@@ -26,8 +26,6 @@
     "gulp-util": "^3.0.7",
     "html-loader": "^0.4.3",
     "html-webpack-plugin": "^2.9.0",
-    "image-loader": "0.0.1",
-    "isparta-loader": "^2.0.0",
     "json-loader": "^0.5.4",
     "node-sass": "^3.4.2",
     "postcss-loader": "^0.8.0",
