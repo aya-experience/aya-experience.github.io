@@ -113,10 +113,28 @@ section {
         text-align: left;
         text-transform: none;
       }
+
+      h1 {
+        background-image: url('./img/groupe-31.svg');
+        background-size: cover;
+        display: block;
+        height: 15rem;
+        width: 15rem;
+      }
     }
     .right .scale .content {
       h1, p {
         text-align: right;
+      }
+
+      h1 {
+        background-image: url('./img/DESIGN-ico.svg');
+        background-size: cover;
+        display: block;
+        height: 15rem;
+        width: 20rem;
+        margin-left: auto;
+        margin-right: 0;
       }
     }
   }
@@ -524,5 +542,15 @@ section {
     letter-spacing: 0.1em;
     line-height: 1.2em;
     font-size: 1.4em;
+  }
+
+  section.code .left .scale .content h1 {
+    height: 25rem;
+    width: 25rem;
+  }
+
+  section.code .right .scale .content h1 {
+    height: 25rem;
+    width: 35rem;
   }
 }

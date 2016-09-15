@@ -1,6 +1,6 @@
 .first-background, .second-background {
   position: relative;
-  background-color: rgba(0, 0, 0, 0.40);
+  // background-color: rgba(0, 0, 0, 0.40);
   &:before {
     content: "";
     top: 0;
@@ -13,16 +13,19 @@
 }
 
 .first-background:before {
-  background: url("./img/background/Background-Plam-1.jpg");
+  background: url("./img/background/Background-palm.jpg");
   background-position: top;
   background-size: 100%;
   background-repeat: no-repeat;
-  background-color: #261714;
+  background-color: #1f1619;
 }
 
 .second-background:before {
   background: url("./img/background/road.jpg") center center;
-  background-size: cover;
+  background-position: top;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-color: black;
 }
 
 .gradient-separation {

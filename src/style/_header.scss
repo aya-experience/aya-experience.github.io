@@ -25,11 +25,13 @@ header {
   h2 {
     font-weight: lighter;
     text-transform: uppercase;
+    text-shadow: 1px 1px 5px #111111;
   }
   .description {
     text-align: justify;
     padding: 0 20px;
     font-weight: 200;
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+    // text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+    text-shadow: 1px 1px 5px #111111;
   }
 }
