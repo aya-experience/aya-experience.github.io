@@ -1,4 +1,4 @@
-.first-background, .second-background {
+.palm-background, .road-background, .forest-background {
   position: relative;
   // background-color: rgba(0, 0, 0, 0.40);
   &:before {
@@ -12,18 +12,26 @@
   }
 }
 
-.first-background:before {
-  background: url("./img/background/Background-palm.jpg");
+.palm-background:before {
+  background: url("./img/background/palms.jpg");
   background-position: top;
-  background-size: 100%;
+  background-size: cover;
   background-repeat: no-repeat;
   background-color: #1f1619;
 }
 
-.second-background:before {
+.road-background:before {
   background: url("./img/background/road.jpg") center center;
   background-position: top;
-  background-size: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: black;
+}
+
+.forest-background:before {
+  background: url("./img/background/forest.jpg") center center;
+  background-position: top;
+  background-size: cover;
   background-repeat: no-repeat;
   background-color: black;
 }
