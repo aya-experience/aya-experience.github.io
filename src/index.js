@@ -29,20 +29,22 @@ function updateScales() {
     propsRight = minRightProps;
   }
 
-  const $this = $(this);
-
-  $('svg.left, section .left svg').each(() => {
+  $('svg.left, section .left svg').each(function () {
+    const $this = $(this);
     $this.attr('viewBox', propsLeft.viewBox.join(' '));
   });
-  $('.left image').each(() => {
+  $('.left image').each(function () {
+    const $this = $(this);
     $this.attr('x', propsLeft.x);
     $this.attr('y', propsLeft.y);
   });
 
-  $('svg.right, section .right svg').each(() => {
+  $('svg.right, section .right svg').each(function () {
+    const $this = $(this);
     $this.attr('viewBox', propsRight.viewBox.join(' '));
   });
-  $('.right image').each(() => {
+  $('.right image').each(function () {
+    const $this = $(this);
     $this.attr('x', propsRight.x);
     $this.attr('y', propsRight.y);
   });
