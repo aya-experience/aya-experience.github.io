@@ -1,6 +1,7 @@
 {
   "name": "aya-experience.com",
-  "dependencies": {},
+  "dependencies": {
+  },
   "devDependencies": {
     "autoprefixer": "^6.2.2",
     "babel-core": "^6.2.0",
@@ -44,7 +45,7 @@
     "root": true,
     "env": {
       "browser": true,
-      "jasmine": true
+      "jquery": true
     },
     "extends": [
       "xo-space/esnext"
