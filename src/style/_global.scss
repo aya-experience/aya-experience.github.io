@@ -4,6 +4,7 @@ body {
   font-size: $font-size-1;
   font-weight: lighter;
   letter-spacing: 1px;
+  background: black;
 }
 
 a {
@@ -65,6 +66,10 @@ section {
         color: #ddd;
         font-size: 13px;
         letter-spacing: 1.8px;
+
+        @media (max-width: 450px) {
+          font-weight: 200;
+        }
       }
     }
   }
@@ -115,7 +120,7 @@ section {
       }
 
       h1 {
-        background-image: url('./img/groupe-31.svg');
+        background-image: url('./img/logo-code.png');
         background-size: cover;
         display: block;
         height: 15rem;
@@ -128,7 +133,7 @@ section {
       }
 
       h1 {
-        background-image: url('./img/DESIGN-ico.svg');
+        background-image: url('./img/logo-design.png');
         background-size: cover;
         display: block;
         height: 15rem;
@@ -216,6 +221,9 @@ section {
       p {
         margin: 50px 0 0;
         text-align: justify;
+        @media (max-width: 450px) {
+          font-weight: normal;
+        }
       }
     }
   }
@@ -509,7 +517,7 @@ section {
 }
 
 @media (min-width: $screen-lg) {
-  header .description, section.zenika .description p{
+  header .description, section.zenika .description p {
     text-align: justify;
     padding: 0 20px;
     font-weight: 100;
@@ -535,7 +543,7 @@ section {
     }
   }
 
-  header .description, section.zenika .description p{
+  header .description, section.zenika .description p {
     text-align: justify;
     padding: 0 20px;
     font-weight: 100;
