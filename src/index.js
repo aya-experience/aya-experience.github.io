@@ -1,28 +1,28 @@
 import './index.scss';
 
 function updateScales() {
-  var windowWidth = $(window).width();
+  const windowWidth = $(window).width();
 
-  var minLeftProps = {
+  const minLeftProps = {
     viewBox: [1700, 1000, 1180, 1750],
     x: 1650,
     y: 1020
-  }
+  };
 
-  var minRightProps = {
+  const minRightProps = {
     viewBox: [0, 1000, 1180, 1780],
     x: 0,
     y: 1000
-  }
+  };
 
-  var maxProps = {
+  const maxProps = {
     viewBox: [0, 0, 2831, 3761],
     x: 0,
     y: 0
-  }
+  };
 
-  var propsLeft = maxProps;
-  var propsRight = maxProps;
+  let propsLeft = maxProps;
+  let propsRight = maxProps;
 
   if (windowWidth <= 768) {
     propsLeft = minLeftProps;
@@ -30,25 +30,40 @@ function updateScales() {
   }
 
   $('svg.left, section .left svg').each(function () {
-    $(this).attr('viewBox', propsLeft.viewBox.join(' '));
+    const $this = $(this);
+    $this.attr('viewBox', propsLeft.viewBox.join(' '));
   });
   $('.left image').each(function () {
-    $(this).attr('x', propsLeft.x);
-    $(this).attr('y', propsLeft.y);
+    const $this = $(this);
+    $this.attr('x', propsLeft.x);
+    $this.attr('y', propsLeft.y);
   });
 
   $('svg.right, section .right svg').each(function () {
-    $(this).attr('viewBox', propsRight.viewBox.join(' '));
+    const $this = $(this);
+    $this.attr('viewBox', propsRight.viewBox.join(' '));
   });
   $('.right image').each(function () {
-    $(this).attr('x', propsRight.x);
-    $(this).attr('y', propsRight.y);
+    const $this = $(this);
+    $this.attr('x', propsRight.x);
+    $this.attr('y', propsRight.y);
   });
 }
 
-$(window).resize(function () {
+function waitForMainBackground() {
+  const div = document.querySelector('.palm-background');
+  const style = window.getComputedStyle(div, ':before');
+  const src = style['background-image'];
+  const url = src.match(/\((.*?)\)/)[1].replace(/('|")/g, '');
+  const img = new Image();
+  img.onload = () => document.body.classList.add('loaded');
+  img.src = url;
+}
+
+$(window).resize(() => {
   updateScales();
 });
-$(document).ready(function () {
+$(document).ready(() => {
   updateScales();
+  waitForMainBackground();
 });

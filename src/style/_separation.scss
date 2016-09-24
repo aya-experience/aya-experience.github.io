@@ -1,5 +1,6 @@
 .palm-background, .road-background, .forest-background {
   position: relative;
+
   // background-color: rgba(0, 0, 0, 0.40);
   &:before {
     content: "";
@@ -9,31 +10,46 @@
     right: 0;
     position: absolute;
     z-index: -1;
+    background-color: black;
   }
 }
 
 .palm-background:before {
-  background: url("./img/background/palms.jpg");
+  background-image: url("./img/background/palms.jpg");
   background-position: top;
   background-size: cover;
   background-repeat: no-repeat;
   background-color: #1f1619;
 }
 
-.road-background:before {
-  background: url("./img/background/road.jpg") center center;
+.loaded .road-background:before {
+  background-image: url("./img/background/road.jpg");
   background-position: top;
   background-size: cover;
   background-repeat: no-repeat;
   background-color: black;
 }
 
-.forest-background:before {
-  background: url("./img/background/forest.jpg") center center;
+.loaded .forest-background:before {
+  background-image: url("./img/background/forest.jpg");
   background-position: top;
   background-size: cover;
   background-repeat: no-repeat;
   background-color: black;
+}
+
+@media (max-width: $screen-sm) {
+  .palm-background:before {
+    background-image: url("./img/background/palms-sm.jpg");
+  }
+
+  .loaded .road-background:before {
+    background-image: url("./img/background/road-sm.jpg");
+  }
+
+  .loaded .forest-background:before {
+    background-image: url("./img/background/forest-sm.jpg");
+  }
 }
 
 .gradient-separation {

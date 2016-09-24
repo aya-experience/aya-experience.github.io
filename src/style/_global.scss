@@ -233,8 +233,10 @@ section {
    */
   &.contact {
     background-color: rgba(0, 0, 0, 0.10);
+
     &:before {
-      background: url("./img/background/mountain.jpg") center center;
+      // background: url("./img/background/mountain.jpg") center center;
+      background-position: center center;
       background-size: cover;
       content: "";
       top: 0;
@@ -243,6 +245,7 @@ section {
       right: 0;
       position: absolute;
       z-index: -1;
+      background-color: black;
     }
 
     .right .scale .content {
@@ -560,5 +563,15 @@ section {
   section.code .right .scale .content h1 {
     height: 25rem;
     width: 35rem;
+  }
+}
+
+.loaded .contact:before {
+  background-image: url("./img/background/mountain.jpg");
+}
+
+@media (min-width: $screen-sm) {
+  .loaded .contact:before {
+    background-image: url("./img/background/mountain-sm.jpg");
   }
 }

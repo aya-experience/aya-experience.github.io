@@ -17,7 +17,7 @@ function clean() {
 }
 
 function images() {
-  return gulp.src(conf.path.src('/**/*.{svg,png,jpg}'))
+  return gulp.src(conf.path.src('/**/*.{png,jpg}'))
     .pipe(imagemin())
     .pipe(gulp.dest(conf.paths.src));
 }
