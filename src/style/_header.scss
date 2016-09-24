@@ -24,22 +24,22 @@ header {
     }
   }
   h2 {
-    font-weight: $font-weight-light;
+    font-weight: 300;
     text-transform: uppercase;
     text-shadow: 1px 1px 5px #111111;
     @media (max-width: 450px) {
-      font-weight: 200;
+      font-weight: 400;
     }
   }
   .description {
     text-align: justify;
     padding: 0 20px;
-    font-weight: 200;
+    font-weight: 300;
     // text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
     text-shadow: 1px 1px 5px #111111;
 
     @media (max-width: 450px) {
-      font-weight: normal;
+      font-weight: 400;
     }
   }
 }

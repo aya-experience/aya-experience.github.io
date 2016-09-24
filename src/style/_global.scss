@@ -74,6 +74,9 @@ section {
         font-size: 22px;
         margin-top: 10px;
         font-weight: lighter;
+        @media (max-width: 450px) {
+          font-weight: 300;
+        }
       }
       p {
         color: #ddd;
@@ -81,7 +84,7 @@ section {
         letter-spacing: 1.8px;
 
         @media (max-width: 450px) {
-          font-weight: 200;
+          font-weight: 300;
         }
       }
     }
@@ -197,12 +200,15 @@ section {
 
     h1 {
       font-size: 36px;
-      font-weight: 200;
+      font-weight: 300;
       line-height: 32px;
     }
     h2 {
       font-size: 24px;
       font-weight: lighter;
+      @media (max-width: 450px) {
+        font-weight: 300;
+      }
     }
 
     .top, .bottom {
@@ -245,7 +251,7 @@ section {
         margin: 50px 0 0;
         text-align: justify;
         @media (max-width: 450px) {
-          font-weight: normal;
+          font-weight: 400;
         }
       }
     }
@@ -457,7 +463,6 @@ section {
         h2 {
           font-size: 18px;
           margin-top: 10px;
-          font-weight: lighter;
         }
       }
     }
