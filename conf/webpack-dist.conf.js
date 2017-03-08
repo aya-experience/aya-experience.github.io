@@ -10,19 +10,19 @@ module.exports = {
   module: {
     // preLoaders: [{test: /\.js$/, exclude: /node_modules/, loader: 'eslint'}],
     loaders: [
-      {test: /.json$/, loader: 'json'},
+      {test: /.json$/, loader: 'json-loader'},
       {test: /\.(css|scss)$/, loaders: ExtractTextPlugin.extract({
-        fallbackLoader: 'style',
-        loader: 'css?minimize!sass!postcss'
+        fallback: 'style-loader',
+        use: 'css-loader?minimize!sass-loader!postcss-loader'
       })},
-      {test: /\.js$/, exclude: /node_modules/, loader: 'babel'},
-      {test: /.html$/, loader: 'html'},
-      {test: /\.(svg|png|jpg)$/, loader: 'url?limit=8192'}
+      {test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader'},
+      {test: /.html$/, loader: 'html-loader'},
+      {test: /\.(svg|png|jpg)$/, loader: 'url-loader?limit=8192'}
     ]
   },
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.NoErrorsPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
     new HtmlWebpackPlugin({
       template: conf.path.src('index.html'),
       minify: require('./html-minifier.conf.json')
@@ -33,9 +33,14 @@ module.exports = {
     new webpack.optimize.UglifyJsPlugin({
       compress: {unused: true, dead_code: true} // eslint-disable-line camelcase
     }),
-    new ExtractTextPlugin('index-[contenthash].css')
+    new ExtractTextPlugin('index-[contenthash].css'),
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        postcss: () => [autoprefixer]
+      },
+      debug: true
+    })
   ],
-  postcss: () => [autoprefixer],
   output: {
     path: path.join(process.cwd(), conf.paths.dist),
     filename: '[name]-[hash].js'
