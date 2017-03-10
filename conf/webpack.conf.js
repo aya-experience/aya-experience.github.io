@@ -11,6 +11,14 @@ module.exports = {
       {test: /.json$/, loaders: ['json-loader']},
       {test: /\.(css|scss)$/, loaders: ['style-loader', 'css-loader', 'sass-loader', 'postcss-loader']},
       {test: /\.js$/, exclude: /node_modules/, loaders: ['babel-loader']},
+      {
+        test: /\.jsx$/,
+        exclude: /node_modules/,
+        use: [{
+          loader: 'babel-loader',
+          options: {presets: ['es2015', 'react']}
+        }]
+      },
       {test: /.html$/, loader: 'html-loader'},
       {test: /\.(svg|png|jpg)$/, loader: 'url-loader?limit=8192'}
     ]
@@ -33,5 +41,5 @@ module.exports = {
     path: path.join(process.cwd(), conf.paths.tmp),
     filename: 'index.js'
   },
-  entry: `./${conf.path.src('index')}`
+  entry: `./${conf.path.src('index.jsx')}`
 };
