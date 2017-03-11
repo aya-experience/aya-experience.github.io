@@ -8,7 +8,7 @@ class Header extends Component {
       minHeight: '228px'
     };
     return (
-      <div className="palm-background">
+      <div className="palm-background palm-background_full-size">
         <header>
           <div className="container">
             <div className="row">

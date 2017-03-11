@@ -288,27 +288,21 @@ section {
       }
     }
 
-    .left .scale .content {
-      width: 150px;
-      font-size: 50px;
-      transform: translate(-80%, -50%);
-
-      a {
-        clear: both;
-      }
-      a:nth-child(odd) {
-        float: left;
-      }
-      a:nth-child(even) {
-        float: right;
-      }
-
-      .logo {
-        width: 60px;
-      }
+    .logo-container_2 {
+      position: relative;
+      left: -2rem;
+    }
+    .logo-zenika {
+      width: 5rem;
+    }
+    .logo-twitter_container {
+      float: left;
+    }
+    .logo-medium {
+      width: 7rem;
     }
 
-    .logo {
+    .logo-aya {
       margin: 0;
       text-align: center;
       img {
@@ -317,18 +311,21 @@ section {
       }
     }
 
+    .logo-twitter_container {
+      float: right;
+    }
     .icon-twitter {
       background-image: url('./img/twitter.svg');
-      width: 6rem;
-      height: 5rem;
+      width: 5rem;
+      height: 4rem;
       display: block;
       background-size: cover;
     }
 
     .icon-linkedin {
       background-image: url('./img/linkedin.svg');
-      width: 5rem;
-      height: 5rem;
+      width: 4rem;
+      height: 4rem;
       display: block;
       background-size: cover;
     }
