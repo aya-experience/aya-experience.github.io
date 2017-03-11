@@ -22,7 +22,11 @@
   background-color: #1f1619;
 }
 
-.loaded .road-background:before {
+.palm-background_full-size {
+  height: 100%;
+}
+
+.road-background:before {
   background-image: url("./img/background/road.jpg");
   background-position: top;
   background-size: cover;
@@ -31,7 +35,7 @@
   opacity: 0.8;
 }
 
-.loaded .forest-background:before {
+.forest-background:before {
   background-image: url("./img/background/forest.jpg");
   background-position: top;
   background-size: cover;
@@ -44,11 +48,11 @@
     background-image: url("./img/background/palms-sm.jpg");
   }
 
-  .loaded .road-background:before {
+  .road-background:before {
     background-image: url("./img/background/road-sm.jpg");
   }
 
-  .loaded .forest-background:before {
+  .forest-background:before {
     background-image: url("./img/background/forest-sm.jpg");
   }
 }
