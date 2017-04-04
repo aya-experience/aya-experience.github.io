@@ -1,7 +1,8 @@
-.tmp/
-coverage/
-dist/
-node_modules/
-.idea
-.DS_Store
-npm-debug.log
+# node / npm
+node_modules
+*.log
+
+# phenomic build
+dist
+
+/old
