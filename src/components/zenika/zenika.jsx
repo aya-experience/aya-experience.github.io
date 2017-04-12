@@ -16,7 +16,7 @@ class Zenika extends Component {
               AYA &lt;creative experience&gt; est une nouvelle agence réunissant les experts du digital du groupe Zenika
               reconnu pour son expertise technique.
               La création de cette agence permet ainsi d'intervenir sur les projets de bout en bout avec une équipe
-              adaptéee...
+              adaptée...
             </p>
           </div>
         </div>
