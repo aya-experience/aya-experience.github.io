@@ -155,6 +155,15 @@ export default (config = {}) => {
             context: path.join(__dirname, config.source),
           },
         },
+        // copy assets and return generated path in js
+        {
+          test: /manifest\.json$/,
+          loader: "file-loader",
+          query: {
+            name: "[path][name].[ext]",
+            context: path.join(__dirname, "src"),
+          },
+        },
 
         // svg as raw string to be inlined
         {

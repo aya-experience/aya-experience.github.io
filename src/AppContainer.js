@@ -12,6 +12,8 @@ import DefaultHeadMeta from "./components/DefaultHeadMeta"
 import Content from "./components/Content"
 import Footer from "./components/Footer"
 
+import './manifest.json';
+
 const AppContainer = (props) => (
   <Container>
     <DefaultHeadMeta />

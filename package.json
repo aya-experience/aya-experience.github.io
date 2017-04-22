@@ -2,7 +2,7 @@
   "private": true,
   "name": "aya-experience",
   "homepage": "http://aya-experience.com/",
-  "twitter": "Swiip",
+  "twitter": "AyaExperience",
   "repository": "https://github.com/aya-experience/aya-experience.github.io",
   "scripts": {
     "lint:js": "eslint --ignore-path .gitignore --fix .",
@@ -14,7 +14,8 @@
     "test": "npm run build"
   },
   "phenomic": {
-    "CNAME": true
+    "CNAME": true,
+    "offline": true
   },
   "#babel": "webpack-(development|production) are useful for webpack 2, otherwise use development|production",
   "babel": {
