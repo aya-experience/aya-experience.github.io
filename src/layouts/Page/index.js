@@ -47,14 +47,14 @@ const Page = (
     { name: "twitter:description", content: head.description },
     { name: "twitter:image", content: socialImage },
     { name: "description", content: head.description },
+    { name: "apple-mobile-web-app-capable", content: "yes"},
+    { name: "mobile-web-app-capable", content: "yes"},
   ]
+  const links = [{rel: "manifest", href: "/manifest.json"}];
 
   return (
     <div className={ styles.page }>
-      <Helmet
-        title={ metaTitle }
-        meta={ meta }
-      />
+      <Helmet title={ metaTitle } meta={ meta } link={ links } />
       <div className={ styles.wrapper + " " + styles.pageContent }>
         { header }
         <div className={ styles.body }>
