@@ -1,5 +1,4 @@
 # AYA corporate website
-
 The digital agency made by Zenika
 
 ## Install dependencies
@@ -19,3 +18,7 @@ npm start
 ```sh
 npm run build
 ```
+
+
+## Special thanks
+Our website is made with [Phenomic](https://phenomic.io/), please take a look it worth it ;)

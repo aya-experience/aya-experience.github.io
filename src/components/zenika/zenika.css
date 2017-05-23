@@ -1,0 +1,37 @@
+.zenika {
+  margin-top: -200px;
+  margin-bottom: -300px;
+  overflow: hidden;
+}
+
+.logo {
+  margin: 100px 0 0;
+  text-align: center;
+}
+  .logo_img {
+    width: 100%;
+    max-width: 320px;
+  }
+
+.description {
+  color: white;
+  margin: 50px 0 0;
+  text-align: justify;
+  @media (max-width: 450px) {
+    font-weight: 500;
+  }
+  @media (min-width: 1200px) {
+    padding: 0 20px;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    line-height: 1.2em;
+    font-size: 1.1em;
+  }
+  @media (min-width: 1580px) {
+    padding: 0 20px;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    line-height: 1.2em;
+    font-size: 1.4em;
+  }
+}

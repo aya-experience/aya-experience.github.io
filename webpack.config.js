@@ -133,19 +133,6 @@ export default (config = {}) => {
         },
         */
 
-        // *.scss => global (normal) scss
-        {
-          test: /\.scss$/,
-          include: path.resolve(__dirname, "src"),
-          loader: ExtractTextPlugin.extract({
-            fallback: "style-loader",
-            use: [
-              "css-loader",
-              "sass-loader"
-            ],
-          }),
-        },
-
         // copy assets and return generated path in js
         {
           test: /\.(html|ico|jpe?g|png|gif|eot|otf|webp|ttf|woff|woff2)$/,

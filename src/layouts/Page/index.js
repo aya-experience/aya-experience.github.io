@@ -55,9 +55,9 @@ const Page = (
   return (
     <div className={ styles.page }>
       <Helmet title={ metaTitle } meta={ meta } link={ links } />
-      <div className={ styles.wrapper + " " + styles.pageContent }>
+      <div>
         { header }
-        <div className={ styles.body }>
+        <div>
           {
             isLoading
             ? <Loading />
