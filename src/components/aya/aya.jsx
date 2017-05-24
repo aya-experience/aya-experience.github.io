@@ -1,96 +1,108 @@
 import React, {Component} from 'react';
 
+import Styles from './aya.css';
+
 class Aya extends Component {
   render() {
     return (
-      <section className="aya">
+      <section className={Styles.aya}>
         <div className="row">
           <div className="col-md-3 col-md-offset-1 col-sm-4 col-sm-offset-1 col-xs-6">
-            <h1>Users<br/>
-              <svg className="top" viewBox="0 0 2830.56 3760.74" preserveAspectRatio="xMinYMid">
+            <div className={Styles.schemaContainer}>
+              Users
+              <br/>
+              <svg className={Styles.top} viewBox="0 0 2830.56 3760.74" preserveAspectRatio="xMinYMid">
                 <image mask="url(#scale-mask-transparent-right)" width="100%" height="100%" y="0" x="0"
                        xlinkHref="/assets/pixel-white.png"
                        preserveAspectRatio="xMinYMin slice"/>
               </svg>
               <br/>are<br/>
-              <svg className="bottom" viewBox="0 0 2830.56 3760.74" preserveAspectRatio="xMinYMid">
+              <svg className={Styles.bottom} viewBox="0 0 2830.56 3760.74" preserveAspectRatio="xMinYMid">
                 <image mask="url(#scale-mask-transparent-right)" width="100%" height="100%" y="0" x="0"
                        xlinkHref="/assets/pixel-white.png"
                        preserveAspectRatio="xMinYMin slice"/>
               </svg>
               <br/>CUSTOMERS
-            </h1>
-            <h2>Use & learn <br/>&lt;new experiences&gt;</h2>
+            </div>
+            <div className={Styles.schemaLegend}>Use & learn <br/>&lt;new experiences&gt;</div>
           </div>
           <div className="col-md-3 col-md-offset-4 col-sm-4 col-sm-offset-2 col-xs-6">
-            <h1>Clients<br/>
-              <svg className="top" viewBox="0 0 2830.56 3760.74" preserveAspectRatio="xMinYMid">
+            <div className={Styles.schemaContainer}>
+              Clients
+              <br/>
+              <svg className={Styles.top} viewBox="0 0 2830.56 3760.74" preserveAspectRatio="xMinYMid">
                 <image mask="url(#scale-mask-transparent-right)" width="100%" height="100%" y="0" x="0"
                        xlinkHref="/assets/pixel-white.png"
                        preserveAspectRatio="xMinYMin slice"/>
               </svg>
               <br/>bring<br/>
-              <svg className="bottom" viewBox="0 0 2830.56 3760.74" preserveAspectRatio="xMinYMid">
+              <svg className={Styles.bottom} viewBox="0 0 2830.56 3760.74" preserveAspectRatio="xMinYMid">
                 <image mask="url(#scale-mask-transparent-right)" width="100%" height="100%" y="0" x="0"
                        xlinkHref="/assets/pixel-white.png"
                        preserveAspectRatio="xMinYMin slice"/>
               </svg>
               <br/>
               SERVICES
-            </h1>
-            <h2>Strategy <br/>&lt;business & communication&gt;</h2>
+            </div>
+            <div className={Styles.schemaLegend}>Strategy <br/>&lt;business & communication&gt;</div>
           </div>
         </div>
-        <div className="aya">
-          <h1>AYA<br/>
-            <svg className="top" viewBox="0 0 2830.56 3760.74" preserveAspectRatio="xMinYMid">
+        <div className={Styles.schemaCenter}>
+          <div className={Styles.schemaContainer}>
+            AYA
+            <br/>
+            <svg className={Styles.top} viewBox="0 0 2830.56 3760.74" preserveAspectRatio="xMinYMid">
               <image mask="url(#scale-mask-transparent-right)" width="100%" height="100%" y="0" x="0"
                      xlinkHref="/assets/pixel-white.png"
                      preserveAspectRatio="xMinYMin slice"/>
             </svg>
             <br/>builds<br/>
-            <svg className="bottom" viewBox="0 0 2830.56 3760.74" preserveAspectRatio="xMinYMid">
+            <svg className={Styles.bottom} viewBox="0 0 2830.56 3760.74" preserveAspectRatio="xMinYMid">
               <image mask="url(#scale-mask-transparent-right)" width="100%" height="100%" y="0" x="0"
                      xlinkHref="/assets/pixel-white.png"
                      preserveAspectRatio="xMinYMin slice"/>
             </svg>
             <br/>INTERFACES
-          </h1>
+          </div>
         </div>
-        <div className="row">
+        <div className={`row ${Styles.lastLine}`}>
           <div className="col-md-3 col-md-offset-1 col-sm-4 col-sm-offset-1 col-xs-6">
-            <h1>Designers<br/>
-              <svg className="top" viewBox="0 0 2830.56 3760.74" preserveAspectRatio="xMinYMid">
+            <div className={Styles.schemaContainer}>
+              Designers
+              <br/>
+              <svg className={Styles.top} viewBox="0 0 2830.56 3760.74" preserveAspectRatio="xMinYMid">
                 <image mask="url(#scale-mask-transparent-right)" width="100%" height="100%" y="0" x="0"
                        xlinkHref="/assets/pixel-white.png"
                        preserveAspectRatio="xMinYMin slice"/>
               </svg>
               <br/>create<br/>
-              <svg className="bottom" viewBox="0 0 2830.56 3760.74" preserveAspectRatio="xMinYMid">
+              <svg className={Styles.bottom} viewBox="0 0 2830.56 3760.74" preserveAspectRatio="xMinYMid">
                 <image mask="url(#scale-mask-transparent-right)" width="100%" height="100%" y="0" x="0"
                        xlinkHref="/assets/pixel-white.png"
                        preserveAspectRatio="xMinYMin slice"/>
               </svg>
               <br/>EXPERIENCES
-            </h1>
-            <h2>Create <br/>&lt;experiences&gt;</h2>
+            </div>
+            <div className={Styles.schemaLegend}>Create <br/>&lt;experiences&gt;</div>
           </div>
           <div className="col-md-3 col-md-offset-4 col-sm-4 col-sm-offset-2 col-xs-6">
-            <h1>Developers<br/>
-              <svg className="top" viewBox="0 0 2830.56 3760.74" preserveAspectRatio="xMinYMid">
+            <div className={Styles.schemaContainer}>
+              Developers
+              <br/>
+              <svg className={Styles.top} viewBox="0 0 2830.56 3760.74" preserveAspectRatio="xMinYMid">
                 <image mask="url(#scale-mask-transparent-right)" width="100%" height="100%" y="0" x="0"
                        xlinkHref="/assets/pixel-white.png"
                        preserveAspectRatio="xMinYMin slice"/>
               </svg>
               <br/>code<br/>
-              <svg className="bottom" viewBox="0 0 2830.56 3760.74" preserveAspectRatio="xMinYMid">
+              <svg className={Styles.bottom} viewBox="0 0 2830.56 3760.74" preserveAspectRatio="xMinYMid">
                 <image mask="url(#scale-mask-transparent-right)" width="100%" height="100%" y="0" x="0"
                        xlinkHref="/assets/pixel-white.png"
                        preserveAspectRatio="xMinYMin slice"/>
               </svg>
               <br/>THE WORLD
-            </h1>
-            <h2>Evolution <br/>&lt;technologies & innovation&gt;</h2>
+            </div>
+            <div className={Styles.schemaLegend}>Evolution <br/>&lt;technologies & innovation&gt;</div>
           </div>
         </div>
       </section>
