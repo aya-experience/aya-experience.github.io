@@ -17,6 +17,7 @@
     "CNAME": true,
     "offline": true
   },
+  "googleAnalytics": "UA-100840769-1",
   "#babel": "webpack-(development|production) are useful for webpack 2, otherwise use development|production",
   "babel": {
     "env": {
@@ -129,9 +130,9 @@
     "webpack": "^2.3.0",
     "whatwg-fetch": "^0.11.0"
   },
-  "googleAnalytics": "UA-100840769-1",
   "dependencies": {
     "prop-types": "^15.5.10",
-    "react-ga": "^2.2.0"
+    "react-ga": "^2.2.0",
+    "react-slick": "^0.14.11"
   }
 }

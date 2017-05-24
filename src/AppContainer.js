@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react'
 
 import './styles/bootstrap.global.css';
 import './index.global.css';
+import './styles/slider.global.css';
 
 import Container from './components/Container'
 import DefaultHeadMeta from './components/DefaultHeadMeta'
