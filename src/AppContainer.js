@@ -1,26 +1,27 @@
-import React, { PropTypes } from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
 
 import './styles/bootstrap.global.css';
 import './index.global.css';
 import './styles/slider.global.css';
 
-import Container from './components/Container'
-import DefaultHeadMeta from './components/DefaultHeadMeta'
-import Content from './components/Content'
+import Container from './components/commons/Container';
+import DefaultHeadMeta from './components/commons/DefaultHeadMeta';
+import Content from './components/commons/Content';
 
 import './manifest.json';
 
-const AppContainer = (props) => (
+const AppContainer = props => (
   <Container>
-    <DefaultHeadMeta />
+    <DefaultHeadMeta/>
     <Content>
       { props.children }
     </Content>
   </Container>
-)
+);
 
 AppContainer.propTypes = {
-  children: PropTypes.node,
-}
+  children: PropTypes.node.isRequired
+};
 
-export default AppContainer
+export default AppContainer;

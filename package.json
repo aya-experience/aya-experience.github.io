@@ -5,7 +5,7 @@
   "twitter": "AyaExperience",
   "repository": "https://github.com/aya-experience/aya-experience.github.io",
   "scripts": {
-    "lint:js": "eslint --ignore-path .gitignore --fix .",
+    "lint:js": "eslint --ignore-path .gitignore --fix ./src ./scripts",
     "lint:css": "stylelint \"src/**/*.css\"",
     "lint": "npm-run-all --parallel lint:*",
     "start": "phenomic start",
@@ -82,7 +82,18 @@
   },
   "eslintConfig": {
     "root": true,
-    "extends": "./node_modules/phenomic/lib/eslint-config-recommended/index.js"
+    "extends": [
+      "xo/browser",
+      "xo/esnext",
+      "xo-react",
+      "xo-react/space"
+    ],
+    "rules": {
+      "indent": [
+        "error",
+        2
+      ]
+    }
   },
   "stylelint": {
     "extends": "./node_modules/phenomic/lib/stylelint-config-recommended/index.js"
@@ -101,8 +112,10 @@
     "classnames": "^2.2.5",
     "css-loader": "^0.28.0",
     "eslint": "^3.7.1",
+    "eslint-config-xo": "^0.18.2",
+    "eslint-config-xo-react": "^0.12.0",
     "eslint-loader": "^1.7.1",
-    "eslint-plugin-react": "^6.4.0",
+    "eslint-plugin-react": "^7.0.1",
     "extract-text-webpack-plugin": "^2.1.0",
     "file-loader": "^0.10.1",
     "history": "^2.0.0",
@@ -119,7 +132,6 @@
     "react-helmet": "^3.0.0",
     "react-hot-loader": "^3.0.0-beta",
     "react-redux": "^4.0.0",
-    "react-router": "^2.3.0",
     "react-svg-inline": "^1.1.0",
     "react-topbar-progress-indicator": "^1.0.0",
     "redux": "^3.0.0",
@@ -133,6 +145,9 @@
   "dependencies": {
     "prop-types": "^15.5.10",
     "react-ga": "^2.2.0",
+    "react-motion": "^0.5.0",
+    "react-router": "^2.3.0",
+    "react-router-transition": "^0.1.1",
     "react-slick": "^0.14.11"
   }
 }
