@@ -128,5 +128,10 @@
     "warning": "^3.0.0",
     "webpack": "^2.3.0",
     "whatwg-fetch": "^0.11.0"
+  },
+  "googleAnalytics": "UA-100840769-1",
+  "dependencies": {
+    "autotrack": "^2.4.1",
+    "prop-types": "^15.5.10"
   }
 }
