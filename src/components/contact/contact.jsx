@@ -21,7 +21,7 @@ class Contact extends Component {
             <div className="section_left_content section_scale_content">
               <div className={Styles.logoContainer}>
                 <a href="https://zenika.com" target="_blank">
-                  <img className={Styles['logo-zenika']} src="/assets/logo-zenika.png" alt="Logo Zenika" />
+                  <img className={Styles['logo-zenika']} src="/assets/ZENIKA-wht.png" alt="Logo Zenika" />
                 </a>
                 <div className="row">
                   <a href="https://twitter.com/AyaExperience" className={Styles['logo-twitter_container']} target="_blank">

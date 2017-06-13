@@ -8,7 +8,7 @@ class Zenika extends Component {
       <section className={Styles.zenika}>
         <div className={`${Styles.logo} row`}>
           <div className="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-12 col-xs-offset-0">
-            <img className={Styles.logo_img} src="/assets/logo-zenika-red-320.png" alt="Logo Zenika" />
+            <img className={Styles.logo_img} src="/assets/logo_zenika_white001.png" alt="Logo Zenika" />
           </div>
         </div>
         <div className="row">
