@@ -131,7 +131,7 @@
   },
   "googleAnalytics": "UA-100840769-1",
   "dependencies": {
-    "autotrack": "^2.4.1",
-    "prop-types": "^15.5.10"
+    "prop-types": "^15.5.10",
+    "react-ga": "^2.2.0"
   }
 }
