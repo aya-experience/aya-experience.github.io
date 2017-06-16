@@ -10,6 +10,10 @@
   --font-size-6: 120px;
 }
 
+html, #phenomic {
+  height: 100%;
+}
+
 body {
   font-size: var(--font-size-1);
   font-weight: 300;
@@ -18,6 +22,7 @@ body {
   font-family: 'Lato', sans-serif;
   margin: 0;
   overflow-x: hidden;
+  height: 100%;
 }
 #phenomic {
   overflow-x: hidden;
