@@ -12,11 +12,13 @@ const Header = () => (
             <h1 className={Styles.logo}>
               <img src="/assets/logo-aya-shadow2.png" alt="Logo AYA" className={Styles.logoImg}/>
             </h1>
-            <h2>&lt;Code & Design&gt;</h2>
             <p className={Styles.description}>
-              Nous explorons les expériences sous tous leurs axes.
-              Cette nouvelle agence du groupe Zenika permet d&apos;intervenir sur les projets de bout en bout avec des collaborateurs experts omnicanal.
+              Nous plaçons vos utilisateurs au centre
+              de la conception de votre produit.
+              Nous leurs apportons la meilleure des expériences
+              à travers notre double expertise
             </p>
+            <h2>&lt;Code & Design&gt;</h2>
           </div>
         </div>
       </div>
