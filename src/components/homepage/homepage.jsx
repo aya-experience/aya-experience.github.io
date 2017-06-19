@@ -20,10 +20,11 @@ import {Design} from './design/design.jsx';
 
 export class Homepage extends Component {
   componentDidMount() {
+    const phenomic = document.querySelector('#phenomic');
     let ticking = false;
     let scrollPosition = 0;
-    window.addEventListener('scroll', () => {
-      scrollPosition = window.scrollY;
+    phenomic.addEventListener('scroll', () => {
+      scrollPosition = phenomic.scrollTop;
       if (!ticking) {
         window.requestAnimationFrame(() => {
           this.props.updateScrollPosition(scrollPosition);
