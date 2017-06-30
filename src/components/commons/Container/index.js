@@ -9,8 +9,12 @@ const Container = props => (
   </div>
 );
 
+Container.defaultProps = {
+  children: null
+};
+
 Container.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node
 };
 
 export default Container;

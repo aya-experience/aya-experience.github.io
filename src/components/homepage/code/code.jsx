@@ -1,13 +1,31 @@
 import React from 'react';
+import {withRouter} from 'react-router';
+import PropTypes from 'prop-types';
 import Styles from './code.css';
+import classNames from 'classnames';
 
-const Code = () => {
+const Code = ({
+  startCodeLinkTransition,
+  startDesignLinkTransition,
+  goToCodeRealisation,
+  goToDesignRealisation,
+  router
+}) => {
   const clearBothStyle = {clear: 'both'};
 
   return (
     <section className={Styles.code}>
+      <div className={classNames(Styles.code_transistion_smooth, {[Styles.active]: startCodeLinkTransition})}/>
+      <div className={classNames(Styles.design_transistion_smooth, {[Styles.active]: startDesignLinkTransition})}/>
       <div>
-        <div className="section_scale_left">
+        <button
+          onClick={function (e) {
+            e.preventDefault();
+            console.log('code');
+            goToCodeRealisation(router);
+          }}
+          className={classNames('section_scale_left', Styles.code_button, {[Styles.active]: startCodeLinkTransition})}
+          >
           <svg viewBox="0 0 2830.56 3760.74" preserveAspectRatio="xMaxYMid">
             <image
               mask="url(#scale-mask-transparent-left)"
@@ -24,17 +42,23 @@ const Code = () => {
               <h1 className={Styles.codeTitle}>Code</h1>
               <p className={Styles.codeP}>
               HTML, CSS, JS,<br/>
-              jQuery, Angular 1 & 2, React,<br/>
-              Php, Java, Node
+              React, VueJS, Angular,<br/>
+              Node, Php, Java,
             </p>
             </div>
           </div>
-        </div>
+        </button>
         <div style={clearBothStyle}/>
       </div>
 
       <div className="section_right">
-        <div className="section_scale_right">
+        <button
+          onClick={function (e) {
+            e.preventDefault();
+            goToDesignRealisation(router);
+          }}
+          className={classNames('section_scale_right', Styles.design_button, {[Styles.active]: startDesignLinkTransition})}
+          >
           <svg viewBox="0 0 2830.56 3760.74" preserveAspectRatio="xMinYMid">
             <image
               mask="url(#scale-mask-transparent-right)"
@@ -56,7 +80,7 @@ const Code = () => {
               </p>
             </div>
           </div>
-        </div>
+        </button>
         <div style={clearBothStyle}/>
       </div>
       <div style={clearBothStyle}/>
@@ -64,6 +88,14 @@ const Code = () => {
   );
 };
 
-Code.propTypes = {};
+Code.propTypes = {
+  startCodeLinkTransition: PropTypes.bool.isRequired,
+  startDesignLinkTransition: PropTypes.bool.isRequired,
+  goToCodeRealisation: PropTypes.func.isRequired,
+  goToDesignRealisation: PropTypes.func.isRequired,
+  router: PropTypes.shape({
+    push: PropTypes.func.isRequired
+  }).isRequired
+};
 
-export const CodeComponent = Code;
+export const CodeComponent = withRouter(Code);

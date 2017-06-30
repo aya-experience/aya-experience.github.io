@@ -92,7 +92,8 @@
       "indent": [
         "error",
         2
-      ]
+      ],
+      "react/forbid-component-props": 0
     }
   },
   "stylelint": {
@@ -148,6 +149,8 @@
     "react-motion": "^0.5.0",
     "react-router": "^2.3.0",
     "react-router-transition": "^0.1.1",
-    "react-slick": "^0.14.11"
+    "react-slick": "^0.14.11",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.2.0"
   }
 }

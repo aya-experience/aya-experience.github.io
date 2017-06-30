@@ -12,7 +12,7 @@ import {HeaderComponent} from './header/header.jsx';
 import {VisionComponent} from './vision/vision.jsx';
 import {QualityComponent} from './qualite/qualite.jsx';
 import {MethodComponent} from './method/method.jsx';
-import {CodeComponent} from './code/code.jsx';
+import {CodeContainer} from './code/code.container';
 import {AyaComponent} from './aya/aya.jsx';
 import {ZenikaComponent} from './zenika/zenika.jsx';
 import {ContactComponent} from './contact/contact.jsx';
@@ -53,7 +53,7 @@ export class Homepage extends Component {
         </div>
 
         <div className={Styles.road_background}>
-          <CodeComponent/>
+          <CodeContainer/>
           <AyaComponent/>
         </div>
 

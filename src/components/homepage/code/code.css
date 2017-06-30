@@ -3,6 +3,56 @@
   padding-bottom: 0;
 }
 
+.code_button {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  position: relative;
+  transition: transform 300ms;
+  &.active {
+    transform: translateX(250%);
+  }
+}
+  .code_transistion_smooth {
+    background-color: white;
+    z-index: 1;
+    width: 100%;
+    height: 3000px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: transform 300ms;
+    transform: translateX(-100%);
+    &.active {
+      transform: translateX(0);
+    }
+  }
+
+.design_button {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  position: relative;
+  transition: transform 300ms;
+  &.active {
+    transform: translateX(-250%);
+  }
+}
+.design_transistion_smooth {
+  background-color: white;
+  z-index: 1;
+  width: 100%;
+  height: 3000px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: transform 300ms;
+  transform: translateX(100%);
+  &.active {
+    transform: translateX(0);
+  }
+}
+
 .codeContent {
   width: inherit;
   margin: auto;

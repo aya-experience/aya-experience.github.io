@@ -14,7 +14,8 @@ import AppContainer from './AppContainer';
 import Page from './components/Page';
 import PageError from './components/PageError';
 import {HomepageContainer} from './components/homepage/homepage.container';
-import {RealisationsContainer} from './components/realisations/realisation.container';
+import {RealisationsContainer} from './components/realisations/realisations.container';
+import {RealisationContainer} from './components/realisations/details/realisation.container';
 
 const PageContainer = props => (
   <PhenomicPageContainer
@@ -23,7 +24,8 @@ const PageContainer = props => (
       Page,
       PageError,
       Homepage: HomepageContainer,
-      Realisations: RealisationsContainer
+      Realisations: RealisationsContainer,
+      Realisation: RealisationContainer
     }}
     />
 );
