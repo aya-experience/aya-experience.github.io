@@ -14,21 +14,50 @@
   font-weight: 300;
   font-size: 5rem;
 }
+
+.home_link {
+  position: absolute;
+  top: 3%;
+  right: 2%;
+}
+  .home_link_img {
+    width: 3rem;
+  }
+
 .slider {
   display: flex;
   height: 80%;
   width: 90%;
   margin-left: 5%;
 }
+  .slider_btn {
+    height: 15%;
+    width: 30px;
+    display: block;
+    border: none;
+    transform: translateY(125%);
+    background-image: url("/assets/arrow.svg");
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: white;
+  }
+  .slider_btn_reverse {
+    transform: translateY(125%) rotate(180deg);
+  }
+
 .slider_container div.slider_content {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-  .slider_content_img {
+  .slider_content_link {
     width: 60%;
   }
+    .slider_content_img {
+      width: 100%;
+    }
   .slider_content_p {
     color: rgba(130,130,130,1);
     display: block;
