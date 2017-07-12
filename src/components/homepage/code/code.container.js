@@ -10,7 +10,8 @@ const mapDispatchToProps = dispatch => ({
 const mapStateToProps = state => {
   return {
     startCodeLinkTransition: state.homepage.startCodeLinkTransition,
-    startDesignLinkTransition: state.homepage.startDesignLinkTransition
+    startDesignLinkTransition: state.homepage.startDesignLinkTransition,
+    scrollPosition: state.homepage.scrollPosition
   };
 };
 
