@@ -18,7 +18,7 @@ export const goToCodeRealisation = router => dispatch => {
   setTimeout(() => {
     router.push('/realisations/');
     dispatch(endGoToCodeRealisation());
-  }, 300);
+  }, 900);
 };
 
 export const INIT_GO_TO_DESIGN_REALISATION = 'INIT_GO_TO_CODE_REALISATION';
@@ -32,5 +32,5 @@ export const goToDesignRealisation = router => dispatch => {
   setTimeout(() => {
     router.push('/realisations/');
     dispatch(endGoToDesignRealisation());
-  }, 300);
+  }, 900);
 };

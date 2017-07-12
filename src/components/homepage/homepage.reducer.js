@@ -8,7 +8,8 @@ import {
 
 export const initState = {
   scrollPosition: 0,
-  startCodeLinkTransition: false
+  startCodeLinkTransition: false,
+  startDesignLinkTransition: false
 };
 export const initAction = {};
 
