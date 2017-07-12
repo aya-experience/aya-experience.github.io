@@ -92,7 +92,8 @@
         "error",
         2
       ],
-      "react/forbid-component-props": 0
+      "react/forbid-component-props": 0,
+      "react/jsx-no-bind": 0
     }
   },
   "stylelint": {
