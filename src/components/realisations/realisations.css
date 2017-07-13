@@ -13,6 +13,12 @@
   align-items: center;
   font-weight: 300;
   font-size: 5rem;
+  @media (max-width: 1200px) {
+    font-size: 3rem;
+  }
+  @media (max-width: 600px) {
+    font-size: 2rem;
+  }
 }
 
 .home_link {
@@ -22,6 +28,12 @@
 }
   .home_link_img {
     width: 3rem;
+    @media (max-width: 1200px) {
+      width: 2.5rem;
+    }
+    @media (max-width: 600px) {
+      width: 2rem;
+    }
   }
 
 .slider {
@@ -31,19 +43,19 @@
   margin-left: 5%;
 }
   .slider_btn {
-    height: 15%;
-    width: 30px;
     display: block;
     border: none;
-    transform: translateY(125%);
-    background-image: url("/assets/arrow.svg");
-    background-position: top;
-    background-size: cover;
-    background-repeat: no-repeat;
     background-color: white;
+    position: relative;
+    top: 15%;
+    padding: 0;
+    z-index: 2;
   }
+    .slider_btn_img {
+      width: 2rem;
+    }
   .slider_btn_reverse {
-    transform: translateY(125%) rotate(180deg);
+    transform: rotate(180deg);
   }
 
 .slider_container div.slider_content {

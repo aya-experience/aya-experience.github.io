@@ -21,19 +21,27 @@ export class Realisations extends Component {
     const settings = {
       dots: false,
       speed: 500,
-      slidesToShow: 3,
+      slidesToShow: window ?
+        window.innerWidth > 1000 ? 3 :
+        window.innerWidth > 600 ? 2 : 1 :
+        3,
       slidesToScroll: 1,
       nextArrow: (
         <div>
-          <button type="button" className={Styles.slider_btn}/>
+          <button type="button" className={Styles.slider_btn}>
+            <img alt="next" src="/assets/arrow.svg" className={Styles.slider_btn_img}/>
+          </button>
         </div>
       ),
       prevArrow: (
         <div>
-          <button type="button" className={classNames(Styles.slider_btn, Styles.slider_btn_reverse)}/>
+          <button type="button" className={classNames(Styles.slider_btn, Styles.slider_btn_reverse)}>
+            <img alt="next" src="/assets/arrow.svg" className={Styles.slider_btn_img}/>
+          </button>
         </div>
       ),
-      autoplay: true,
+      autoplay: false,
+      infinite: true,
       className: Styles.slider
     };
 

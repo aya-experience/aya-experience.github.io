@@ -34,11 +34,19 @@ class Code extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (!this.state.initCodeBounce && !this.state.initCodeBounce) {
+    if (nextProps.startCodeLinkTransition || nextProps.startDesignLinkTransition) {
+      this.setState({
+        initCodeBounce: false,
+        initDesignBounce: false
+      });
+      return;
+    }
+
+    if (!this.state.initCodeBounce && !this.state.initDesignBounce) {
       const codeBtnRec = this.codeBtn.getBoundingClientRect();
       const designBtnRec = this.designBtn.getBoundingClientRect();
-      let shouldInitCodeBounce = !nextProps.startCodeLinkTransition && codeBtnRec.top < window.innerHeight && codeBtnRec.bottom > 0;
-      let shouldInitDesignBounce = !nextProps.startDesignLinkTransition && designBtnRec.top < window.innerHeight && designBtnRec.bottom > 0;
+      let shouldInitCodeBounce = codeBtnRec.top < window.innerHeight && codeBtnRec.bottom > 0;
+      let shouldInitDesignBounce = designBtnRec.top < window.innerHeight && designBtnRec.bottom > 0;
 
       // If Code is more centered than design only bounce design
       const btnCodeMid = codeBtnRec.top + ((codeBtnRec.bottom - codeBtnRec.top) * 3 / 4) - window.innerHeight;
@@ -48,6 +56,7 @@ class Code extends Component {
       } else if (shouldInitCodeBounce && shouldInitDesignBounce) {
         shouldInitCodeBounce = false;
       }
+
       this.setState({
         initCodeBounce: shouldInitCodeBounce,
         initDesignBounce: shouldInitDesignBounce
@@ -57,7 +66,7 @@ class Code extends Component {
           initCodeBounce: false,
           initDesignBounce: false
         });
-      }, 5000);
+      }, 4000);
     }
   }
 
@@ -131,7 +140,7 @@ class Code extends Component {
               Styles.design_button,
               {
                 [Styles.active]: startDesignLinkTransition,
-                [Styles.bounce]: true || this.state.initDesignBounce
+                [Styles.bounce]: this.state.initDesignBounce
               }
             )}
             >
