@@ -1,5 +1,4 @@
 import {combineReducers} from 'redux';
-import {logger} from 'redux-logger'; // TODO import only in dev mode
 import createStore from 'phenomic/lib/redux/createStore';
 import thunk from 'redux-thunk';
 // eslint-disable-next-line import/no-namespace
@@ -7,7 +6,13 @@ import * as phenomicReducers from 'phenomic/lib/redux/modules';
 import {realisationReducer} from './components/realisations/realisation.reducer';
 import {homepageReducer} from './components/homepage/homepage.reducer';
 
-console.log(process.env);
+const middlewares = [thunk];
+
+if (process.env !== 'production') {
+  const logger = require('redux-logger');
+  middlewares.push(logger.logger);
+}
+
 const store = createStore(
   combineReducers({
     ...phenomicReducers,
@@ -15,7 +20,7 @@ const store = createStore(
     homepage: homepageReducer
   }),
   {...(typeof window !== 'undefined') && window.__INITIAL_STATE__},
-  [logger, thunk]
+  middlewares
 );
 
 export default store;
