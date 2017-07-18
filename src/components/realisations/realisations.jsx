@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Slider from 'react-slick';
-import {Link} from 'react-router';
+import {Link, withRouter} from 'react-router';
 import classNames from 'classnames';
 
 import Styles from './realisations.css';
 
-export class Realisations extends Component {
+export class RealisationsComponent extends Component {
 
   componentDidMount() {
     this.props.initRealisations(this.context.collection);
@@ -70,7 +70,11 @@ export class Realisations extends Component {
                 </p>
                 <ul className={Styles.slider_content_types}>
                   {reference.types.map(type => (
-                    <li key={type} className={Styles.slider_content_type}>{type}</li>
+                    <li key={type} className={Styles.slider_content_type}>
+                      <Link to={`/realisations/?types=${type}`} onClick={this.props.handleFilterRealisationByTypes(this.props.router, type)}>
+                        {type}
+                      </Link>
+                    </li>
                   ))}
                 </ul>
               </div>
@@ -82,7 +86,7 @@ export class Realisations extends Component {
   }
 }
 
-Realisations.propTypes = {
+RealisationsComponent.propTypes = {
   realisations: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired,
     images: PropTypes.shape({
@@ -90,9 +94,13 @@ Realisations.propTypes = {
     }).isRequired,
     description: PropTypes.string.isRequired
   })).isRequired,
-  initRealisations: PropTypes.func.isRequired
+  initRealisations: PropTypes.func.isRequired,
+  handleFilterRealisationByTypes: PropTypes.func.isRequired,
+  router: PropTypes.object.isRequired
 };
 
-Realisations.contextTypes = {
+RealisationsComponent.contextTypes = {
   collection: PropTypes.array.isRequired
 };
+
+export const Realisations = withRouter(RealisationsComponent);

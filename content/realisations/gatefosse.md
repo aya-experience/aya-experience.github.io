@@ -16,4 +16,7 @@ real:
     - 'Wordpress'
     - 'UI'
     - 'UX'
+  entities:
+    - 'code'
+    - 'design'
 ---

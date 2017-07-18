@@ -13,4 +13,6 @@ real:
   types:
     - 'UI'
     - 'UX'
+  entities:
+    - 'design'
 ---
