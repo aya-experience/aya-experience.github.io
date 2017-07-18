@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Slider from 'react-slick';
 import {Link, withRouter} from 'react-router';
-import classNames from 'classnames';
 
+import {SliderBtn} from './sliderBtn/sliderBtn';
 import Styles from './realisations.css';
 
 export class RealisationsComponent extends Component {
@@ -15,7 +15,12 @@ export class RealisationsComponent extends Component {
   render() {
     const {realisations} = this.props;
     if (realisations.length === 0) {
-      return <div>There will have realisations soon</div>;
+      return (
+        <div className={Styles.container}>
+          <h1 className={Styles.title}>Réalisations</h1>
+          <p>There will have realisations soon</p>
+        </div>
+      );
     }
 
     const settings = {
@@ -26,20 +31,8 @@ export class RealisationsComponent extends Component {
         window.innerWidth > 600 ? 2 : 1 :
         3,
       slidesToScroll: 1,
-      nextArrow: (
-        <div>
-          <button type="button" className={Styles.slider_btn}>
-            <img alt="next" src="/assets/arrow.svg" className={Styles.slider_btn_img}/>
-          </button>
-        </div>
-      ),
-      prevArrow: (
-        <div>
-          <button type="button" className={classNames(Styles.slider_btn, Styles.slider_btn_reverse)}>
-            <img alt="next" src="/assets/arrow.svg" className={Styles.slider_btn_img}/>
-          </button>
-        </div>
-      ),
+      nextArrow: <SliderBtn/>,
+      prevArrow: <SliderBtn reverse/>,
       autoplay: false,
       infinite: true,
       className: Styles.slider
