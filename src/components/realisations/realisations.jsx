@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Slider from 'react-slick';
-import {Link} from 'react-router';
-import classNames from 'classnames';
+import {Link, withRouter} from 'react-router';
 
+import {SliderBtn} from './sliderBtn/sliderBtn';
 import Styles from './realisations.css';
 
-export class Realisations extends Component {
+export class RealisationsComponent extends Component {
 
   componentDidMount() {
     this.props.initRealisations(this.context.collection);
@@ -15,7 +15,12 @@ export class Realisations extends Component {
   render() {
     const {realisations} = this.props;
     if (realisations.length === 0) {
-      return <div>There will have realisations soon</div>;
+      return (
+        <div className={Styles.container}>
+          <h1 className={Styles.title}>Réalisations</h1>
+          <p>There will have realisations soon</p>
+        </div>
+      );
     }
 
     const settings = {
@@ -26,20 +31,8 @@ export class Realisations extends Component {
         window.innerWidth > 600 ? 2 : 1 :
         3,
       slidesToScroll: 1,
-      nextArrow: (
-        <div>
-          <button type="button" className={Styles.slider_btn}>
-            <img alt="next" src="/assets/arrow.svg" className={Styles.slider_btn_img}/>
-          </button>
-        </div>
-      ),
-      prevArrow: (
-        <div>
-          <button type="button" className={classNames(Styles.slider_btn, Styles.slider_btn_reverse)}>
-            <img alt="next" src="/assets/arrow.svg" className={Styles.slider_btn_img}/>
-          </button>
-        </div>
-      ),
+      nextArrow: <SliderBtn/>,
+      prevArrow: <SliderBtn reverse/>,
       autoplay: false,
       infinite: true,
       className: Styles.slider
@@ -70,7 +63,11 @@ export class Realisations extends Component {
                 </p>
                 <ul className={Styles.slider_content_types}>
                   {reference.types.map(type => (
-                    <li key={type} className={Styles.slider_content_type}>{type}</li>
+                    <li key={type} className={Styles.slider_content_type}>
+                      <Link to={`/realisations/?types=${type}`} onClick={this.props.handleFilterRealisationByTypes(this.props.router, type)}>
+                        {type}
+                      </Link>
+                    </li>
                   ))}
                 </ul>
               </div>
@@ -82,7 +79,7 @@ export class Realisations extends Component {
   }
 }
 
-Realisations.propTypes = {
+RealisationsComponent.propTypes = {
   realisations: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired,
     images: PropTypes.shape({
@@ -90,9 +87,13 @@ Realisations.propTypes = {
     }).isRequired,
     description: PropTypes.string.isRequired
   })).isRequired,
-  initRealisations: PropTypes.func.isRequired
+  initRealisations: PropTypes.func.isRequired,
+  handleFilterRealisationByTypes: PropTypes.func.isRequired,
+  router: PropTypes.object.isRequired
 };
 
-Realisations.contextTypes = {
+RealisationsComponent.contextTypes = {
   collection: PropTypes.array.isRequired
 };
+
+export const Realisations = withRouter(RealisationsComponent);

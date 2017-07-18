@@ -16,4 +16,6 @@ real:
     - 'Docker'
     - 'React'
     - 'AMP'
+  entities:
+    - 'code'
 ---
