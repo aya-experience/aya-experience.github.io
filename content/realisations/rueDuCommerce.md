@@ -13,4 +13,6 @@ real:
   types:
     - 'React'
     - 'PHP'
+  entities:
+    - 'code'
 ---

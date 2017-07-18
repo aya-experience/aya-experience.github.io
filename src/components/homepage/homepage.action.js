@@ -16,7 +16,7 @@ const endGoToCodeRealisation = () => ({type: END_GO_TO_CODE_REALISATION});
 export const goToCodeRealisation = router => dispatch => {
   dispatch(initGoToCodeRealisation());
   setTimeout(() => {
-    router.push('/realisations/');
+    router.push('/realisations/?entities=code');
     dispatch(endGoToCodeRealisation());
   }, 900);
 };
@@ -30,7 +30,7 @@ const endGoToDesignRealisation = () => ({type: END_GO_TO_DESIGN_REALISATION});
 export const goToDesignRealisation = router => dispatch => {
   dispatch(initGoToDesignRealisation());
   setTimeout(() => {
-    router.push('/realisations/');
+    router.push('/realisations/?entities=design');
     dispatch(endGoToDesignRealisation());
   }, 900);
 };

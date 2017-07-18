@@ -1,4 +1,7 @@
-import {INIT_REALISATIONS} from './realisation.action';
+import {
+  INIT_REALISATIONS,
+  FILTER_REALISATIONS_BY_TYPES
+} from './realisation.action';
 
 export const initState = {
   realisations: []
@@ -21,6 +24,12 @@ export const realisationReducer = (state = initState, action = initAction) => {
           state,
           {realisations}
         );
+  }
+  case FILTER_REALISATIONS_BY_TYPES: {
+    return {
+      ...state,
+      changeType: state.changeType + 1 || 0
+    };
   }
   default:
     return state;
