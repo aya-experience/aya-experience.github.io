@@ -41,22 +41,13 @@
   height: 80%;
   width: 90%;
   margin-left: 5%;
+  &:hover {
+    cursor:grab;
+  }
+  &:active {
+    cursor: grabbing;
+  }
 }
-  .slider_btn {
-    display: block;
-    border: none;
-    background-color: white;
-    position: relative;
-    top: 15%;
-    padding: 0;
-    z-index: 2;
-  }
-    .slider_btn_img {
-      width: 2rem;
-    }
-  .slider_btn_reverse {
-    transform: rotate(180deg);
-  }
 
 .slider_container div.slider_content {
   display: flex;
