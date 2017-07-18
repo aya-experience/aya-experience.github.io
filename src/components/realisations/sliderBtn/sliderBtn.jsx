@@ -9,7 +9,7 @@ export const SliderBtn = ({reverse, onClick}) => (
     <button onClick={onClick} type="button" className={Styles.slider_btn}>
       <img
         alt="next"
-        src="/assets/arrow.svg"
+        src="/assets/misc/arrow.svg"
         className={classNames(Styles.slider_btn_img, {[Styles.slider_btn_reverse]: reverse})}
         />
     </button>

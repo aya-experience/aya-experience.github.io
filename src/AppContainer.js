@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './styles/bootstrap.global.css';
-import './index.global.css';
+import './styles/index.global.css';
+import './styles/flake.global.css';
 import './styles/slider.global.css';
 
 import Container from './components/commons/Container';

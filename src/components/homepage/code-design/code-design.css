@@ -1,0 +1,40 @@
+.section {
+  padding: 0;
+}
+  .section_img {
+    width: 100%;
+  }
+
+.code_button, .design_button {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  position: relative;
+}
+.code_button {
+  &.active {
+    transition: transform ease-in-out 900ms;
+    transform: translateX(250%);
+  }
+}
+.design_button {
+  &.active {
+    transition: transform ease-in-out 900ms;
+    transform: translateX(-250%);
+  }
+}
+  .code_transistion_smooth, .design_transistion_smooth {
+    background-color: white;
+    opacity: 0.6;
+    z-index: 1;
+    width: 300%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+  }
+  .code_transistion_smooth {
+    left: -300%;
+  }
+  .design_transistion_smooth {
+    right: -300%;
+  }

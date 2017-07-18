@@ -6,8 +6,6 @@ import {BodyContainer, joinUri} from 'phenomic';
 
 import Loading from '../../components/commons/Loading';
 
-const styles = {};
-
 const Page = (
   {
     isLoading,
@@ -17,7 +15,8 @@ const Page = (
     body,
     header,
     footer,
-    children
+    children,
+    className
   },
   {
     metadata: {pkg}
@@ -51,23 +50,24 @@ const Page = (
     {name: 'apple-mobile-web-app-capable', content: 'yes'},
     {name: 'mobile-web-app-capable', content: 'yes'}
   ];
-  const links = [{rel: 'manifest', href: '/manifest.json'}];
+  const links = [
+    {rel: 'manifest', href: '/manifest.json'},
+    {rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Lato'}
+  ];
 
   return (
-    <div className={styles.page}>
+    <div className={className}>
       <Helmet title={metaTitle} meta={meta} link={links}/>
+      { header }
       <div>
-        { header }
-        <div>
-          {
-            isLoading ?
-              <Loading/> :
-              <BodyContainer>{ body }</BodyContainer>
-          }
-        </div>
-        { children }
-        { footer }
+        {
+          isLoading ?
+            <Loading/> :
+            <BodyContainer>{ body }</BodyContainer>
+        }
       </div>
+      { children }
+      { footer }
     </div>
   );
 };
@@ -80,7 +80,8 @@ Page.defaultProps = {
   head: undefined,
   body: undefined,
   header: undefined,
-  footer: undefined
+  footer: undefined,
+  className: ''
 };
 
 Page.propTypes = {
@@ -91,7 +92,8 @@ Page.propTypes = {
   head: PropTypes.object.isRequired,
   body: PropTypes.string,
   header: PropTypes.element,
-  footer: PropTypes.element
+  footer: PropTypes.element,
+  className: PropTypes.string
 };
 
 Page.contextTypes = {
