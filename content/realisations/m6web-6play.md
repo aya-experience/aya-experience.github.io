@@ -1,8 +1,8 @@
 ---
-title: AYA <creative experience> - Nos réalisations - M6
+title: AYA <creative experience> - Nos réalisations - M6 Web
 layout: Realisation
 real:
-  name: M6 - 6play
+  name: M6 Web - 6play
   images:
     thumb: '/assets/realisations/M6-play-1-AYA-creative-experience-react-thumb.jpg'
     1x: '/assets/realisations/M6-play-2-AYA-creative-experience-react.jpg'
