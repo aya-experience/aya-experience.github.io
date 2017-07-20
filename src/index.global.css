@@ -24,8 +24,12 @@ body {
   overflow-x: hidden;
   height: 100%;
 }
+
 #phenomic {
   overflow-x: hidden;
+  & [data-reactroot] {
+    height: 100%;
+  }
 }
 
 .h1, .h2, .h3, h1, h2, h3 {

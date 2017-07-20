@@ -12,7 +12,7 @@ export const realisationReducer = (state = initState, action = initAction) => {
   switch (action.type) {
   case INIT_REALISATIONS: {
     const realisations = action.collection
-      .filter(item => item.layout === 'Realisation')
+      .filter(item => item.layout === 'Realisation' && !item.draft)
       .map(item => {
         return {
           ...item.real,

@@ -1,8 +1,8 @@
 ---
-title: AYA <creative experience> - Nos réalisations - ENEDIS - idatha
+title: AYA <creative experience> - Nos réalisations - ENEDIS - b4all
 layout: Realisation
 real:
-  name: ENEDIS - iDatha
+  name: ENEDIS - b4all
   images:
     thumb: '/assets/realisations/B4ALL.jpg'
     1x: '/assets/realisations/B4ALL.jpg'

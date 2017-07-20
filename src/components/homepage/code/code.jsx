@@ -89,7 +89,6 @@ class Code extends Component {
             }}
             onClick={function (e) {
               e.preventDefault();
-              console.log('code');
               goToCodeRealisation(router);
             }}
             className={classNames(

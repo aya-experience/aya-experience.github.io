@@ -28,7 +28,6 @@ const mapStateToProps = state => {
         return params.entities ? real.entities.includes(params.entities) : true;
       })
       .filter(real => {
-        console.log(params.types, real.types, real.types.includes(params.types));
         return params.types ? real.types.includes(params.types) : true;
       })
   };

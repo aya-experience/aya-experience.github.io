@@ -17,10 +17,11 @@ export const SliderBtn = ({reverse, onClick}) => (
 );
 
 SliderBtn.defaultProps = {
-  reverse: false
+  reverse: false,
+  onClick: () => {}
 };
 
 SliderBtn.propTypes = {
   reverse: PropTypes.bool,
-  onClick: PropTypes.func.isRequired
+  onClick: PropTypes.func
 };
