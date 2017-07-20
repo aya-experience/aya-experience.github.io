@@ -1,0 +1,43 @@
+.container {
+  fill: white;
+}
+
+.a, .y, .a_final, .creative_experience {
+  filter: url(#box-shadow);
+}
+
+/** First version of annimation
+.animate {
+
+  & .a, & .y, & .a_final {
+    animation-duration: 3s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+  }
+
+  & .a {
+    animation-name: letter_arrive_from_left;
+  }
+  & .y {
+    animation-name: letter_fall_from_top;
+  }
+  & .a_final {
+    animation-name: letter_arrive_from_right;
+  }
+}
+
+@keyframes letter_fall_from_top {
+  0% { transform: translateY(-100%);}
+  100% { transform: translateY(0);}
+}
+
+@keyframes letter_arrive_from_left {
+  0% { transform: translateX(-100%);}
+  100% { transform: translateX(0);}
+}
+
+@keyframes letter_arrive_from_right {
+  0% { transform: translateX(100%);}
+  100% { transform: translateX(0);}
+}
+**/
