@@ -51,7 +51,10 @@ const Page = (
     {name: 'apple-mobile-web-app-capable', content: 'yes'},
     {name: 'mobile-web-app-capable', content: 'yes'}
   ];
-  const links = [{rel: 'manifest', href: '/manifest.json'}];
+  const links = [
+    {rel: 'manifest', href: '/manifest.json'},
+    {rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Lato'}
+  ];
 
   return (
     <div className={styles.page}>
