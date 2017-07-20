@@ -1,41 +1,44 @@
-import React from "react"
-import { Route } from "react-router"
-import { PageContainer as PhenomicPageContainer } from "phenomic"
+import React from 'react';
+import {Route} from 'react-router';
+import {PageContainer as PhenomicPageContainer} from 'phenomic';
+import reactGa from 'react-ga';
+import packageInfo from '../package.json';
 
-import reactGa from "react-ga";
-
-import AppContainer from "./AppContainer"
-import Page from "./layouts/Page"
-import PageError from "./layouts/PageError"
-import Homepage from "./layouts/Homepage"
-
-const isBrowser = typeof window !== "undefined";
+const isBrowser = typeof window !== 'undefined';
 
 if (isBrowser) {
-  reactGa.initialize("UA-74307110-4");
+  reactGa.initialize(packageInfo.googleAnalytics);
 }
 
-const PageContainer = (props) => (
+import AppContainer from './AppContainer';
+import Page from './components/Page';
+import PageError from './components/PageError';
+import {HomepageContainer} from './components/homepage/homepage.container';
+import {RealisationsContainer} from './components/realisations/realisations.container';
+import {RealisationContainer} from './components/realisations/details/realisation.container';
+
+const PageContainer = props => (
   <PhenomicPageContainer
-    { ...props }
+    {...props}
     layouts={{
       Page,
       PageError,
-      Homepage
+      Homepage: HomepageContainer,
+      Realisations: RealisationsContainer,
+      Realisation: RealisationContainer
     }}
-  />
-)
+    />
+);
 
 const logPageView = () => {
   if (isBrowser) {
-    reactGa.set({ page: window.location.pathname });
+    reactGa.set({page: window.location.pathname});
     reactGa.pageview(window.location.pathname);
   }
 };
 
-
 export default (
-  <Route component={ AppContainer }>
-    <Route path="*" component={ PageContainer } onEnter={logPageView} />
+  <Route component={AppContainer}>
+    <Route path="*" component={PageContainer} onEnter={logPageView}/>
   </Route>
-)
+);

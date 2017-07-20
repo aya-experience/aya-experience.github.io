@@ -1,0 +1,41 @@
+.container {
+  background-color: #ffffff;
+  min-height: 100%;
+}
+
+  .real_link {
+    position: absolute;
+    top: 3%;
+    right: 2%;
+  }
+    .real_link_img {
+      width: 3rem;
+      @media (max-width: 1200px) {
+        width: 2.5rem;
+      }
+      @media (max-width: 600px) {
+        width: 2rem;
+      }
+    }
+
+  .title {
+    margin: 0;
+    color: rgba(130,130,130,1);
+    text-align: center;
+    padding: 10px 0;
+  }
+
+  .illustration {
+    width: 80%;
+    margin-left: 10%;
+    display: block;
+  }
+    .illustration_img {
+      width: 100%;
+    }
+
+  .description {
+    text-align: center;
+    margin: 0;
+    padding: 40px;
+  }
