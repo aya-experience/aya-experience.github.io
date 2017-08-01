@@ -8,8 +8,8 @@ import {SvgTransparentLeft} from '../commons/svgs/svg-transparent_left.jsx';
 import {SvgTransparentRight} from '..//commons/svgs/svg-transparent_right.jsx';
 import {SvgOpaqueLeft} from '../commons/svgs/svg-opaque_left.jsx';
 import {SvgOpaqueRight} from '../commons/svgs/svg-opaque_right.jsx';
-import {HeaderComponent} from './header/header.jsx';
-import {VisionComponent} from './vision/vision.jsx';
+import {HeaderContainer} from './header/header.container';
+import {VisionContainer} from './vision/vision.container';
 import {QualityComponent} from './qualite/qualite.jsx';
 import {MethodComponent} from './method/method.jsx';
 import {CodeContainer} from './code/code.container';
@@ -37,16 +37,18 @@ export class Homepage extends Component {
 
   render() {
     return (
-      <Page {...this.props}>
+      <Page {...this.props} className={Styles.homepage_container}>
         <SvgTransparentLeft/>
         <SvgTransparentRight/>
         <SvgOpaqueLeft/>
         <SvgOpaqueRight/>
-        <HeaderComponent/>
-        <div className={Styles.gradient_separation}/>
+
+        <HeaderContainer/>
+
+        <VisionContainer/>
 
         <div className={Styles.forest_background}>
-          <VisionComponent/>
+
           <QualityComponent/>
           <MethodComponent/>
           <div className={Styles.gradient_separation}/>

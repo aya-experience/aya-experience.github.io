@@ -1,68 +1,46 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Styles from './vision.css';
 
-const Vision = () => {
-  const clearBothStyle = {clear: 'both'};
-
+export const VisionComponent = ({translateYImgBackground, componentHeight, refToSize, translateYImgEcaille, translateXLeftEcaille, translateXRightEcaille}) => {
   return (
-    <section className={Styles.vision}>
-      <div className="section_left">
-        <div className="section_scale_left">
-          <svg viewBox="0 0 2830.56 3760.74" preserveAspectRatio="xMaxYMid">
-            <image
-              mask="url(#scale-mask-opaque-left)"
-              width="100%"
-              height="100%"
-              y="0"
-              x="0"
-              xlinkHref="/assets/pixel-black.png"
-              preserveAspectRatio="xMinYMin slice"
-              />
-            <image
-              mask="url(#scale-mask-transparent-left)"
-              width="100%"
-              height="100%"
-              y="0"
-              x="0"
-              xlinkHref="/assets/background/scale/pottery.jpg"
-              preserveAspectRatio="xMidYMid slice"
-              />
-          </svg>
-          <div className="section_left_content section_scale_content">
-            <h1 className="section_scale_content_h1">Visions</h1>
-            <h2 className="section_scale_content_h2">&lt;user centric&gt;</h2>
+    <section ref={refToSize} className={Styles.vision} style={{height: componentHeight}}>
+      <img
+        src="/assets/background/palms.jpg"
+        alt="forest baground image"
+        className={Styles.vision_img}
+        style={{transform: `translateY(${translateYImgBackground}%)`}}
+        />
+      <div className={`${Styles.ecailles_container} ${Styles.ecailles_container_offset}`} style={{transform: `translateY(${translateYImgEcaille}%)`}}>
+        <div className={Styles.ecaille_left} style={{transform: `translateX(${translateXLeftEcaille}%)`}}>
+          <img className={Styles.ecaille_left_img} src="/assets/background/scale/pottery.jpg" alt="visions illustration"/>
+          <div className={Styles.ecaille_left_content}>
+            <h4 className={Styles.ecaille_title}>Visions</h4>
+            <h3 className={Styles.ecaille_subtitle}>&lt;user centric&gt;</h3>
           </div>
         </div>
-        <div style={clearBothStyle}/>
-      </div>
-      <div className="section_right">
-        <div className="section_scale_right">
-          <svg viewBox="0 0 2830.56 3760.74" preserveAspectRatio="xMinYMid">
-            <image
-              mask="url(#scale-mask-transparent-right)"
-              width="100%"
-              height="100%"
-              y="0"
-              x="0"
-              xlinkHref="/assets/pixel-black.png"
-              preserveAspectRatio="xMinYMin slice"
-              />
-          </svg>
-          <div className="section_right_content section_scale_content">
-            <h1 className="section_scale_content_h1">Digital</h1>
-            <h2 className="section_scale_content_h2">&lt;experience&gt;</h2>
-            <p className="section_scale_content_p">
-              User expérience réalisée en harmonie avec votre stratégie produit. Elle est au centre de la démarche. Nos
-              équipes ont cette conception centrée sur les usages.
+        <div className={`${Styles.ecaille_right} ${Styles.ecaille_right_offset}`} style={{transform: `translateX(${translateXRightEcaille}%)`}}>
+          <img className={Styles.ecaille_right_img} src="/assets/background/scale/pottery.jpg" alt="digital <experience> illustration"/>
+          <div className={Styles.ecaille_right_content}>
+            <h3 className={Styles.ecaille_title}>Digital</h3>
+            <h3 className={Styles.ecaille_subtitle}>&lt;experience&gt;</h3>
+            <p className={Styles.ecaille_paragraph}>
+              User expérience réalisée en harmonie avec votre stratégie produit.
+              Elle est au centre de la démarche.
+              Nos équipes ont cette conception centrée sur les usages.
             </p>
           </div>
         </div>
-        <div style={clearBothStyle}/>
       </div>
     </section>
   );
 };
 
-Vision.propTypes = {};
-
-export const VisionComponent = Vision;
+VisionComponent.propTypes = {
+  translateYImgBackground: PropTypes.number.isRequired,
+  translateYImgEcaille: PropTypes.number.isRequired,
+  translateXLeftEcaille: PropTypes.number.isRequired,
+  translateXRightEcaille: PropTypes.number.isRequired,
+  componentHeight: PropTypes.string.isRequired,
+  refToSize: PropTypes.func.isRequired
+};

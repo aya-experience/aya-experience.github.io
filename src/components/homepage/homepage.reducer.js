@@ -6,8 +6,11 @@ import {
   END_GO_TO_DESIGN_REALISATION
 } from './homepage.action';
 
+import {INIT_VISION_CMP_SIZE} from './vision/vision.action';
+
 export const initState = {
   scrollPosition: 0,
+  windowHeight: 1000,
   startCodeLinkTransition: false,
   startDesignLinkTransition: false
 };
@@ -18,7 +21,8 @@ export const homepageReducer = (state = initState, action = initAction) => {
   case SCROLL_POSITION_CHANGE: {
     return {
       ...state,
-      scrollPosition: action.position
+      scrollPosition: action.position,
+      windowHeight: action.windowHeight
     };
   }
   case INIT_GO_TO_CODE_REALISATION: {
@@ -43,6 +47,13 @@ export const homepageReducer = (state = initState, action = initAction) => {
     return {
       ...state,
       startDesignLinkTransition: false
+    };
+  }
+
+  case INIT_VISION_CMP_SIZE : {
+    return {
+      ...state,
+      visionComponentSize: action.size
     };
   }
   default:
