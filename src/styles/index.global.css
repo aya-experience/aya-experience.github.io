@@ -1,0 +1,132 @@
+:root {
+  --grey-color: #696969;
+  --text-color-black: #333333;
+}
+
+html, body, #phenomic {
+  height: 100%;
+  overflow-x: hidden;
+  margin: 0;
+}
+
+body {
+  font-size: 18px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  background: black;
+  color: white;
+  font-family: 'Lato', sans-serif;
+}
+  #phenomic [data-reactroot] {
+      height: 100%;
+  }
+
+  .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
+  }
+  a {
+    text-decoration: none;
+    color: #333333;
+
+    &:hover {
+      text-decoration: none;
+      cursor: pointer;
+      color: black;
+    }
+  }
+  p { color: #ddd; }
+
+/*** OLD global style, to delete ****/
+
+svg {
+  &.scale-mask-transparent {
+    & .core, & .side, &.intersection {
+      fill-rule: evenodd;
+    }
+
+    & .core {
+      fill: #d6d6d6;
+    }
+
+    & .intersection {
+      fill: #eeeeee;
+    }
+
+    & .side {
+      fill: #919191;
+    }
+  }
+
+  & .scale-mask-opaque {
+    & .core, & .side, & .intersection {
+      fill-rule: evenodd;
+      fill: #ffffff;
+    }
+  }
+}
+
+section {
+  padding: 50px 0;
+  position: relative;
+}
+  .section_scale_left {
+    position: relative;
+    float: left;
+    width: 40%;
+    @media (max-width: 1000px) { width: 60%; }
+    @media (max-width: 800px) { width: 70%; }
+    @media (max-width: 600px) { width: 95%; }
+  }
+  .section_scale_right {
+    position: relative;
+    float: right;
+    width: 40%;
+    margin-top: -40%;
+    @media (max-width: 1000px) { width: 60%; }
+    @media (max-width: 800px) { width: 70%; }
+    @media (max-width: 600px) { width: 95%; }
+  }
+    .section_scale_content {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -60%);
+      width: 62%;
+      font-size: 16px;
+    }
+      .section_left_content, .section_right_content {
+        @media (max-width: 800px) { width: 70%; }
+      }
+      .section_scale_content_h1 {
+        text-align: center;
+        font-size: 40px;
+        @media (max-width: 900px) { font-size: 30px; }
+      }
+      .section_scale_content_h2 {
+        text-align: center;
+        font-size: 22px;
+        margin-top: 10px;
+        font-weight: 300;
+
+        @media (max-width: 450px) { font-weight: 300; }
+        @media (max-width: 900px) {
+          font-size: 18px;
+          margin-top: 10px;
+        }
+      }
+      .section_scale_content_p {
+        font-size: 13px;
+        letter-spacing: 1.8px;
+        text-align: center;
+
+        @media (max-width: 450px) {
+          font-weight: 300;
+        }
+        @media (min-width: 1580px) {
+          font-size: 1.4em;
+          letter-spacing: 3.8px;
+          line-height: 1.6em;
+        }
+      }

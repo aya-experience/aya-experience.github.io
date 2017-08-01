@@ -1,0 +1,7 @@
+.section {
+  position: relative;
+  padding: 0;
+}
+  .section_img {
+    width: 100%;
+  }

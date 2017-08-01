@@ -1,72 +1,15 @@
-.contact {
-  background-color: rgba(0, 0, 0, 0.10);
+.section {
+  padding: 0;
+  position: relative;
+  & a {
+    color: white;
 
-  &:before {
-    background-image: url("/assets/background/mountain.jpg");
-    background-position: center center;
-    background-size: cover;
-    content: "";
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    position: absolute;
-    z-index: -1;
-    background-color: black;
-
-    @media (min-width: 768px) {
-      background-image: url("/assets/background/mountain-sm.jpg");
-    }
   }
 }
-
-.contactUs {
-  text-align: center;
-}
-  .contactUsTitle {
-    color: #333333;
+  .section_img {
+    width: 100%;
   }
 
-.logoContainer {
-  width: inherit;
-  margin: auto;
-}
-  .logo-zenika {
-    width: 5rem;
+  .logo_zenika, .logo_medium {
+    width: 100px;
   }
-  .logo-medium {
-    width: 7rem;
-  }
-  .logo-aya {
-    margin: 0;
-    text-align: center;
-    & img {
-      width: 100%;
-      max-width: 400px;
-    }
-  }
-  .logo-twitter_container {
-    float: left;
-  }
-    .icon-twitter {
-      background-image: url('/assets/twitter.svg');
-      width: 5rem;
-      height: 4rem;
-      display: block;
-      background-size: cover;
-    }
-    .icon-linkedin {
-      background-image: url('/assets/linkedin.svg');
-      width: 4rem;
-      height: 4rem;
-      display: block;
-      background-size: cover;
-    }
-
-.external-link {
-  background-image: url('/assets/external-link.svg');
-  display: inline-block;
-  height: 1rem;
-  width: 1rem;
-  background-size: cover;
-}
