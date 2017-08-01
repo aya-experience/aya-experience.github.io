@@ -1,21 +1,4 @@
-.vision {
-  position: relative;
-  padding: 0;
-  &:before {
-    content: '';
-    display: block;
-    width: 100%;
-    height: 50px;
-    background: linear-gradient(black, rgba(0, 0, 0, 0.1));
-    position: absolute;
-    top: 0;
-  }
-}
-.vision_img {
-  width: 100%;
-}
-
-.ecailles_container {
+.flakes_container {
   width: 100%;
   position: absolute;
   top: 10%;
@@ -24,42 +7,42 @@
   justify-content: space-between;
   align-items: center;
 }
-  .ecailles_container_offset {
+  .flakes_container_offset {
     margin-bottom: 30%;
   }
 
-.ecaille_left {
+.flake_left {
   width: 40%;
   position: relative;
   @media (max-width: 1000px) { width: 60%; }
   @media (max-width: 800px) { width: 70%; }
   @media (max-width: 600px) { width: 95%; }
 }
-  .ecaille_left_img {
+  .flake_left_img {
     width: 100%;
   }
-  .ecaille_left_content {
+  .flake_left_content {
     left: 10%;
   }
 
-.ecaille_right {
+.flake_right {
   width: 40%;
   position: relative;
   @media (max-width: 1000px) { width: 60%; }
   @media (max-width: 800px) { width: 70%; }
   @media (max-width: 600px) { width: 95%; }
 }
-  .ecaille_right_offset {
+  .flake_right_offset {
     transform: translateY(50%);
   }
-  .ecaille_right_img {
+  .flake_right_img {
     width: 100%;
   }
-  .ecaille_right_content {
+  .flake_right_content {
     right: 10%;
   }
 
-.ecaille_right_content, .ecaille_left_content {
+.flake_right_content, .flake_left_content {
   position: absolute;
   top: 0;
   width: 90%;
@@ -69,22 +52,21 @@
   height: 100%;
   align-items: center;
 }
-  .ecaille_title, .ecaille_subtitle {
-    color: white;
+  .flake_title, .flake_subtitle {
     text-transform: uppercase;
     font-family: inherit;
     font-weight: 500;
     line-height: 1.1;
   }
-  .ecaille_title {
+  .flake_title {
     text-align: center;
     font-size: 40px;
     @media (max-width: 900px) { font-size: 30px; }
   }
-  .ecaille_subtitle {
+  .flake_subtitle {
 
   }
-  .ecaille_paragraph {
+  .flake_paragraph {
     font-size: 13px;
     letter-spacing: 1.8px;
     text-align: center;

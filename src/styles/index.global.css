@@ -1,70 +1,44 @@
 :root {
   --grey-color: #696969;
   --text-color-black: #333333;
-
-  --font-size-1: 18px;
-  --font-size-2: 22px;
-  --font-size-3: 28px;
-  --font-size-4: 40px;
-  --font-size-5: 54px;
-  --font-size-6: 120px;
 }
 
-html, #phenomic {
+html, body, #phenomic {
   height: 100%;
+  overflow-x: hidden;
+  margin: 0;
 }
 
 body {
-  font-size: var(--font-size-1);
+  font-size: 18px;
   font-weight: 300;
   letter-spacing: 1px;
   background: black;
-  font-family: 'Lato', sans-serif;
-  margin: 0;
-  overflow-x: hidden;
-  height: 100%;
-}
-
-#phenomic {
-  overflow-x: hidden;
-  & [data-reactroot] {
-    height: 100%;
-  }
-}
-
-.h1, .h2, .h3, h1, h2, h3 {
-  margin-top: 20px;
-  margin-bottom: 10px;
-}
-
-h1, h2 {
   color: white;
-  text-transform: uppercase;
+  font-family: 'Lato', sans-serif;
 }
-h2 {
-  font-size: 34px;
-}
-
-.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
-  font-family: inherit;
-  font-weight: 500;
-  line-height: 1.1;
-}
-
-a {
-  text-decoration: none;
-  color: var(--text-color-black);
-
-  &:hover {
-    text-decoration: none;
-    cursor: pointer;
-    color: black;
+  #phenomic [data-reactroot] {
+      height: 100%;
   }
-}
 
-p {
-  color: #ddd;
-}
+  .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
+  }
+  a {
+    text-decoration: none;
+    color: #333333;
+
+    &:hover {
+      text-decoration: none;
+      cursor: pointer;
+      color: black;
+    }
+  }
+  p { color: #ddd; }
+
+/*** OLD global style, to delete ****/
 
 svg {
   &.scale-mask-transparent {

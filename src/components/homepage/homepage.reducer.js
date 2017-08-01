@@ -6,7 +6,8 @@ import {
   END_GO_TO_DESIGN_REALISATION
 } from './homepage.action';
 
-import {INIT_VISION_CMP_SIZE} from './vision/vision.action';
+import {INIT_VISION_CMP_SIZE} from './vision-digital/vision-digital.action';
+import {INIT_QUALITY_METHOD_CMP_SIZE} from './quality-method/quality-method.action';
 
 export const initState = {
   scrollPosition: 0,
@@ -54,6 +55,12 @@ export const homepageReducer = (state = initState, action = initAction) => {
     return {
       ...state,
       visionComponentSize: action.size
+    };
+  }
+  case INIT_QUALITY_METHOD_CMP_SIZE : {
+    return {
+      ...state,
+      qualityMethodComponentSize: action.size
     };
   }
   default:
