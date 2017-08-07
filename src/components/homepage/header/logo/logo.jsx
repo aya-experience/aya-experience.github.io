@@ -201,9 +201,9 @@ export const Logo = ({animate, className}) => (
     </g>
 
     <g className={Styles.creative_experience}>
-      <image xlinkHref="/assets/logo/creative.png" x="14" y="135" height="18"/>
-      <image xlinkHref="/assets/logo/x@2x.png" x="77" y="110" width="60" height="60"/>
-      <image xlinkHref="/assets/logo/perience.png" x="125" y="135" height="18"/>
+      <image xlinkHref="/assets/logo/aya/creative.png" x="14" y="135" height="18"/>
+      <image xlinkHref="/assets/logo/aya/x@2x.png" x="77" y="110" width="60" height="60"/>
+      <image xlinkHref="/assets/logo/aya/perience.png" x="125" y="135" height="18"/>
       <CAnimate
         animate={animate}
         attributeName="opacity"

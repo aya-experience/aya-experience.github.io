@@ -7,17 +7,13 @@ import Styles from './index.css';
 import {HeaderContainer} from './header/header.container';
 import {VisionDigitalContainer} from './vision-digital/vision-digital.container';
 import {QualityMethodContainer} from './quality-method/quality-method.container';
-
-import {SvgTransparentLeft} from '../commons/svgs/svg-transparent_left.jsx';
-import {SvgTransparentRight} from '..//commons/svgs/svg-transparent_right.jsx';
-import {SvgOpaqueLeft} from '../commons/svgs/svg-opaque_left.jsx';
-import {SvgOpaqueRight} from '../commons/svgs/svg-opaque_right.jsx';
-
-import {CodeContainer} from './code/code.container';
-import {AyaComponent} from './aya/aya.jsx';
-import {ZenikaComponent} from './zenika/zenika.jsx';
-import {ContactComponent} from './contact/contact.jsx';
-import {Design} from './design/design.jsx';
+import {AyaSchemaContainer} from './aya-schema/aya-schema.container';
+import {MethodSchemaContainer} from './method-schema/method-schema.container';
+import {CodeDesignContainer} from './code-design/code-design.container';
+import {ConsultingTrainingContainer} from './consulting-training/consulting-training.container';
+import {ZenikaComponent} from './zenika/zenika';
+import {ContactContainer} from './contact/contact.container';
+import {Footer} from './footer/footer';
 
 export class Homepage extends Component {
   componentDidMount() {
@@ -39,34 +35,25 @@ export class Homepage extends Component {
   render() {
     return (
       <Page {...this.props} className={Styles.homepage_container}>
-        <SvgTransparentLeft/>
-        <SvgTransparentRight/>
-        <SvgOpaqueLeft/>
-        <SvgOpaqueRight/>
-
         <HeaderContainer/>
 
         <VisionDigitalContainer/>
 
         <QualityMethodContainer/>
 
-        <div className={Styles.road_background}>
-          <CodeContainer/>
-          <AyaComponent/>
-        </div>
+        <AyaSchemaContainer/>
 
-        <div className={Styles.gradient_separation}/>
+        <MethodSchemaContainer/>
 
-        <div className={Styles.forest_background}>
+        <CodeDesignContainer/>
 
-          <Design/>
+        <ConsultingTrainingContainer/>
 
-          <ZenikaComponent/>
-        </div>
+        <ZenikaComponent/>
 
-        <div className={Styles.gradient_separation}/>
+        <ContactContainer/>
 
-        <ContactComponent/>
+        <Footer/>
       </Page>
     );
   }

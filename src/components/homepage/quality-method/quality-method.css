@@ -1,7 +1,6 @@
 .section {
   position: relative;
   padding: 0;
-  border-top: 2px solid red;
 }
 .section_img {
   width: 100%;
