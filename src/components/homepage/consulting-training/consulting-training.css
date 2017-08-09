@@ -1,7 +1,4 @@
 .section {
-  position: relative;
-  padding: 0;
+  z-index: 96;
+  margin-top: 120vh;
 }
-  .section_img {
-    width: 100%;
-  }

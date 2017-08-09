@@ -1,5 +1,8 @@
 import {connect} from 'react-redux';
 import {HeaderComponent} from './header';
+import {compose} from 'recompose';
+import {delayComponentDisplaying} from '../../../hoc/delayComposantDisplaying';
+import Styles from './header.css';
 
 const mapDispatchToProps = () => ({
 });
@@ -15,4 +18,7 @@ const mapStateToProps = state => {
   };
 };
 
-export const HeaderContainer = connect(mapStateToProps, mapDispatchToProps)(HeaderComponent);
+export const HeaderContainer = compose(
+  delayComponentDisplaying(1000, Styles.header_loading),
+  connect(mapStateToProps, mapDispatchToProps)
+)(HeaderComponent);

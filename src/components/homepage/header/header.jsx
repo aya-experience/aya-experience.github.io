@@ -4,8 +4,9 @@ import {Logo} from './logo/logo';
 import Styles from './header.css';
 
 const Header = ({paragraphOpacity, translateYLogo, scaleCodeDesign}) => (
-  <header className={Styles.header}>
-    <div className={Styles.container}>
+  <header className={`flakes_group_parralax ${Styles.header}`}>
+    <div className={`flakes_background_parralax ${Styles.header_background}`}/>
+    <div className={`flakes_container_parralax ${Styles.container}`}>
       <h1 className={Styles.logo} style={{transform: `translateY(${translateYLogo}%)`}}>
         <Logo className={Styles.logo_img} animate/>
       </h1>

@@ -1,7 +1,45 @@
+/* parallax */
+.parallax {
+  height: inherit;
+  position: relative;
+  perspective: 300px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+.flakes_group_parralax {
+  position: relative;
+  height: 100vh;
+  display: block;
+  transform-style: preserve-3d;
+  /* For debug purpuse */
+  /*/transform: translate3d(700px, 0, -800px) rotateY(30deg);/**/
+}
+  .flakes_background_parralax {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transform: translate3d(0, 0, -600px) scale(3);
+  }
+  .flakes_background_parralax_img {
+    width: 100%;
+  }
+  .flakes_container_parralax {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform: translate3d(0,0,-300px) scale(2);
+  }
+
+/* Normal displaying */
 .flakes_container {
   width: 100%;
   position: absolute;
-  top: 10%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -12,6 +50,7 @@
   width: 40%;
   position: relative;
   text-align: left;
+  will-change: transform;
   @media (max-width: 1000px) { width: 60%; }
   @media (max-width: 800px) { width: 70%; }
   @media (max-width: 600px) { width: 95%; }
@@ -28,6 +67,7 @@
   width: 40%;
   position: relative;
   text-align: right;
+  will-change: transform;
   @media (max-width: 1000px) { width: 60%; }
   @media (max-width: 800px) { width: 70%; }
   @media (max-width: 600px) { width: 95%; }
