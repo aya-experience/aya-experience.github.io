@@ -8,8 +8,9 @@ import {
 
 export const initState = {
   scrollPosition: 0,
-  startCodeLinkTransition: false,
-  startDesignLinkTransition: false
+  windowHeight: 1000,
+  startDesignLinkTransition: false,
+  startCodeLinkTransition: false
 };
 export const initAction = {};
 
@@ -18,7 +19,8 @@ export const homepageReducer = (state = initState, action = initAction) => {
   case SCROLL_POSITION_CHANGE: {
     return {
       ...state,
-      scrollPosition: action.position
+      scrollPosition: action.position,
+      windowHeight: action.windowHeight
     };
   }
   case INIT_GO_TO_CODE_REALISATION: {

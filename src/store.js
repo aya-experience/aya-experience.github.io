@@ -8,9 +8,9 @@ import {homepageReducer} from './components/homepage/homepage.reducer';
 
 const middlewares = [thunk];
 
-if (process.env !== 'production') {
-  const logger = require('redux-logger');
-  middlewares.push(logger.logger);
+if (process.env.NODE_ENV !== 'production') {
+  // Const logger = require('redux-logger');
+  // middlewares.push(logger.logger);
 }
 
 const store = createStore(

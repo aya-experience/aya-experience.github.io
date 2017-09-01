@@ -19,7 +19,7 @@ export const Realisation = ({name, images, description}) => {
     <div className={Styles.container}>
       <h1 className={Styles.title}>{name}</h1>
       <Link to="/realisations/" className={Styles.real_link}>
-        <img className={Styles.real_link_img} src="/assets/close.png" alt="back to realisations"/>
+        <img className={Styles.real_link_img} src="/assets/misc/cross.png" alt="back to realisations"/>
       </Link>
       <picture className={Styles.illustration}>
         <source srcSet={imagesSet}/>

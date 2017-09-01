@@ -42,7 +42,7 @@ export class RealisationsComponent extends Component {
       <div className={Styles.container}>
         <h1 className={Styles.title}>Réalisations</h1>
         <Link to="/" className={Styles.home_link}>
-          <img className={Styles.home_link_img} src="/assets/close.png" alt="back to home"/>
+          <img className={Styles.home_link_img} src="/assets/misc/cross.png" alt="back to home"/>
         </Link>
         <Slider {...settings}>
           {realisations.map(reference => {
