@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
 export const FlakeGroupComponent = ({
@@ -10,11 +11,12 @@ export const FlakeGroupComponent = ({
   leftFlake,
   rightFlake,
   className,
-  none
+  noParralaxForBackground,
+  isDisplayed3D
 }) => {
   return (
-    <section ref={refFunc0} className={`flakes_group_parralax ${className}`}>
-      <div ref={refFunc1} className={none ? '' : 'flakes_background_parralax'}>
+    <section ref={refFunc0} className={classNames('flakes_group_parralax', {paralax3d: isDisplayed3D}, className)}>
+      <div ref={refFunc1} className={noParralaxForBackground ? '' : 'flakes_background_parralax'}>
         {background}
       </div>
       <div className="flakes_container_parralax">
@@ -32,7 +34,8 @@ export const FlakeGroupComponent = ({
 };
 
 FlakeGroupComponent.defaultProps = {
-  className: ''
+  className: '',
+  noParralaxForBackground: false
 };
 
 FlakeGroupComponent.propTypes = {
@@ -45,5 +48,7 @@ FlakeGroupComponent.propTypes = {
   rightFlake: PropTypes.node.isRequired,
 
   className: PropTypes.string,
-  none: PropTypes.bool.isRequired
+  noParralaxForBackground: PropTypes.bool,
+
+  isDisplayed3D: PropTypes.bool.isRequired
 };

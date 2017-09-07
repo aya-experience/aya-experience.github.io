@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import {Logo} from './logo/logo';
 import Styles from './header.css';
 
-const Header = ({paragraphOpacity, translateYLogo, scaleCodeDesign}) => (
-  <header className={`flakes_group_parralax ${Styles.header}`}>
+const Header = ({paragraphOpacity, translateYLogo, scaleCodeDesign, isDisplayed3D}) => (
+  <header className={classNames('flakes_group_parralax', {paralax3d: isDisplayed3D}, Styles.header)}>
     <div className={`flakes_background_parralax ${Styles.header_background}`}/>
     <div className={`flakes_container_parralax ${Styles.container}`}>
       <h1 className={Styles.logo} style={{transform: `translateY(${translateYLogo}%)`}}>
@@ -24,7 +25,8 @@ const Header = ({paragraphOpacity, translateYLogo, scaleCodeDesign}) => (
 Header.propTypes = {
   paragraphOpacity: PropTypes.string.isRequired,
   translateYLogo: PropTypes.string.isRequired,
-  scaleCodeDesign: PropTypes.string.isRequired
+  scaleCodeDesign: PropTypes.string.isRequired,
+  isDisplayed3D: PropTypes.bool.isRequired
 };
 
 export const HeaderComponent = Header;

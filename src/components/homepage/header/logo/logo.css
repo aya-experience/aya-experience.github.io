@@ -4,30 +4,35 @@
 
 .a_left, .y, .a_right, .creative_experience {
   filter: url(#box-shadow);
+  animation: hidden 0.3s;
 }
 
-.a_left {
+@keyframes hidden {
+  from { opacity: 0; }
+  to { opacity: 0; }
+}
+
+/*.a_left {
    & .a_bar_left {
-    animation-name: a_left_bar_left;
-    animation-duration: 1s;
-    animation-iteration-count: 1;
+    animation: a_left_bar_left 1s linear;
     d: path('M 38,0 0,90 2,90 40,0 Z');
   }
 
   & .a_bar_middle {
-    animation-name: a_left_bar_middle;
-    animation-duration: 2s;
-    animation-iteration-count: 1;
+    animation:
+      hidden 0.315s linear 0s 1,
+      a_left_bar_middle 1.35s linear 0.315s 1;
     d: path('M 14,58 13,60 65,60 64,58 Z');
   }
 
   & .a_bar_right {
-    animation-name: a_left_bar_right;
-    animation-duration: 2s;
-    animation-iteration-count: 1;
+    animation:
+      hidden 1s linear 0s 1,
+      a_left_bar_right 1s linear 1s 1;
     d: path('M 40,0 38,0 78,90 80,90 Z');
   }
 }
+
 
 @keyframes a_left_bar_left {
   0% { d: path('M 0,90 0,90 2,90 2,90 Z');}
@@ -35,14 +40,12 @@
 }
 
 @keyframes a_left_bar_middle {
-  0% { d: path('M 14,58 13,60 14,60 13,58 Z');}
-  15% { d: path('M 14,58 13,60 14,60 13,58 Z');}
+  0% { d: path('M 14,58 13,60 13,60 14,58 Z');}
   100% { d: path('M 14,58 13,60 65,60 64,58 Z');}
 }
 
 @keyframes a_left_bar_right {
   0% { d: path('M 40,0 38,0 38,0 40,0 Z');}
-  50% { d: path('M 40,0 38,0 38,0 40,0 Z');}
   100% { d: path('M 40,0 38,0 78,90 80,90 Z');}
 }
 

@@ -49,7 +49,7 @@
 
 .description, .tagline {
   animation-name: header-fade-in;
-  animation-duration: 4s;
+  animation-duration: 3.5s;
   animation-timing-function: linear;
   animation-iteration-count: 1;
 }

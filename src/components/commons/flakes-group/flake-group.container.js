@@ -22,7 +22,8 @@ const mapStateToProps = (state, props) => {
     background: props.children[0],
     leftFlake: props.children[1],
     rightFlake: props.children[2],
-    none: props.none
+    noParralaxForBackground: props.noParralaxForBackground,
+    isDisplayed3D: state.homepage.isDisplayed3D
   };
 };
 

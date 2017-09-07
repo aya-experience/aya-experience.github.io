@@ -14,7 +14,8 @@ const mapStateToProps = state => {
   return {
     paragraphOpacity: scrollPercentage <= 1 ? (scrollPercentage).toFixed(4) : '0',
     translateYLogo: inversedScrollPercentage <= 1 ? (inversedScrollPercentage * -100).toFixed(4) : '-100',
-    scaleCodeDesign: inversedScrollPercentage <= 1 ? (1 + inversedScrollPercentage).toFixed(4) : '2'
+    scaleCodeDesign: inversedScrollPercentage <= 1 ? (1 + inversedScrollPercentage).toFixed(4) : '2',
+    isDisplayed3D: state.homepage.isDisplayed3D
   };
 };
 

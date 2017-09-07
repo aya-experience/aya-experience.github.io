@@ -13,9 +13,10 @@
   height: 100vh;
   display: block;
   transform-style: preserve-3d;
-  /* For debug purpuse */
-  /*/transform: translate3d(700px, 0, -800px) rotateY(30deg);/**/
 }
+  .paralax3d {
+    transform: translate3d(700px, 0, -800px) rotateY(30deg);
+  }
   .flakes_background_parralax {
     position: absolute;
     width: 100%;

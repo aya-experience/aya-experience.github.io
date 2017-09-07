@@ -3247,6 +3247,10 @@ known-css-properties@^0.0.7:
   version "0.0.7"
   resolved "https://registry.yarnpkg.com/known-css-properties/-/known-css-properties-0.0.7.tgz#9104343a2adfd8ef3b07bdee7a325e4d44ed9371"
 
+konami-code.js@^1.5.1:
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/konami-code.js/-/konami-code.js-1.5.1.tgz#2ad0030446331c0ae09e01a9dd10eab91c8806eb"
+
 lazy-cache@^0.2.3:
   version "0.2.7"
   resolved "https://registry.yarnpkg.com/lazy-cache/-/lazy-cache-0.2.7.tgz#7feddf2dcb6edb77d11ef1d117ab5ffdf0ab1b65"

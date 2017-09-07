@@ -51,6 +51,7 @@ const Page = (
     {name: 'mobile-web-app-capable', content: 'yes'}
   ];
   const links = [
+    {rel: 'icon', href: '/assets/logo/favicon.ico'},
     {rel: 'manifest', href: '/manifest.json'},
     {rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Lato'}
   ];
