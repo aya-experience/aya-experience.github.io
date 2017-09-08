@@ -6,7 +6,7 @@ export const VisionDigitalComponent = () => {
   return (
     <FlakeGroupContainer className={Styles.section}>
       <img
-        src="/assets/background/spark-light.jpg"
+        src="/assets/background/palms.jpg"
         alt="forest baground image"
         className="flakes_background_parralax_img"
         />

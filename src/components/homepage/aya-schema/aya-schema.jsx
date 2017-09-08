@@ -21,7 +21,7 @@ const AyaSchema = ({
 }) => (
   <section ref={refFunc0} className={classNames('flakes_group_parralax', {paralax3d: isDisplayed3D}, Styles.section)}>
     <img
-      src="/assets/background/mountain-night.jpg"
+      src="/assets/background/ima.jpg"
       alt="palms baground image"
       className={classNames('flakes_background_parralax', 'flakes_background_parralax_img')}
       />
