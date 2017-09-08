@@ -1,9 +1,7 @@
 .section {
   padding: 0;
+  margin-top: 100vh;
 }
-  .section_img {
-    width: 100%;
-  }
 
 .code_button, .design_button {
   background-color: transparent;

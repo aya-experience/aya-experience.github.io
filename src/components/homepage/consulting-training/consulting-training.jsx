@@ -4,7 +4,7 @@ import Styles from './consulting-training.css';
 
 export const ConsultingTrainingComponent = () => {
   return (
-    <FlakeGroupContainer id="2" className={Styles.section} noParralaxForBackground>
+    <FlakeGroupContainer className={Styles.section} noParralaxForBackground>
       <img
         src="/assets/background/ass.jpg"
         alt="forest baground"

@@ -1,14 +1,13 @@
 .section {
-  padding: 0;
+  height: 100vh;
+  margin-top: 100vh;
 }
-  .section_img {
-    width: 100%;
-  }
 
 
 .schema_container {
     flex-direction: column;
     justify-content: center;
+    margin-top: 10%
 }
   .schema_first_row, .schema_last_row {
     display: flex;

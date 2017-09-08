@@ -17,7 +17,7 @@
   .paralax3d {
     transform: translate3d(700px, 0, -800px) rotateY(30deg);
   }
-  .flakes_background_parralax {
+  .flakes_background_parralax{
     position: absolute;
     width: 100%;
     height: 100%;
@@ -28,13 +28,15 @@
   .flakes_background_parralax_img {
     width: 100%;
   }
-  .flakes_container_parralax {
+  .flakes_container_parralax{
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    transform: translate3d(0,0,-300px) scale(2);
+    & .parralax {
+      transform: translate3d(0,0,-300px) scale(2);
+    }
   }
 
 /* Normal displaying */

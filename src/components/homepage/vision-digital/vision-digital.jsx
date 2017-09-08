@@ -4,7 +4,7 @@ import Styles from './vision-digital.css';
 
 export const VisionDigitalComponent = () => {
   return (
-    <FlakeGroupContainer id="1" className={Styles.section}>
+    <FlakeGroupContainer className={Styles.section}>
       <img
         src="/assets/background/spark-light.jpg"
         alt="forest baground image"

@@ -8,7 +8,6 @@ const mapDispatchToProps = () => ({
 
 const mapStateToProps = (state, props) => {
   const componentSize = props.ref0 ? props.ref0.getBoundingClientRect() : null;
-
   const scrollPercentage = componentSize && componentSize.top < 600 ? (600 + -componentSize.top) / componentSize.height : 0;
 
   const translateXRightFlake = Math.max(0, Math.min(100, 100 - (100 * scrollPercentage * 1))).toFixed(2);
@@ -16,7 +15,6 @@ const mapStateToProps = (state, props) => {
 
   return {
     refFunc0: props.refFunc0,
-    refFunc1: props.refFunc1,
     translateXLeftFlake,
     translateXRightFlake,
     background: props.children[0],
@@ -28,6 +26,6 @@ const mapStateToProps = (state, props) => {
 };
 
 export const FlakeGroupContainer = compose(
-    withRefs(2),
+    withRefs(1),
     connect(mapStateToProps, mapDispatchToProps)
   )(FlakeGroupComponent);

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import Styles from './aya-schema.css';
 
 import {AyaBuildInterface} from './parts/aya-build-interface';
@@ -10,36 +11,32 @@ import {UserAreCustomer} from './parts/user-are-customers';
 
 const AyaSchema = ({
   refFunc0,
-  refFunc1,
-  componentHeight,
-  translateYImgBackground,
-  translateYSchema,
   scaleUpCenter,
   opacityCenter,
   translateXTopLeft,
   translateXBottomLeft,
   translateXTopRight,
-  translateXBottomRight
+  translateXBottomRight,
+  isDisplayed3D
 }) => (
-  <section ref={refFunc0} className={Styles.section} style={{height: componentHeight}}>
+  <section ref={refFunc0} className={classNames('flakes_group_parralax', {paralax3d: isDisplayed3D}, Styles.section)}>
     <img
-      ref={refFunc1}
-      src="/assets/background/olive-tree.jpg"
+      src="/assets/background/mountain-night.jpg"
       alt="palms baground image"
-      className={Styles.section_img}
-      style={{transform: `translateY(${translateYImgBackground}%)`}}
+      className={classNames('flakes_background_parralax', 'flakes_background_parralax_img')}
       />
-    <div className={`flakes_container ${Styles.schema_container}`} style={{transform: `translateY(${translateYSchema}%)`}}>
+
+    <div className={`flakes_container ${Styles.schema_container}`}>
       <div className={Styles.schema_first_row}>
-        <UserAreCustomer containerStyle={{transform: `translateX(${translateXTopLeft}%)`}}/>
-        <ClientsBringService containerStyle={{transform: `translateX(${translateXTopRight}%)`}}/>
+        <UserAreCustomer containerStyle={{transform: `translate3d(${translateXTopLeft}%, 0, 0)`}}/>
+        <ClientsBringService containerStyle={{transform: `translate3d(${translateXTopRight}%, 0, 0)`}}/>
       </div>
       <div className={Styles.schema_middle_row}>
         <AyaBuildInterface containerStyle={{transform: `scale(${scaleUpCenter})`, opacity: opacityCenter}}/>
       </div>
       <div className={Styles.schema_last_row} >
-        <DesignersCreateExperiences containerStyle={{transform: `translateX(${translateXBottomLeft}%)`}}/>
-        <DevelopersCodingWorld containerStyle={{transform: `translateX(${translateXBottomRight}%)`}}/>
+        <DesignersCreateExperiences containerStyle={{transform: `translate3d(${translateXBottomLeft}%, 0, 0)`}}/>
+        <DevelopersCodingWorld containerStyle={{transform: `translate3d(${translateXBottomRight}%, 0, 0)`}}/>
       </div>
     </div>
   </section>
@@ -47,16 +44,13 @@ const AyaSchema = ({
 
 AyaSchema.propTypes = {
   refFunc0: PropTypes.func.isRequired,
-  refFunc1: PropTypes.func.isRequired,
-  componentHeight: PropTypes.string.isRequired,
-  translateYImgBackground: PropTypes.string.isRequired,
-  translateYSchema: PropTypes.string.isRequired,
   scaleUpCenter: PropTypes.string.isRequired,
   opacityCenter: PropTypes.string.isRequired,
   translateXTopLeft: PropTypes.string.isRequired,
   translateXBottomLeft: PropTypes.string.isRequired,
   translateXTopRight: PropTypes.string.isRequired,
-  translateXBottomRight: PropTypes.string.isRequired
+  translateXBottomRight: PropTypes.string.isRequired,
+  isDisplayed3D: PropTypes.bool.isRequired
 };
 
 export const AyaSchemaComponent = AyaSchema;

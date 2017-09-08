@@ -153,7 +153,6 @@
     "react-router-transition": "^0.1.1",
     "react-slick": "^0.14.11",
     "recompose": "^0.24.0",
-    "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0"
   }
 }

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 
 export const withRefs = numberOfRef => {
   const refsFunction = {};
+  const refs = {};
 
   return WrappedComponent => {
     return class extends Component {
@@ -15,10 +16,10 @@ export const withRefs = numberOfRef => {
         for (let i = 0; i < numberOfRef; i++) {
           const key = `ref${i}`;
           const keyFunc = `refFunc${i}`;
-          newState[key] = this[keyFunc];
+          newState[key] = refs[keyFunc];
         }
 
-        this.setState(newState);
+        setTimeout(() => this.setState(newState), 1000);
       }
 
       render() {
@@ -26,7 +27,7 @@ export const withRefs = numberOfRef => {
           for (let i = 0; i < numberOfRef; i++) {
             const key = `refFunc${i}`;
             refsFunction[key] = cmp => {
-              this[key] = cmp;
+              refs[key] = cmp;
             };
           }
         }

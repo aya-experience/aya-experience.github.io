@@ -1,14 +1,12 @@
 .section {
   padding: 0;
   position: relative;
+  margin-top: 100vh;
   & a {
     color: white;
 
   }
 }
-  .section_img {
-    width: 100%;
-  }
 
   .logo_zenika, .logo_medium {
     width: 100px;

@@ -8,10 +8,7 @@ import {homepageReducer} from './components/homepage/homepage.reducer';
 
 const middlewares = [thunk];
 
-if (process.env.NODE_ENV !== 'production') {
-  // Const logger = require('redux-logger');
-  // middlewares.push(logger.logger);
-}
+const reduxDevtools = (typeof window !== 'undefined') && window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
 
 const store = createStore(
   combineReducers({
@@ -19,7 +16,7 @@ const store = createStore(
     realisation: realisationReducer,
     homepage: homepageReducer
   }),
-  {...(typeof window !== 'undefined') && window.__INITIAL_STATE__},
+  reduxDevtools || {...(typeof window !== 'undefined') && window.__INITIAL_STATE__},
   middlewares
 );
 
