@@ -1,13 +1,18 @@
 <template>
-	<main>
-		<nav v-show="loaded">
+	<main :class="{
+		loaded: loaded,
+		loading: !loaded,
+		hover: kanjiClass !== 'white',
+		[kanjiClass]: true
+	}">
+		<nav>
 			<a class="link vision" @mouseenter="enter('vision')" @mouseout="leave">Vision</a>
 			<a class="link real" @mouseenter="enter('real')" @mouseout="leave">Réalisations</a>
 			<a class="link method" @mouseenter="enter('method')" @mouseout="leave">Méthode</a>
 		</nav>
-		<div class="kanji-background" :class="kanjiClass"></div>
+		<div class="kanji-background" ref="bg"></div>
 		<kanji/>
-		<svg viewBox="0 0 215 175">
+		<svg class="AYA" viewBox="0 0 215 175">
 			<g transform="matrix(.5 0 0 .5 53 82)">
 				<!-- /\ du premier A -->
 				<path class="line a-main" d="M 0,90 38,0 76,90"/>
@@ -36,8 +41,22 @@
 	color: white;
 	font-size: 3rem;
 	font-weight: 100;
-	display: inline-block;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 10rem;
+	width: 30rem;
 	position: fixed;
+	z-index: 1;
+	transition: opacity 0.6s ease;
+}
+
+.loading .link {
+	opacity: 0;
+}
+
+.loaded .link {
+	opacity: 1;
 	cursor: pointer;
 }
 
@@ -47,20 +66,20 @@
 }
 
 .link.vision {
-	top: 90vh;
+	bottom: 0;
 	left: 45vw;
 	width: 10vw;
 	text-align: center;
 }
 
 .link.real {
-	top: 50vh;
-	left: 5vw;
+	top: calc(50vh - 5rem);
+	left: 2vw;
 }
 
 .link.method {
-	top: 50vh;
-	right: 5vw;
+	top: calc(50vh - 5rem);
+	right: 2vw;
 }
 
 .kanji-background {
@@ -70,40 +89,51 @@
 	height: 79vh;
 	width: 79vh;
 	background-color: white;
-	animation-name: appear;
-	animation-duration: 5s;
-	animation-timing-function: linear;
 	background-size: cover;
 	background-position: center;
-	transition: all 3s ease;
 	opacity: .5;
 }
 
-.kanji-background.method {
+.loading .kanji-background {
+	animation-name: appear;
+	animation-duration: 5s;
+	animation-timing-function: linear;
+}
+
+.hover .kanji-background {
+	animation-name: kanji-image;
+	animation-duration: 1s;
+	animation-timing-function: ease;
+	opacity: 1;
+}
+
+.method .kanji-background {
 	background-image: url('/photos/rails.jpg');
-	opacity: 1;
 }
 
-.kanji-background.real {
+.real .kanji-background {
 	background-image: url('/photos/mac.jpg');
-	opacity: 1;
 }
 
-.kanji-background.vision {
+.vision .kanji-background {
 	background-image: url('/photos/matrix.jpg');
-	opacity: 1;
 }
 
-svg {
+.AYA {
 	position: fixed;
 	top: 10vh;
 	left: calc(50vw - 40vh);
 	height: 80vh;
 	width: 80vh;
 	fill: transparent;
+	transition: opacity 1s ease;
 }
 
-text {
+.hover .AYA {
+	opacity: 0.2;
+}
+
+.AYA text {
 	fill: white;
 	font-family: sans-serif;
 	font-size: 18px;
@@ -115,7 +145,7 @@ text {
 	animation-fill-mode: both;
 }
 
-.line {
+.AYA .line {
 	stroke: white;
 	stroke-width: 2;
 	stroke-linejoin: bevel;
@@ -181,9 +211,17 @@ text {
 	90% { opacity: 0 }
 	100% { opacity: 1 }
 }
+
+@keyframes kanji-image {
+	0% {  background-image: none; opacity: 0.5 }
+	30% { opacity: 0 }
+	100% { opacity: 1 }
+}
 </style>
 
 <script>
+import animationComplete from '~/utils/animation-complete'
+
 import Kanji from '~/components/Kanji.vue'
 
 export default {
@@ -193,18 +231,52 @@ export default {
 	data () {
 		return {
 			loaded: false,
+			linkImageMap: {
+				method: 'rails',
+				real: 'mac',
+				vision: 'matrix'
+			},
+			imageLoaded: {
+				mac: false,
+				rails: false,
+				matrix: false
+			},
 			kanjiClass: 'white'
 		}
 	},
-	beforeMount () {
-		this.loaded = true
+	mounted () {
+		const current = new Date().getTime()
+		const domLoading = performance.timing.domLoading
+		if (current > domLoading + 4000) { // 5s animation - error margin
+			this.loaded = true
+		} else {
+			animationComplete(this.$refs.bg).then(() => {
+				this.loaded = true
+			})
+		}
 	},
 	methods: {
 		enter (name) {
-			this.kanjiClass = name
+			if (!this.loaded) {
+				return
+			}
+			if (this.imageLoaded[this.linkImageMap[name]]) {
+				this.kanjiClass = name
+			} else {
+				this.loadImage(name)
+			}
 		},
 		leave () {
 			this.kanjiClass = 'white'
+		},
+		loadImage (name) {
+			const imageName = this.linkImageMap[name]
+			const image = new Image()
+			image.onload = () => {
+				this.imageLoaded[imageName] = true
+				this.enter(name)
+			}
+			image.src = `/photos/${imageName}.jpg`
 		}
 	}
 }
