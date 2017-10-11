@@ -1,14 +1,30 @@
 <template>
 	<main :class="{
+		dive: dive,
 		loaded: loaded,
 		loading: !loaded,
 		hover: kanjiClass !== 'white',
 		[kanjiClass]: true
 	}">
 		<nav>
-			<a class="link vision" @mouseenter="enter('vision')" @mouseout="leave">Vision</a>
-			<a class="link real" @mouseenter="enter('real')" @mouseout="leave">Réalisations</a>
-			<a class="link method" @mouseenter="enter('method')" @mouseout="leave">Méthode</a>
+			<a class="link vision"
+				@mouseenter="enter('vision')"
+				@mouseout="leave"
+				@click="launchDive">
+				Vision
+			</a>
+			<a class="link real"
+				@mouseenter="enter('real')"
+				@mouseout="leave"
+				@click="launchDive">
+				Réalisations
+			</a>
+			<a class="link method"
+				@mouseenter="enter('method')"
+				@mouseout="leave"
+				@click="launchDive">
+				Méthode
+			</a>
 		</nav>
 		<div class="kanji-background" ref="bg"></div>
 		<kanji/>
@@ -37,6 +53,19 @@
 </template>
 
 <style scoped>
+.dive .kanji-background {
+	transition-property: top, left, height, width;
+	transition-duration: 0.5s;
+	transition-timing-function: ease;
+}
+
+.dive .kanji-background {
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+}
+
 .link {
 	color: white;
 	font-size: 3rem;
@@ -58,6 +87,10 @@
 .loaded .link {
 	opacity: 1;
 	cursor: pointer;
+}
+
+.dive .link {
+	opacity: 0;
 }
 
 .link:hover {
@@ -84,10 +117,10 @@
 
 .kanji-background {
 	position: fixed;
-	top: 10.5vh;
+	top: calc(10.5vh);
 	left: calc(50vw - 39.5vh);
-	height: 79vh;
-	width: 79vh;
+	height: calc(79vh);
+	width: calc(79vh);
 	background-color: white;
 	background-size: cover;
 	background-position: center;
@@ -96,7 +129,7 @@
 
 .loading .kanji-background {
 	animation-name: appear;
-	animation-duration: 5s;
+	animation-duration: 3s;
 	animation-timing-function: linear;
 }
 
@@ -119,6 +152,28 @@
 	background-image: url('/photos/matrix.jpg');
 }
 
+.dive .kanji-background {
+	animation-name: kanji-background-dive;
+	animation-duration: 2s;
+	animation-timing-function: ease;
+	animation-fill-mode: forwards;
+}
+
+>>> .kanji {
+	position: fixed;
+	top: 10vh;
+	left: calc(50vw - 40vh);
+	height: 80vh;
+	width: 80vh;
+	fill: black;
+}
+
+.dive >>> .kanji {
+	animation-name: kanji-dive;
+	animation-duration: 2s;
+	animation-timing-function: ease;
+}
+
 .AYA {
 	position: fixed;
 	top: 10vh;
@@ -133,6 +188,10 @@
 	opacity: 0.2;
 }
 
+.dive .AYA {
+	opacity: 0;
+}
+
 .AYA text {
 	fill: white;
 	font-family: sans-serif;
@@ -140,7 +199,7 @@
 	font-weight: 100;
 	text-anchor: middle;
 	animation-name: text;
-	animation-duration: 5s;
+	animation-duration: 3s;
 	animation-timing-function: linear;
 	animation-fill-mode: both;
 }
@@ -149,7 +208,7 @@
 	stroke: white;
 	stroke-width: 2;
 	stroke-linejoin: bevel;
-	animation-duration: 5s;
+	animation-duration: 3s;
 	animation-timing-function: linear;
 	animation-fill-mode: both;
 }
@@ -217,10 +276,49 @@
 	30% { opacity: 0 }
 	100% { opacity: 1 }
 }
+
+@keyframes kanji-dive {
+	0% {
+		top: 10vh;
+		left: calc(50vw - 40vh);
+		height: 80vh;
+		width: 80vh;
+	}
+	100% {
+		top: -1000vh;
+		left: calc(50vw - 4720vh);
+		height: 10000vh;
+		width: 10000vh;
+	}
+}
+
+@keyframes kanji-background-dive {
+	0% {
+		top: calc(10.5vh);
+		left: calc(50vw - 39.5vh);
+		height: calc(79vh);
+		width: calc(79vh);
+		opacity: 1;
+	}
+	25% {
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
+		opacity: 1;
+	}
+	70% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
 </style>
 
 <script>
 import animationComplete from '~/utils/animation-complete'
+import loadImage from '~/utils/load-image'
 
 import Kanji from '~/components/Kanji.vue'
 
@@ -230,6 +328,7 @@ export default {
 	},
 	data () {
 		return {
+			dive: false,
 			loaded: false,
 			linkImageMap: {
 				method: 'rails',
@@ -244,15 +343,14 @@ export default {
 			kanjiClass: 'white'
 		}
 	},
-	mounted () {
+	async mounted () {
 		const current = new Date().getTime()
 		const domLoading = performance.timing.domLoading
 		if (current > domLoading + 4000) { // 5s animation - error margin
 			this.loaded = true
 		} else {
-			animationComplete(this.$refs.bg).then(() => {
-				this.loaded = true
-			})
+			await animationComplete(this.$refs.bg)
+			this.loaded = true
 		}
 	},
 	methods: {
@@ -269,14 +367,16 @@ export default {
 		leave () {
 			this.kanjiClass = 'white'
 		},
-		loadImage (name) {
+		async launchDive () {
+			this.dive = true
+			await animationComplete(this.$refs.bg)
+			this.$router.push('work')
+		},
+		async loadImage (name) {
 			const imageName = this.linkImageMap[name]
-			const image = new Image()
-			image.onload = () => {
-				this.imageLoaded[imageName] = true
-				this.enter(name)
-			}
-			image.src = `/photos/${imageName}.jpg`
+			await loadImage(`/photos/${imageName}.jpg`)
+			this.imageLoaded[imageName] = true
+			this.enter(name)
 		}
 	}
 }
