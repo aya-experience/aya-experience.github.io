@@ -13,7 +13,9 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
-    "nuxt": "^1.0.0-rc11"
+    "express": "^4.16.2",
+    "nuxt": "^1.0.0-rc11",
+    "prismic-javascript": "^1.4.0"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
@@ -26,9 +28,9 @@
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1"
   },
-	"config": {
-		"nuxt": {
-			"host": "0.0.0.0"
-		}
-	}
+  "config": {
+    "nuxt": {
+      "host": "0.0.0.0"
+    }
+  }
 }

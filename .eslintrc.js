@@ -11,7 +11,8 @@ module.exports = {
 	// add your custom rules here
 	rules: {
 		'no-tabs': 'off',
-		indent: ['error', 'tab']
+		indent: ['error', 'tab'],
+		'object-curly-spacing': ['error', 'always']
 	},
 	globals: {}
 }
