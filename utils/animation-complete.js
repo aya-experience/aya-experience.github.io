@@ -16,7 +16,6 @@ function whichAnimationEvent () {
 
 function animationComplete (element) {
 	const animationEvent = whichAnimationEvent()
-	console.log('animationComplete', element, animationEvent)
 	if (!animationEvent) {
 		return Promise.reject(new Error('No animation event found'))
 	}
