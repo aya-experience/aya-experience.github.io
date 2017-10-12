@@ -2,16 +2,23 @@
 	<div>hello world {{works}}</div>
 </template>
 
+<style scoped>
+	div {
+		color: white;
+	}
+</style>
+
 <script>
+import work from '~/content/work.json'
+
 export default {
 	computed: {
 		works () {
 			return this.$store.state.work.works
 		}
 	},
-	async fetch ({ store }) {
-		const work = await fetch('http://localhost:3000/api/work')
-		store.commit('work/loaded', await work.json())
+	fetch ({ store }) {
+		store.commit('work/loaded', work)
 	}
 }
 </script>
