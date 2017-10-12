@@ -1,15 +1,9 @@
-const { Router } = require('express')
+const path = require('path')
+const fs = require('fs-extra')
+
 const { getApi, Predicates } = require('prismic-javascript')
 
 const prismicURL = 'https://app-aya.prismic.io/api/v2'
-
-const router = Router()
-
-const json = (response, data, status = 200) => {
-	response.statusCode = status
-	response.setHeader('Content-Type', 'application/json; charset=utf8')
-	response.end(JSON.stringify(data), 'utf8')
-}
 
 const workMapper = data => ({
 	id: data.id,
@@ -26,14 +20,12 @@ const workMapper = data => ({
 	}))
 })
 
-router.get('/work', async (req, res) => {
+async function work () {
 	const api = await getApi(prismicURL)
-	try {
-		const response = await api.query(Predicates.at('document.type', 'references'))
-		json(res, response.results.map(workMapper))
-	} catch (err) {
-		json(res, err, 500)
-	}
-})
+	const response = await api.query(Predicates.at('document.type', 'references'))
+	return response.results.map(workMapper)
+}
 
-module.exports = router
+module.exports = async function prismic (outputDir) {
+	await fs.writeJson(path.join(outputDir, 'work.json'), await work())
+}
