@@ -23,6 +23,7 @@ const workMapper = data => ({
 async function work () {
 	const api = await getApi(prismicURL)
 	const response = await api.query(Predicates.at('document.type', 'references'))
+	console.log(response)
 	return response.results.map(workMapper)
 }
 
