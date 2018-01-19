@@ -1,7 +1,16 @@
 <template>
 	<div align="center" class="work-container">
-		<a v-for="work in mocks" class="work-preview" v-bind:style="{ 'background-image' : 'url(' + work.preview + ')' }">
-			<div class="work-title">{{work.client}}</div>
+		<a
+			v-for="(work, index) in works"
+			class="work-preview"
+			v-bind:style="{
+				'background-image' : `${gradient(index)}, url(${work.illustrations[0].url})`
+			}"
+		>
+			<div class="work-title">
+				<h1>{{work.client_name}}</h1>
+				<h2>{{work.project_name}}</h2>
+			</div>
 		</a>
 	</div>
 </template>
@@ -34,6 +43,7 @@
 		color:#ffffff;
 		font-weight: 300;
 		font-size: 13px;
+		text-shadow: 0px 0px 8px black;
 	}
 
 	a.work-preview:hover .work-title {
@@ -70,28 +80,22 @@
 import work from '~/content/work.json'
 
 export default {
+	data () {
+		return {
+			gradients: {
+				even: 'linear-gradient(#000000E0, #000000C0, #400040C0)',
+				odd: 'linear-gradient(#400040C0, #000000C0, #000000E0)'
+			}
+		}
+	},
 	computed: {
 		works () {
 			return this.$store.state.work.works
-		},
-		mocks () {
-			return [
-				{ 'client': 'Gattefossé',
-					'preview': 'https://artsandculture.withgoogle.com/gcs/national-parks-service/en-us/Asset-Tortugas-desktop.jpg'
-				},
-				{ 'client': 'M6 Play',
-					'preview': 'https://artsandculture.withgoogle.com/gcs/national-parks-service/en-us/de0b954d-ca76-41d3-ac3a-900c6bc25139.jpg'
-				},
-				{ 'client': 'JC Decaux',
-					'preview': 'https://artsandculture.withgoogle.com/gcs/national-parks-service/en-us/Asset-Kenai-desktop.jpg'
-				},
-				{ 'client': 'B4all',
-					'preview': 'https://artsandculture.withgoogle.com/gcs/national-parks-service/en-us/Asset-Hawaii-desktop.jpg'
-				},
-				{ 'client': 'Enedis',
-					'preview': 'https://artsandculture.withgoogle.com/gcs/national-parks-service/en-us/Asset-Bryce-desktop.jpg'
-				}
-			];
+		}
+	},
+	methods: {
+		gradient (index) {
+			return index % 2 === 0 ? this.gradients.even : this.gradients.odd
 		}
 	},
 	fetch ({ store }) {
