@@ -283,7 +283,7 @@ export default {
 	},
 	watch: {
 		async hover (newVal, oldVal) {
-			if (newVal !== oldVal) {
+			if (newVal !== oldVal && this.dive === null) {
 				console.log('hover watch', newVal)
 				if (newVal === null) {
 					this.kanjiBackground = 'none'
@@ -296,7 +296,7 @@ export default {
 		async dive (newVal, oldVal) {
 			if (newVal !== oldVal && newVal !== null) {
 				await animationComplete(this.$refs.bg)
-				this.$router.push('work')
+				this.$emit('dive-done')
 			}
 		}
 	}

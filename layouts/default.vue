@@ -11,12 +11,13 @@
 		box-sizing: border-box;
 	}
 	html {
-		font-family: Lato, sans-serif;
-		font-size: 62.5%;
+		font-family: sans-serif;
+		/* font-size: 62.5%; */
 		background-color: black;
+		color: white;
 	}
 	body {
 		margin: 0;
-		padding-bottom: 5rem;
+		/* padding-bottom: 50px; */
 	}
 </style>

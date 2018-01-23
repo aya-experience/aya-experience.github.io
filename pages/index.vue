@@ -1,7 +1,14 @@
 <template>
-	<section class="container" :class="{ loading: !isLoaded, loaded: isLoaded }">
-		<aya-logo :hover="hover" :dive="dive" @loaded="loaded"/>
-		<aya-menu @enter="enter" @leave="leave" @go="go"/>
+	<section
+		class="container"
+		:class="{
+			loading: !isLoaded,
+			loaded: isLoaded,
+			dive: dive !== null
+		}"
+	>
+		<aya-logo :hover="hover" :dive="dive" @loaded="loaded" @dive-done="diveEnd"/>
+		<aya-menu @enter="enter" @leave="leave" @go="diveStart"/>
 	</section>
 </template>
 
@@ -31,8 +38,11 @@ export default {
 		leave () {
 			this.hover = null
 		},
-		go (link) {
+		diveStart (link) {
 			this.dive = link
+		},
+		diveEnd () {
+			this.$router.push(this.dive.path)
 		}
 	}
 }

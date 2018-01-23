@@ -1,5 +1,6 @@
 <template>
 	<div align="center" class="work-container">
+		<aya-back/>
 		<a
 			v-for="(work, index) in works"
 			class="work-preview"
@@ -79,7 +80,12 @@
 <script>
 import work from '~/content/work.json'
 
+import BackButton from '~/components/BackButton'
+
 export default {
+	components: {
+		'aya-back': BackButton
+	},
 	data () {
 		return {
 			gradients: {
