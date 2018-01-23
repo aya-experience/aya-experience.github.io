@@ -78,7 +78,7 @@
 </style>
 
 <script>
-import work from '~/content/work.json'
+import works from '~/content/work.json'
 
 import BackButton from '~/components/BackButton'
 
@@ -88,24 +88,17 @@ export default {
 	},
 	data () {
 		return {
+			works,
 			gradients: {
 				even: 'linear-gradient(#000000E0, #000000C0, #400040C0)',
 				odd: 'linear-gradient(#400040C0, #000000C0, #000000E0)'
 			}
 		}
 	},
-	computed: {
-		works () {
-			return this.$store.state.work.works
-		}
-	},
 	methods: {
 		gradient (index) {
 			return index % 2 === 0 ? this.gradients.even : this.gradients.odd
 		}
-	},
-	fetch ({ store }) {
-		store.commit('work/loaded', work)
 	}
 }
 </script>
