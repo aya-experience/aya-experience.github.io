@@ -1,32 +1,14 @@
 <template>
 	<main :class="{
-		dive: dive,
-		loaded: loaded,
-		loading: !loaded,
-		hover: kanjiClass !== 'white',
-		[kanjiClass]: true
+		dive: dive !== null,
+		hover: hover !== null
 	}">
-		<nav>
-			<a class="link vision"
-				@mouseenter="enter('vision')"
-				@mouseout="leave"
-				@click="launchDive">
-				Vision
-			</a>
-			<a class="link real"
-				@mouseenter="enter('real')"
-				@mouseout="leave"
-				@click="launchDive">
-				Réalisations
-			</a>
-			<a class="link method"
-				@mouseenter="enter('method')"
-				@mouseout="leave"
-				@click="launchDive">
-				Méthode
-			</a>
-		</nav>
-		<div class="kanji-background" ref="bg"></div>
+		<div
+			class="kanji-background"
+			ref="bg"
+			:style="{ backgroundImage: kanjiBackground }"
+		>
+		</div>
 		<kanji/>
 		<svg class="AYA" viewBox="0 0 215 175">
 			<g transform="matrix(.5 0 0 .5 53 82)">
@@ -66,55 +48,6 @@
 	width: 100%;
 }
 
-.link {
-	color: white;
-	font-size: 3rem;
-	font-weight: 100;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	height: 10rem;
-	width: 30rem;
-	position: fixed;
-	z-index: 1;
-	transition: opacity 0.6s ease;
-}
-
-.loading .link {
-	opacity: 0;
-}
-
-.loaded .link {
-	opacity: 1;
-	cursor: pointer;
-}
-
-.dive .link {
-	opacity: 0;
-}
-
-.link:hover {
-	transition: all .5s ease;
-	font-size: 4rem;
-}
-
-.link.vision {
-	bottom: 0;
-	left: 45vw;
-	width: 10vw;
-	text-align: center;
-}
-
-.link.real {
-	top: calc(50vh - 5rem);
-	left: 2vw;
-}
-
-.link.method {
-	top: calc(50vh - 5rem);
-	right: 2vw;
-}
-
 .kanji-background {
 	position: fixed;
 	top: calc(10.5vh);
@@ -138,18 +71,6 @@
 	animation-duration: 1s;
 	animation-timing-function: ease;
 	opacity: 1;
-}
-
-.method .kanji-background {
-	background-image: url('/photos/rails.jpg');
-}
-
-.real .kanji-background {
-	background-image: url('/photos/mac.jpg');
-}
-
-.vision .kanji-background {
-	background-image: url('/photos/matrix.jpg');
 }
 
 .dive .kanji-background {
@@ -193,7 +114,7 @@
 }
 
 .AYA text {
-	fill: white;
+	fill: #EBB815;
 	font-family: sans-serif;
 	font-size: 18px;
 	font-weight: 100;
@@ -205,7 +126,7 @@
 }
 
 .AYA .line {
-	stroke: white;
+	stroke: #EBB815;
 	stroke-width: 2;
 	stroke-linejoin: bevel;
 	animation-duration: 3s;
@@ -326,57 +247,57 @@ export default {
 	components: {
 		Kanji
 	},
+	props: {
+		hover: {
+			type: Object,
+			default: null
+		},
+		dive: {
+			type: Object,
+			default: null
+		}
+	},
 	data () {
 		return {
-			dive: false,
-			loaded: false,
-			linkImageMap: {
-				method: 'rails',
-				real: 'mac',
-				vision: 'matrix'
-			},
-			imageLoaded: {
-				mac: false,
-				rails: false,
-				matrix: false
-			},
-			kanjiClass: 'white'
+			kanjiBackground: 'none',
+			imageLoaded: {}
 		}
 	},
 	async mounted () {
 		const current = new Date().getTime()
 		const domLoading = performance.timing.domLoading
-		if (current > domLoading + 4000) { // 5s animation - error margin
-			this.loaded = true
-		} else {
+		if (current < domLoading + 4000) { // 5s animation - error margin
 			await animationComplete(this.$refs.bg)
-			this.loaded = true
 		}
+		this.loaded = true
+		this.$emit('loaded')
 	},
 	methods: {
-		enter (name) {
-			if (!this.loaded) {
-				return
+		async loadImage (image) {
+			if (this.imageLoaded[image]) {
+				return Promise.resolve()
 			}
-			if (this.imageLoaded[this.linkImageMap[name]]) {
-				this.kanjiClass = name
-			} else {
-				this.loadImage(name)
+			await loadImage(image)
+			this.imageLoaded[image] = true
+		}
+	},
+	watch: {
+		async hover (newVal, oldVal) {
+			if (newVal !== oldVal) {
+				console.log('hover watch', newVal)
+				if (newVal === null) {
+					this.kanjiBackground = 'none'
+				} else {
+					await this.loadImage(newVal.image)
+					this.kanjiBackground = `url("${newVal.image}")`
+				}
 			}
 		},
-		leave () {
-			this.kanjiClass = 'white'
-		},
-		async launchDive () {
-			this.dive = true
-			await animationComplete(this.$refs.bg)
-			this.$router.push('work')
-		},
-		async loadImage (name) {
-			const imageName = this.linkImageMap[name]
-			await loadImage(`/photos/${imageName}.jpg`)
-			this.imageLoaded[imageName] = true
-			this.enter(name)
+		async dive (newVal, oldVal) {
+			if (newVal !== oldVal && newVal !== null) {
+				await animationComplete(this.$refs.bg)
+				this.$router.push('work')
+			}
 		}
 	}
 }
