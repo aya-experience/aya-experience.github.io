@@ -54,7 +54,7 @@ a:hover >>> .kanji {
 	top: -50px;
 	left: -50px;
 	width: 400px;
-	height: 80px;
+	height: 90px;
 	transform: rotate(-20deg);
 	box-shadow: 0px 0px 10px 10px black;
 }
