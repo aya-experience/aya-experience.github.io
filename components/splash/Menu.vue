@@ -52,8 +52,8 @@ export default {
 		return {
 			links: [
 				{ title: 'Vision', path: '/vision', image: '/photos/rails.jpg' },
-				{ title: 'Réalisations', path: '/work', image: '/photos/mac.jpg' },
-				{ title: 'Méthode', path: '/method', image: '/photos/matrix.jpg' },
+				// { title: 'Réalisations', path: '/work', image: '/photos/mac.jpg' },
+				// { title: 'Méthode', path: '/method', image: '/photos/matrix.jpg' },
 				{ title: 'Contact', path: '/contact', image: '/photos/matrix.jpg' }
 			]
 		}

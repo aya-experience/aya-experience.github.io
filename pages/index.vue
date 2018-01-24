@@ -7,14 +7,16 @@
 			dive: dive !== null
 		}"
 	>
+		<aya-znk/>
 		<aya-logo :hover="hover" :dive="dive" @loaded="loaded" @dive-done="diveEnd"/>
 		<aya-menu @enter="enter" @leave="leave" @go="diveStart"/>
 	</section>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-import Menu from '~/components/Menu.vue'
+import Logo from '~/components/splash/Logo.vue'
+import Menu from '~/components/splash/Menu.vue'
+import ByZenika from '~/components/splash/ByZenika.vue'
 
 export default {
 	data () {
@@ -26,7 +28,8 @@ export default {
 	},
 	components: {
 		'aya-logo': Logo,
-		'aya-menu': Menu
+		'aya-menu': Menu,
+		'aya-znk': ByZenika
 	},
 	methods: {
 		loaded () {
