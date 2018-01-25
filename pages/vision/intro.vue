@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="container">
 		<p>Vous cherchez une écoute particulière pour vos projets numériques</p>
 		<p>Les profils de notre agence : artisans du web</p>
 		<p>
@@ -12,18 +12,20 @@
 </template>
 
 <style scoped>
-div {
+div.container {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	height: 100vh;
+	padding: 60px auto;
 }
 
 p {
 	text-align: center;
 	font-size: 25px;
 	font-weight: lighter;
+	margin: 20px;
 }
 
 div >>> svg {
@@ -31,6 +33,17 @@ div >>> svg {
 	width: 50vh;
 	fill: black;
 	background-color: white;
+}
+
+@media (max-width: 600px) {
+	p {
+		font-size: 20px;
+	}
+
+	div >>> svg {
+		height: 50vw;
+		width: 50vw;
+	}
 }
 </style>
 

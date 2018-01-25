@@ -1,13 +1,15 @@
 <template>
-	<div>
+	<v-touch @swipeleft="next" @swiperight="previous">
 		<a class="left" @click="previous" v-if="hasPrevious()">
 			<div class="triangle"/>
 		</a>
-		<slot/>
+		<div class="content">
+			<slot/>
+		</div>
 		<a class="right" @click="next" v-if="hasNext()">
 			<div class="triangle"/>
 		</a>
-	</div>
+	</v-touch>
 </template>
 
 <style scoped>

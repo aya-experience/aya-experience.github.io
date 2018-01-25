@@ -1,7 +1,7 @@
 <template>
 	<nav>
 		<a v-for="(link, index) of links" class="link"
-			:style="{ marginLeft: `${Math.sqrt(links.length - index) * 10}vh` }"
+			:style="{ marginLeft: curvMargin(index) }"
 			@mouseenter="enter(link)"
 			@mouseout="leave"
 			@click="go(link)">
@@ -12,7 +12,7 @@
 
 <style scoped>
 nav {
-	position: fixed;
+	position: absolute;
 	bottom: 20vh;
 	left: calc(50vw + 20vh);
 	z-index: 1;
@@ -44,6 +44,24 @@ a {
 a:hover {
 	color: white;
 }
+
+@media (max-width: 600px) {
+	nav {
+		position: relative;
+		top: 0;
+		left: 0;
+		text-align: center;
+		display: none;
+	}
+
+	nav a {
+		margin: 10px;
+	}
+
+	.loaded nav {
+		display: flex;
+	}
+}
 </style>
 
 <script>
@@ -59,6 +77,12 @@ export default {
 		}
 	},
 	methods: {
+		curvMargin (index) {
+			if (process.browser && window.screen.width > 600) {
+				return `${Math.sqrt(this.links.length - index) * 10}vh`
+			}
+			return ''
+		},
 		enter (link) {
 			this.$emit('enter', link)
 		},

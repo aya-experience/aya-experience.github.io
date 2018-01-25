@@ -35,6 +35,11 @@
 </template>
 
 <style scoped>
+main {
+	height: 100vh;
+	width: 100vw;
+}
+
 .dive .kanji-background {
 	transition-property: top, left, height, width;
 	transition-duration: 0.5s;
@@ -49,7 +54,7 @@
 }
 
 .kanji-background {
-	position: fixed;
+	position: absolute;
 	top: calc(10.5vh);
 	left: calc(50vw - 39.5vh);
 	height: calc(79vh);
@@ -81,7 +86,7 @@
 }
 
 >>> .kanji {
-	position: fixed;
+	position: absolute;
 	top: 10vh;
 	left: calc(50vw - 40vh);
 	height: 80vh;
@@ -96,7 +101,7 @@
 }
 
 .AYA {
-	position: fixed;
+	position: absolute;
 	top: 10vh;
 	left: calc(50vw - 40vh);
 	height: 80vh;

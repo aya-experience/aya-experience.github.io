@@ -33,4 +33,19 @@ img {
 p {
 	margin: 0;
 }
+
+@media (max-width: 600px) {
+	div.by-zenika {
+		position: relative;
+		top: 0;
+		left: 0;
+		text-align: center;
+		display: none;
+		margin: 50px;
+	}
+
+	.loaded div.by-zenika {
+		display: block;
+	}
+}
 </style>
