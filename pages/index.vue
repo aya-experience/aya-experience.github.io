@@ -7,11 +7,20 @@
 			dive: dive !== null
 		}"
 	>
-		<aya-znk/>
 		<aya-logo :hover="hover" :dive="dive" @loaded="loaded" @dive-done="diveEnd"/>
 		<aya-menu @enter="enter" @leave="leave" @go="diveStart"/>
+		<aya-znk/>
 	</section>
 </template>
+
+<style>
+section.container {
+	position: relative;
+	height: 100vh;
+	width: 100vw;
+	overflow-x: hidden;
+}
+</style>
 
 <script>
 import Logo from '~/components/splash/Logo.vue'

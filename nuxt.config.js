@@ -39,6 +39,14 @@ module.exports = {
 					exclude: /(node_modules)/
 				})
 			}
-		}
-	}
+			if (ctx.isServer) {
+				config.resolve.alias.hammerjs$ = '/Users/swiip/Workspace/AYA/aya-experience.github.io-v2/node_modules/vue-touch/dist/hammer-ssr.js'
+				console.log('coucou', config.resolve)
+			}
+		},
+		vendor: ['vue-touch']
+	},
+	plugins: [
+		{ src: '~plugins/vue-touch', ssr: false }
+	]
 }
