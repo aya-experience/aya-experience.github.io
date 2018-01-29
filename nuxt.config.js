@@ -1,3 +1,5 @@
+const path = require('path')
+
 module.exports = {
 	/*
 	** Headers of the page
@@ -40,13 +42,13 @@ module.exports = {
 				})
 			}
 			if (ctx.isServer) {
-				config.resolve.alias.hammerjs$ = '/Users/swiip/Workspace/AYA/aya-experience.github.io-v2/node_modules/vue-touch/dist/hammer-ssr.js'
-				console.log('coucou', config.resolve)
+				config.resolve.alias.hammerjs$ = path.join(__dirname, './node_modules/vue-touch/dist/hammer-ssr.js')
 			}
 		},
 		vendor: ['vue-touch']
 	},
 	plugins: [
-		{ src: '~plugins/vue-touch', ssr: false }
+		{ src: '~plugins/vue-touch', ssr: false },
+		{ src: '~plugins/google-analytics.js', ssr: false }
 	]
 }
