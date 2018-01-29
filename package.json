@@ -2,7 +2,7 @@
   "name": "aya-app",
   "version": "1.0.0",
   "description": "AYA Website & App",
-  "author": "Swiip <matthieu.lux@gmail.com>",
+  "author": "AYA <contact@aya-experience.com>",
   "private": true,
   "scripts": {
     "dev": "nuxt",
