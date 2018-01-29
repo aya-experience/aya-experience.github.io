@@ -48,6 +48,7 @@ module.exports = {
 		vendor: ['vue-touch']
 	},
 	plugins: [
-		{ src: '~plugins/vue-touch', ssr: false }
+		{ src: '~plugins/vue-touch', ssr: false },
+		{ src: '~plugins/google-analytics.js', ssr: false }
 	]
 }
