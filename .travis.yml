@@ -1,23 +1,10 @@
 language: node_js
 node_js:
-  - "7"
+  - "9"
 
-cache: yarn
+cache:
+  directories:
+    - node_modules
 
 script:
-- yarn run test
-
-deploy:
-  - provider: pages
-    skip_cleanup: true
-    local_dir: './dist/'
-    target_branch: master
-    github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
-    on:
-      branch: dev
-  - provider: surge
-    skip_cleanup: true
-    project: './dist/'
-    domain: aya-experience.surge.sh
-    on:
-      branch: preProd
+- npm run test
