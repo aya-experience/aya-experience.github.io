@@ -10,6 +10,10 @@ const workMapper = data => ({
 	uid: data.uid,
 	client_name: data.data.client_name[0].text,
 	project_name: data.data.project_name[0].text,
+	logo: {
+		url: data.data.logo.url,
+		dimensions: data.data.logo.dimensions
+	},
 	skills: data.data.skills.map(data => ({
 		id: data.skill.id,
 		uid: data.skill.uid
