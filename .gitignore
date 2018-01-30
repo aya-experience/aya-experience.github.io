@@ -16,3 +16,6 @@ content
 # Custom
 .DS_Store
 .idea
+
+# Sitemap is generated
+static/sitemap.xml
