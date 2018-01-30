@@ -2,7 +2,7 @@
 	<section>
 		<aya-back/>
 		<div class="fixed-container">
-			<h1>Contact <aya-kanji/> AYA</h1>
+			<h1>Contact <aya-kanji size="120px"/> AYA</h1>
 			<h2>Un besoin, une idée ? Parlons-en !</h2>
 			<aya-social/>
 			<h2>Zenika, c'est aussi :</h2>
@@ -24,12 +24,8 @@ h1 {
 	font-weight: lighter;
 }
 
-h1>>>svg {
+h1 >>> div.container {
 	display: inline-block;
-	height: 120px;
-	width: 120px;
-	background-color: white;
-	fill: black;
 	vertical-align: middle;
 }
 

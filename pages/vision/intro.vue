@@ -7,7 +7,7 @@
 			<br>
 			pour apporter une réponse complète et aboutie.
 		</p>
-		<aya-kanji/>
+		<aya-kanji :size="isMobile() ? '50vw' : '50vh'"/>
 	</div>
 </template>
 
@@ -28,13 +28,6 @@ p {
 	margin: 20px;
 }
 
-div >>> svg {
-	height: 50vh;
-	width: 50vh;
-	fill: black;
-	background-color: white;
-}
-
 @media (max-width: 600px) {
 	p {
 		font-size: 20px;
@@ -50,9 +43,14 @@ div >>> svg {
 <script>
 import Kanji from '~/components/Kanji'
 
+import isMobile from '~/utils/test-mobile'
+
 export default {
 	components: {
 		'aya-kanji': Kanji
+	},
+	methods: {
+		isMobile
 	}
 }
 </script>

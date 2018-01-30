@@ -246,7 +246,7 @@ main {
 import animationComplete from '~/utils/animation-complete'
 import loadImage from '~/utils/load-image'
 
-import Kanji from '~/components/Kanji.vue'
+import Kanji from '~/components/KanjiMask.vue'
 
 export default {
 	components: {

@@ -33,27 +33,27 @@ a {
 }
 
 .triangle {
-	border-top: 50px solid transparent;
-	border-bottom: 50px solid transparent;
+	border-top: 5vw solid transparent;
+	border-bottom: 5vw solid transparent;
 	transition: border-color .5s ease;
 }
 
 .left .triangle {
-	margin-left: 30px;
-	border-right: 50px solid #FFFFFF30;
+	margin-left: 3vw;
+	border-right: 5vw solid #FFFFFF30;
 }
 
 .right .triangle {
-	margin-right: 30px;
-	border-left: 50px solid #FFFFFF30;
+	margin-right: 3vw;
+	border-left: 5vw solid #FFFFFF30;
 }
 
 .left:hover .triangle {
-	border-right: 50px solid #EBB815;
+	border-right: 5vw solid #EBB815;
 }
 
 .right:hover .triangle {
-	border-left: 50px solid #EBB815;
+	border-left: 5vw solid #EBB815;
 }
 </style>
 

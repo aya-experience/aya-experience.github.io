@@ -22,7 +22,7 @@ nav {
 	font-size: 20px;
 	font-weight: lighter;
 
-	transition: opacity .5s ease;
+	transition: opacity 0.5s ease;
 	opacity: 0;
 }
 
@@ -35,10 +35,10 @@ nav {
 }
 
 a {
-	color: #EBB815;
+	color: #ebb815;
 	margin: 10px 5px;
 	cursor: pointer;
-	transition: color .5s ease;
+	transition: color 0.5s ease;
 }
 
 a:hover {
@@ -65,6 +65,8 @@ a:hover {
 </style>
 
 <script>
+import isMobile from '~/utils/test-mobile'
+
 export default {
 	data () {
 		return {
@@ -78,7 +80,7 @@ export default {
 	},
 	methods: {
 		curvMargin (index) {
-			if (process.browser && window.screen.width > 600) {
+			if (!isMobile()) {
 				return `${Math.sqrt(this.links.length - index) * 10}vh`
 			}
 			return ''

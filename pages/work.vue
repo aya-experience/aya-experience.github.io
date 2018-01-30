@@ -1,23 +1,46 @@
 <template>
-	<div class="work-container" :style="{ width: `${works.length * 20}vw` }">
+	<div class="container" ref="container">
 		<aya-back/>
-		<a
-			v-for="(work, index) in works"
-			class="work-preview"
-			@mouseenter="enter(index)"
-			@mouseleave="leave(index)"
-			:style="{ 'background-image' : background(work, index) }"
-		>
-			<div class="work-title">
-				<img :src="work.logo.url">
-				<!-- <h1>{{ work.client_name }}</h1> -->
-				<h2>{{ work.project_name }}</h2>
-			</div>
-		</a>
+		<div class="work-container" :style="{ width: containerWidth }">
+			<a
+				v-for="(work, index) in works"
+				class="work-preview"
+				@mouseenter="enter(index)"
+				@mouseleave="leave(index)"
+				:style="{
+					'background-image' : background(work, index),
+					'width': workWidth(index)
+				}"
+			>
+				<div class="work-title">
+					<div class="client-logo-container">
+						<img :src="work.logo.url">
+					</div>
+					<h2>{{ work.project_name }}</h2>
+					<div class="skills-container">
+						<ul>
+							<li v-for="skill in work.skills">
+								<img :src="skill.icon.url">
+								{{ skill.title }}
+							</li>
+						</ul>
+					</div>
+				</div>
+			</a>
+		</div>
 	</div>
 </template>
 
 <style scoped>
+.container {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	overflow-x: auto;
+}
+
 .work-container {
 	position: absolute;
 	top: 0;
@@ -30,8 +53,7 @@
 
 a.work-preview {
 	height: 100%;
-	width: 20vw;
-	transition: all .2s ease;
+	transition: all 0.2s ease;
 	background-position: center;
 	background-size: auto 150%;
 	display: flex;
@@ -40,26 +62,29 @@ a.work-preview {
 }
 
 a.work-preview:hover {
-	width: 30vw;
 	background-size: auto 100%;
 }
 
 a.work-preview .work-title {
 	text-transform: uppercase;
+	width: 100%;
 	padding: 7px;
 	z-index: 1000;
 	color: #ffffff;
 	font-weight: 300;
 	font-size: 13px;
 	text-shadow: 0px 0px 8px black;
-	transition: all .2s ease;
+	transition: all 0.2s ease;
 	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 a.work-preview .work-title h1,
 a.work-preview .work-title h2 {
 	font-weight: normal;
-	transition: all .2s ease;
+	transition: all 0.2s ease;
 }
 
 a.work-preview:hover .work-title h1 {
@@ -70,18 +95,60 @@ a.work-preview:hover .work-title h2 {
 	font-size: 30px;
 }
 
-a.work-preview .work-title img {
-  display: block;
-  max-width:15vh;
-  max-height:15vh;
-  width: auto;
-  height: auto;
-	margin: auto;
+div.client-logo-container {
+	width: 15vh;
+	height: 15vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: all 0.2s ease;
 }
 
-a.work-preview:hover .work-title img {
-	max-width:30vh;
-  max-height:30vh;
+a.work-preview .client-logo-container img {
+	display: block;
+	max-width: 15vh;
+	max-height: 15vh;
+	width: auto;
+	height: auto;
+	margin: auto;
+	transition: all 0.2s ease;
+}
+
+a.work-preview:hover div.client-logo-container {
+	width: 30vh;
+	height: 30vh;
+}
+
+a.work-preview:hover .client-logo-container img {
+	max-width: 30vh;
+	max-height: 30vh;
+}
+
+div.skills-container {
+	height: 15vh;
+	text-align: left;
+	position: relative;
+}
+
+div.skills-container ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	top: 100px;
+	opacity: 0;
+	transition: all 0.5s ease;
+}
+
+a.work-preview:hover div.skills-container ul {
+	top: 0;
+	opacity: 1;
+}
+
+a.work-preview div.skills-container img {
+	height: 25px;
+	vertical-align: middle;
+	margin: 3px;
 }
 </style>
 
@@ -90,13 +157,15 @@ import works from '~/content/work.json'
 
 import BackButton from '~/components/BackButton'
 
+import isMobile from '~/utils/test-mobile'
+
 export default {
 	components: {
 		'aya-back': BackButton
 	},
 	data () {
 		return {
-			works: [...works, ...works], // dev hack to have more works
+			works,
 			hoverIndex: null,
 			gradients: {
 				even: 'linear-gradient(#000000C0, #000000C0)',
@@ -109,21 +178,31 @@ export default {
 			}
 		}
 	},
-	created () {
-		if (process.browser) {
-			document.querySelector('html').addEventListener('mousewheel', this.handleWheel)
-		}
+	mounted () {
+		this.$refs.container.addEventListener('mousewheel', this.handleWheel)
 	},
-	destroyed () {
-		if (process.browser) {
-			document.querySelector('html').removeEventListener('mousewheel', this.handleWheel)
+	beforeDestroy () {
+		this.$refs.container.removeEventListener('mousewheel', this.handleWheel)
+	},
+	computed: {
+		containerWidth () {
+			const width = isMobile() ? 50 : 20
+			return `${this.works.length * width}vw`
 		}
 	},
 	methods: {
+		workWidth (index) {
+			const width = isMobile()
+				? this.hoverIndex === index ? 70 : 50
+				: this.hoverIndex === index ? 30 : 20
+			return `${width}vw`
+		},
 		background (work, index) {
-			const image = `url(${work.illustrations[0].url})`
-			const gradient = this.hoverIndex === index
-				? this.activeGradient(index) : this.inactiveGradient(index)
+			const image = `url(${work.menu_bg.url})`
+			const gradient =
+				this.hoverIndex === index
+					? this.activeGradient(index)
+					: this.inactiveGradient(index)
 			return `${gradient}, ${image}`
 		},
 		inactiveGradient (index) {
@@ -139,7 +218,7 @@ export default {
 			this.hoverIndex = null
 		},
 		handleWheel (event, delta) {
-			document.querySelector('html').scrollLeft += event.deltaY
+			this.$refs.container.scrollLeft += event.deltaY
 			event.preventDefault()
 		}
 	}
