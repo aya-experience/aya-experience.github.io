@@ -27,6 +27,8 @@ import Logo from '~/components/splash/Logo.vue'
 import Menu from '~/components/splash/Menu.vue'
 import ByZenika from '~/components/splash/ByZenika.vue'
 
+import isMobile from '~/utils/test-mobile'
+
 export default {
 	data () {
 		return {
@@ -51,6 +53,11 @@ export default {
 			this.hover = null
 		},
 		diveStart (link) {
+			if (isMobile()) {
+				this.$router.push(link.path)
+				return
+			}
+
 			this.dive = link
 		},
 		diveEnd () {
