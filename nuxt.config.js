@@ -18,7 +18,16 @@ module.exports = {
 			{ rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
 			{ rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
 			{ rel: 'manifest', href: '/manifest.json' },
-			{ rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#000000' }
+			{ rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#000000' },
+			{ rel: 'prefetch', href: '/photos/art.jpg' },
+			{ rel: 'prefetch', href: '/photos/cell.jpg' },
+			{ rel: 'prefetch', href: '/photos/cell2.jpg' },
+			{ rel: 'prefetch', href: '/photos/craft.jpg' },
+			{ rel: 'prefetch', href: '/photos/innovation.jpg' },
+			{ rel: 'prefetch', href: '/photos/mac.jpg' },
+			{ rel: 'prefetch', href: '/photos/matrix.jpg' },
+			{ rel: 'prefetch', href: '/photos/rails.jpg' },
+			{ rel: 'prefetch', href: '/photos/woman.jpg' }
 		]
 	},
 	/*
