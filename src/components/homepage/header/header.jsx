@@ -1,31 +1,32 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import {Logo} from './logo/logo';
 import Styles from './header.css';
 
-const Header = () => (
-  <div className={`${Styles.palm_background} ${Styles.palm_background_full_size}`}>
-    <header>
-      <div className="container">
-        <div className="row">
-          <div
-            className="col-lg-6 col-lg-offset-3 col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-12 col-xs-offset-0"
-            >
-            <h1 className={Styles.logo}>
-              <img src="/assets/logo-aya-shadow2.png" alt="Logo AYA" className={Styles.logoImg}/>
-            </h1>
-            <p className={Styles.description}>
-              Nous plaçons vos utilisateurs au centre
-              de la conception de votre produit.
-              Nous leurs apportons la meilleure des expériences
-              à travers notre double expertise
-            </p>
-            <h2>&lt;Code & Design&gt;</h2>
-          </div>
-        </div>
-      </div>
-    </header>
-  </div>
+const Header = ({paragraphOpacity, translateYLogo, scaleCodeDesign, isDisplayed3D}) => (
+  <header className={classNames('flakes_group_parralax', {paralax3d: isDisplayed3D}, Styles.header)}>
+    <div className={`flakes_background_parralax ${Styles.header_background}`}/>
+    <div className={`flakes_container_parralax ${Styles.container}`}>
+      <h1 className={Styles.logo} style={{transform: `translateY(${translateYLogo}%)`}}>
+        <Logo className={Styles.logo_img} animate/>
+      </h1>
+      <p className={Styles.description} style={{opacity: paragraphOpacity}}>
+        Nous plaçons vos utilisateurs au centre
+        de la conception de votre produit.
+        Nous leurs apportons la meilleure des expériences
+        à travers notre double expertise
+      </p>
+      <h2 className={Styles.tagline} style={{transform: `scale(${scaleCodeDesign})`}}>&lt;Code & Design&gt;</h2>
+    </div>
+  </header>
 );
 
-Header.propTypes = {};
+Header.propTypes = {
+  paragraphOpacity: PropTypes.string.isRequired,
+  translateYLogo: PropTypes.string.isRequired,
+  scaleCodeDesign: PropTypes.string.isRequired,
+  isDisplayed3D: PropTypes.bool.isRequired
+};
 
 export const HeaderComponent = Header;
