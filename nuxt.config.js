@@ -6,6 +6,9 @@ module.exports = {
 	*/
 	head: {
 		title: 'AYA code & design',
+		htmlAttrs: {
+			lang: 'fr'
+		},
 		meta: [
 			{ charset: 'utf-8' },
 			{ name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -64,7 +67,8 @@ module.exports = {
 				Disallow: '',
 				Sitemap: 'https://aya-experience.com/sitemap.xml'
 			}
-		]
+		],
+		['@nuxtjs/pwa', { icon: false, manifest: false, onesignal: false }]
 	],
 	plugins: [
 		{ src: '~plugins/vue-touch', ssr: false },
