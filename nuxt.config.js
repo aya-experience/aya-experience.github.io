@@ -47,6 +47,16 @@ module.exports = {
 		},
 		vendor: ['vue-touch']
 	},
+	modules: [
+		'~modules/sitemap.js',
+		[
+			'~modules/robots.js', {
+				UserAgent: '*',
+				Disallow: '',
+				Sitemap: 'https://aya-experience.com/sitemap.xml'
+			}
+		]
+	],
 	plugins: [
 		{ src: '~plugins/vue-touch', ssr: false },
 		{ src: '~plugins/google-analytics.js', ssr: false }
