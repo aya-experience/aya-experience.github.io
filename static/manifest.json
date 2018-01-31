@@ -1,5 +1,6 @@
 {
     "name": "App AYA",
+    "short_name": "AYA",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
