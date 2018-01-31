@@ -73,4 +73,16 @@ div.icon-container img {
 a.other p {
 	margin: 0;
 }
+
+@media (max-width: 600px) {
+	div.others {
+		width: 100%;
+		margin: 0;
+		flex-direction: column;
+	}
+
+	a.other {
+		margin: 10px;
+	}
+}
 </style>

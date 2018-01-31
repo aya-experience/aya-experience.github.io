@@ -16,8 +16,16 @@ const workMapper = data => ({
 	},
 	skills: data.data.skills.map(data => ({
 		id: data.skill.id,
-		uid: data.skill.uid
+		title: data.skill.data.title[0].text,
+		icon: {
+			url: data.skill.data.icon.url,
+			dimensions: data.skill.data.icon.dimensions
+		}
 	})),
+	menu_bg: {
+		url: data.data.menu_bg.url,
+		dimensions: data.data.menu_bg.dimensions
+	},
 	illustrations: data.data.illustrations.map(data => ({
 		url: data.illustration.url,
 		dimensions: data.illustration.dimensions
@@ -26,8 +34,11 @@ const workMapper = data => ({
 
 async function work () {
 	const api = await getApi(prismicURL)
-	const response = await api.query(Predicates.at('document.type', 'references'))
-	console.log(response)
+	const response = await api.query(
+		Predicates.at('document.type', 'references'),
+		{ 'fetchLinks': [ 'skills.title', 'skills.icon' ] }
+	)
+	console.log(JSON.stringify(response, null, 2))
 	return response.results.map(workMapper)
 }
 

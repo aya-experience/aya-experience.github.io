@@ -1,7 +1,7 @@
 <template>
 	<nuxt-link to="/">
 		<span>&lt;</span>
-		<aya-kanji/>
+		<aya-kanji size="50px"/>
 		<div class="back"></div>
 	</nuxt-link>
 </template>
@@ -28,16 +28,9 @@ span {
 	z-index: 1;
 }
 
->>> svg {
-	height: 50px;
-	width: 50px;
+a >>> div.kanji-background,
+a >>> svg.kanji {
 	z-index: 1;
-}
-
->>> .kanji {
-	fill: black;
-	background-color: white;
-	transition: background-color .5s ease;
 }
 
 a:hover {

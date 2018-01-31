@@ -85,4 +85,16 @@ div.icon-container img {
 a.social-media p {
 	margin: 0;
 }
+
+@media (max-width: 600px) {
+	div.social-medias {
+		width: 100%;
+		margin: 0;
+		flex-direction: column;
+	}
+
+	a.social-media {
+		margin: 10px;
+	}
+}
 </style>
