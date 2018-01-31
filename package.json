@@ -15,6 +15,7 @@
     "test": "npm run lint && npm run extract && npm run build"
   },
   "dependencies": {
+    "@nuxtjs/pwa": "^2.0.5",
     "@nuxtjs/sitemap": "0.0.3",
     "fs-extra": "^5.0.0",
     "nuxt": "^1.1.1",

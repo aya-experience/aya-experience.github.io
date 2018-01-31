@@ -67,7 +67,8 @@ module.exports = {
 				Disallow: '',
 				Sitemap: 'https://aya-experience.com/sitemap.xml'
 			}
-		]
+		],
+		['@nuxtjs/pwa', { icon: false, manifest: false, onesignal: false }]
 	],
 	plugins: [
 		{ src: '~plugins/vue-touch', ssr: false },

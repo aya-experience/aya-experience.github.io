@@ -19,3 +19,6 @@ content
 
 # Sitemap is generated
 static/sitemap.xml
+
+# Ignore generated SW
+sw.*
