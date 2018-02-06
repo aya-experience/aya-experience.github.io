@@ -1,3 +1,6 @@
+const fs = require('fs-extra')
+const path = require('path')
+
 const correspondances = {
 	UserAgent: 'User-agent',
 	CrawlDelay: 'Crawl-delay',
@@ -55,4 +58,11 @@ module.exports = function module (moduleOptions) {
 			res.end(renderedRobots)
 		}
 	})
+
+	// robots.txt is written to static dir on generate mode
+	if (!this.options.dev && this.options.generate) {
+		const robotsTxtPath = path.resolve(this.options.srcDir, path.join('static', 'robots.txt'))
+		return fs.remove(robotsTxtPath)
+			.then(() => fs.writeFile(robotsTxtPath, renderedRobots))
+	}
 }
