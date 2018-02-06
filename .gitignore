@@ -22,3 +22,6 @@ static/sitemap.xml
 
 # Ignore generated SW
 sw.*
+
+# Ignore generated robots.txt
+static/robots.txt
