@@ -1,4 +1,5 @@
 const path = require('path')
+const config = require('config')
 
 module.exports = {
 	/*
@@ -68,10 +69,14 @@ module.exports = {
 				Sitemap: 'https://aya-experience.com/sitemap.xml'
 			}
 		],
-		['@nuxtjs/pwa', { icon: false, manifest: false, onesignal: false }]
+		['@nuxtjs/pwa', { icon: false, manifest: false, onesignal: false }],
+		['~modules/cname.js', { cname: config.generateCNAME }]
 	],
 	plugins: [
 		{ src: '~plugins/vue-touch', ssr: false },
 		{ src: '~plugins/google-analytics.js', ssr: false }
-	]
+	],
+	env: {
+		baseUrl: config.baseUrl
+	}
 }

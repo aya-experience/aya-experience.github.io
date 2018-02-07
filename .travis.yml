@@ -2,13 +2,17 @@ language: node_js
 node_js:
   - "9"
 
+env:
+  global:
+    - NODE_ENV=production
+
 cache:
   directories:
     - node_modules
 
 script:
 - npm run test
-- npm run generate
+- env NODE_ENV=$TRAVIS_BRANCH npm run generate
 
 
 deploy:
