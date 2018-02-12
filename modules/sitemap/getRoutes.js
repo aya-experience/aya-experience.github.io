@@ -59,7 +59,7 @@ exports.RouteGetter = class routeGetter {
 			setTimeout(() => {
 				resolved = true
 				resolve(nuxtInstance.options.router.routes)
-			}, 1500)
+			}, 20000)
 		})
 	}
 }
