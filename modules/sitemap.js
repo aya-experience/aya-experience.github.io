@@ -38,7 +38,7 @@ module.exports = function nuxtSitemap (moduleOptions) {
 		}
 	})
 
-	return routeGetter.get(nuxtInstance, options)
+	routeGetter.get(nuxtInstance, options)
 		.then(routes => {
 			// sitemap.xml is written to static dir on generate mode
 			if (nuxtInstance.options.dev || !nuxtInstance.options.generate) {

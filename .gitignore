@@ -17,11 +17,8 @@ content
 .DS_Store
 .idea
 
-# Sitemap is generated
+# Ignore generated static files
 static/sitemap.xml
-
-# Ignore generated SW
-sw.*
-
-# Ignore generated robots.txt
 static/robots.txt
+static/sw.*
+static/CNAME
