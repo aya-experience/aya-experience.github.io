@@ -1,15 +1,26 @@
 const path = require('path')
 const fs = require('fs-extra')
+const slug = require('slug')
 
 const { getApi, Predicates } = require('prismic-javascript')
 
 const prismicURL = 'https://app-aya.prismic.io/api/v2'
 
-const workMapper = data => ({
+const workMapper = (data, index) => ({
 	id: data.id,
 	uid: data.uid,
+	slug: slug(`${data.data.client_name[0].text} + - + ${data.data.project_name[0].text}`),
 	client_name: data.data.client_name[0].text,
 	project_name: data.data.project_name[0].text,
+	// TODO: complete description in prismic.
+	description: !data.data.description[0] || data.data.description[0].text === ''
+		? `Le projet ${data.data.project_name[0].text} est en cours de réalisation par AYA, une description de cette réalisation sera disponible prochainement.`
+		: data.data.description[0].text,
+	// TODO: complete tags in prismic.
+	tags: data.tags,
+	titleColor: index % 2 === 0 ? '#FFF' : '#000',
+	bgColor: index % 2 === 0 ? '#000' : '#FFF',
+	arrowInvert: index % 2 === 0 ? 'normal' : 'inverted',
 	logo: {
 		url: data.data.logo.url,
 		dimensions: data.data.logo.dimensions
@@ -39,7 +50,9 @@ async function work () {
 		{ 'fetchLinks': [ 'skills.title', 'skills.icon' ] }
 	)
 	console.log(JSON.stringify(response, null, 2))
-	return response.results.map(workMapper)
+	return response.results.map((data, index) => {
+		return workMapper(data, index)
+	})
 }
 
 module.exports = async function prismic (outputDir) {

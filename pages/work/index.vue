@@ -7,6 +7,7 @@
 				class="work-preview"
 				@mouseenter="enter(index)"
 				@mouseleave="leave(index)"
+				@click="go(work)"
 				:style="{
 					'background-image' : background(work, index),
 					'width': workWidth(index)
@@ -175,7 +176,8 @@ export default {
 					'linear-gradient(150deg, #C54E4EE0, #000000E0 60%)',
 					'linear-gradient(150deg, #5E9848F0, #000000E0 60%)'
 				]
-			}
+			},
+			link: { title: 'Detail', path: '/detail' }
 		}
 	},
 	mounted () {
@@ -220,6 +222,9 @@ export default {
 		handleWheel (event, delta) {
 			this.$refs.container.scrollLeft += event.deltaY
 			event.preventDefault()
+		},
+		go (selectedWork) {
+			this.$router.push({ path: `/work/${selectedWork.slug}`, props: true })
 		}
 	}
 }
