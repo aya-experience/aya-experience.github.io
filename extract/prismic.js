@@ -1,17 +1,17 @@
-const path = require('path')
-const fs = require('fs-extra')
-const slug = require('slug')
+const path = require('path');
+const fs = require('fs-extra');
+const slug = require('slug');
 
-const { getApi, Predicates } = require('prismic-javascript')
+const { getApi, Predicates } = require('prismic-javascript');
 
-const prismicURL = 'https://app-aya.prismic.io/api/v2'
+const prismicURL = 'https://app-aya.prismic.io/api/v2';
 
 const workMapper = (data, index) => ({
 	id: data.id,
 	uid: data.uid,
 	slug: slug(`${data.data.client_name[0].text} + - + ${data.data.project_name[0].text}`),
-	client_name: data.data.client_name[0].text,
-	project_name: data.data.project_name[0].text,
+	clientName: data.data.client_name[0].text,
+	projectName: data.data.project_name[0].text,
 	// TODO: complete description in prismic.
 	description: !data.data.description[0] || data.data.description[0].text === ''
 		? `Le projet ${data.data.project_name[0].text} est en cours de réalisation par AYA, une description de cette réalisation sera disponible prochainement.`
@@ -33,7 +33,7 @@ const workMapper = (data, index) => ({
 			dimensions: data.skill.data.icon.dimensions
 		}
 	})),
-	menu_bg: {
+	menuBg: {
 		url: data.data.menu_bg.url,
 		dimensions: data.data.menu_bg.dimensions
 	},
@@ -41,20 +41,20 @@ const workMapper = (data, index) => ({
 		url: data.illustration.url,
 		dimensions: data.illustration.dimensions
 	}))
-})
+});
 
-async function work () {
-	const api = await getApi(prismicURL)
+async function work() {
+	const api = await getApi(prismicURL);
 	const response = await api.query(
 		Predicates.at('document.type', 'references'),
-		{ 'fetchLinks': [ 'skills.title', 'skills.icon' ] }
-	)
-	console.log(JSON.stringify(response, null, 2))
+		{ fetchLinks: ['skills.title', 'skills.icon'] }
+	);
+	console.log(JSON.stringify(response, null, 2));
 	return response.results.map((data, index) => {
-		return workMapper(data, index)
-	})
+		return workMapper(data, index);
+	});
 }
 
-module.exports = async function prismic (outputDir) {
-	await fs.writeJson(path.join(outputDir, 'work.json'), await work())
-}
+module.exports = async function (outputDir) {
+	await fs.writeJson(path.join(outputDir, 'work.json'), await work());
+};

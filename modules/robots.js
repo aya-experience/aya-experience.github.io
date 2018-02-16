@@ -1,5 +1,5 @@
-const fs = require('fs-extra')
-const path = require('path')
+const fs = require('fs-extra');
+const path = require('path');
 
 const correspondances = {
 	UserAgent: 'User-agent',
@@ -7,62 +7,68 @@ const correspondances = {
 	Disallow: 'Disallow',
 	Allow: 'Allow',
 	Sitemap: 'Sitemap'
-}
+};
 
-function render (robots) {
-	const r = (robots instanceof Array) ? robots : [robots]
-	return r.map((robot) => {
-		let rules = []
-		Object.keys(correspondances).forEach((k) => {
-			let arr = []
-			if (typeof robot[k] !== 'undefined') {
-				if (robot[k] instanceof Array) {
-					arr = robot[k].map(value => `${correspondances[k]}: ${value}`)
-				} else {
-					arr.push(`${correspondances[k]}: ${robot[k]}`)
+function render(robots) {
+	const r = robots instanceof Array ? robots : [robots];
+	return r
+		.map(robot => {
+			let rules = [];
+			Object.keys(correspondances).forEach(k => {
+				let arr = [];
+				if (typeof robot[k] !== 'undefined') {
+					if (robot[k] instanceof Array) {
+						arr = robot[k].map(value => `${correspondances[k]}: ${value}`);
+					} else {
+						arr.push(`${correspondances[k]}: ${robot[k]}`);
+					}
 				}
-			}
 
-			rules = rules.concat(arr)
+				rules = rules.concat(arr);
+			});
+
+			return rules.join('\n');
 		})
-
-		return rules.join('\n')
-	}).join('\n')
+		.join('\n');
 }
 
 const defaults = {
 	UserAgent: '*',
 	Disallow: ''
-}
+};
 
-module.exports = function module (moduleOptions) {
-	let options = null
+module.exports = function (moduleOptions) {
+	let options = null;
 	if (moduleOptions instanceof Array) {
-		options = moduleOptions
+		options = moduleOptions;
 	} else if (this.options.robots instanceof Array) {
-		options = this.options.robots
+		options = this.options.robots;
 	} else {
 		options = {
 			...defaults,
 			...this.options.robots,
 			...moduleOptions
-		}
+		};
 	}
 
-	const renderedRobots = render(options)
+	const renderedRobots = render(options);
 
 	this.addServerMiddleware({
 		path: 'robots.txt',
-		handler (req, res) {
-			res.setHeader('Content-Type', 'text/plain')
-			res.end(renderedRobots)
+		handler(req, res) {
+			res.setHeader('Content-Type', 'text/plain');
+			res.end(renderedRobots);
 		}
-	})
+	});
 
 	// robots.txt is written to static dir on generate mode
 	if (!this.options.dev && this.options.generate) {
-		const robotsTxtPath = path.resolve(this.options.srcDir, path.join('static', 'robots.txt'))
-		return fs.remove(robotsTxtPath)
-			.then(() => fs.writeFile(robotsTxtPath, renderedRobots))
+		const robotsTxtPath = path.resolve(
+			this.options.srcDir,
+			path.join('static', 'robots.txt')
+		);
+		return fs
+			.remove(robotsTxtPath)
+			.then(() => fs.writeFile(robotsTxtPath, renderedRobots));
 	}
-}
+};

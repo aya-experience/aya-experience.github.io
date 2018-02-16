@@ -1,14 +1,14 @@
 <template>
-	<main :class="{
-		dive: dive !== null,
-		hover: hover !== null
+	<main 
+		:class="{
+			dive: dive !== null,
+			hover: hover !== null
 	}">
 		<div
 			class="kanji-background"
 			ref="bg"
 			:style="{ backgroundImage: kanjiBackground }"
-		>
-		</div>
+		/>
 		<kanji/>
 		<svg class="AYA" viewBox="0 0 215 175">
 			<g transform="matrix(.5 0 0 .5 53 82)">
@@ -268,24 +268,6 @@ export default {
 			imageLoaded: {}
 		}
 	},
-	async mounted () {
-		const current = new Date().getTime()
-		const domLoading = performance.timing.domLoading
-		if (current < domLoading + 4000) { // 5s animation - error margin
-			await animationComplete(this.$refs.bg)
-		}
-		this.loaded = true
-		this.$emit('loaded')
-	},
-	methods: {
-		async loadImage (image) {
-			if (this.imageLoaded[image]) {
-				return Promise.resolve()
-			}
-			await loadImage(image)
-			this.imageLoaded[image] = true
-		}
-	},
 	watch: {
 		async hover (newVal, oldVal) {
 			if (newVal !== oldVal && this.dive === null) {
@@ -303,6 +285,24 @@ export default {
 				await animationComplete(this.$refs.bg)
 				this.$emit('dive-done')
 			}
+		}
+	},
+	async mounted () {
+		const current = new Date().getTime()
+		const domLoading = performance.timing.domLoading
+		if (current < domLoading + 4000) { // 5s animation - error margin
+			await animationComplete(this.$refs.bg)
+		}
+		this.loaded = true
+		this.$emit('loaded')
+	},
+	methods: {
+		async loadImage (image) {
+			if (this.imageLoaded[image]) {
+				return Promise.resolve()
+			}
+			await loadImage(image)
+			this.imageLoaded[image] = true
 		}
 	}
 }

@@ -4,9 +4,10 @@
 		<div class="work-container" :style="{ width: containerWidth }">
 			<a
 				v-for="(work, index) in works"
+				:key="index"
 				class="work-preview"
 				@mouseenter="enter(index)"
-				@mouseleave="leave(index)"
+				@mouseleave="leave()"
 				@click="go(work)"
 				:style="{
 					'background-image' : background(work, index),
@@ -20,7 +21,7 @@
 					<h2>{{ work.project_name }}</h2>
 					<div class="skills-container">
 						<ul>
-							<li v-for="skill in work.skills">
+							<li v-for="skill in work.skills" :key="skill">
 								<img :src="skill.icon.url">
 								{{ skill.title }}
 							</li>
@@ -181,17 +182,17 @@ export default {
 			link: { title: 'Detail', path: '/detail' }
 		}
 	},
-	mounted () {
-		this.$refs.container.addEventListener('mousewheel', this.handleWheel)
-	},
-	beforeDestroy () {
-		this.$refs.container.removeEventListener('mousewheel', this.handleWheel)
-	},
 	computed: {
 		containerWidth () {
 			const width = isMobile() ? 50 : 20
 			return `${this.works.length * width}vw`
 		}
+	},
+	mounted () {
+		this.$refs.container.addEventListener('mousewheel', this.handleWheel)
+	},
+	beforeDestroy () {
+		this.$refs.container.removeEventListener('mousewheel', this.handleWheel)
 	},
 	methods: {
 		workWidth (index) {
@@ -201,7 +202,7 @@ export default {
 			return `${width}vw`
 		},
 		background (work, index) {
-			const image = `url(${work.menu_bg.url})`
+			const image = `url(${work.menuBg.url})`
 			const gradient =
 				this.hoverIndex === index
 					? this.activeGradient(index)
@@ -217,10 +218,10 @@ export default {
 		enter (index) {
 			this.hoverIndex = index
 		},
-		leave (index) {
+		leave () {
 			this.hoverIndex = null
 		},
-		handleWheel (event, delta) {
+		handleWheel (event) {
 			this.$refs.container.scrollLeft += event.deltaY
 			event.preventDefault()
 		},

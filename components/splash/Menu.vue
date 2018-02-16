@@ -1,6 +1,9 @@
 <template>
 	<nav>
-		<a v-for="(link, index) of links" class="link"
+		<a 
+			v-for="(link, index) of links"
+			:key="index"
+			class="link"
 			:style="{ marginLeft: curvMargin(index) }"
 			@mouseenter="enter(link)"
 			@mouseout="leave"
