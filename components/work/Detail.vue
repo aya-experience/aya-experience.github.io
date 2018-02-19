@@ -1,11 +1,11 @@
 <template>
 	<div>
 		<div class="flex-header">
-			<h1 :style="{ color: titleColor }"
+			<h2 :style="{ color: titleColor }"
 				class="name-company flex-header-item"
 			>
 				{{ work.client_name }}
-			</h1>
+			</h2>
 			<img class="img-company flex-header-item" :src="work.logo.url">
 		</div>
 		<div class="wrapper">
@@ -80,6 +80,7 @@
 	opacity: 0.4;
 	max-width: 60%;
 	max-height: auto;
+	cursor: pointer;
 }
 
 @media all and (max-width: 800px) {
@@ -104,8 +105,7 @@ export default {
 	},
 	methods: {
 		displayWork () {
-			// Display work features not for this Sprint
-			// this.$emit('clickImage')
+			this.$emit('clickImage')
 		}
 	}
 }

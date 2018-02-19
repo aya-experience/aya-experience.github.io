@@ -50,6 +50,7 @@
 	display: flex;
 	flex-direction: row;
 	color: white;
+	cursor: pointer;
 }
 
 a.work-preview {
