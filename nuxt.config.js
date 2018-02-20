@@ -1,6 +1,8 @@
 const path = require('path');
 const config = require('config');
 
+const works = require('./content/work.json');
+
 module.exports = {
 	/*
 	** Headers of the page
@@ -82,17 +84,21 @@ module.exports = {
 		vendor: ['vue-touch']
 	},
 	modules: [
-		'~modules/sitemap.js',
-		[
-			'~modules/robots.js',
-			{
-				UserAgent: '*',
-				Disallow: '',
-				Sitemap: 'https://aya-experience.com/sitemap.xml'
-			}
-		],
+		['nuxt-seo-module', {
+			sitemap: [{
+				routes: works.map(work => ({
+					url: `/work/${work.slug}`,
+					img: work.illustrations.map(illustration => ({
+						url: illustration.url,
+						caption: work.description,
+						title: `${work.clientName} - ${work.projectName} - Une réalisation AYA <créative experience>`
+					}))
+				}))
+			}],
+			robots: true
+		}],
 		['@nuxtjs/pwa', { icon: false, manifest: false, onesignal: false }],
-		['~modules/cname.js', { cname: config.generateCNAME }]
+		['nuxt-cname-module', { cname: config.generateCNAME }]
 	],
 	plugins: [
 		{ src: '~plugins/vue-touch', ssr: false },
