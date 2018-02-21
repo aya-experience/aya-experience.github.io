@@ -1,10 +1,11 @@
 <template>
 	<div>
 		<div class="flex-header">
-			<h2 :style="{ color: titleColor }"
+			<h2 
+				:style="{ color: titleColor }"
 				class="name-company flex-header-item"
 			>
-				{{ work.client_name }}
+				{{ work.clientName }}
 			</h2>
 			<img class="img-company flex-header-item" :src="work.logo.url">
 		</div>
@@ -12,12 +13,12 @@
 			<div class="aside aside-1">
 				<p>{{ work.description }}</p>
 				<ul>
-					<li v-for="tag in work.tags">
+					<li v-for="tag in work.tags" :key="tag">
 						{{ tag }}
 					</li>
 				</ul>
 			</div>
-			<img class="aside aside-2" @click="displayWork" :src="work.menu_bg.url">
+			<img class="aside aside-2" @click="displayWork" :src="work.menuBg.url">
 		</div>
 	</div>
 </template>

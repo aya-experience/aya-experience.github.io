@@ -30,17 +30,17 @@ import ByZenika from '~/components/splash/ByZenika.vue'
 import isMobile from '~/utils/test-mobile'
 
 export default {
+	components: {
+		'aya-logo': Logo,
+		'aya-menu': Menu,
+		'aya-znk': ByZenika
+	},
 	data () {
 		return {
 			isLoaded: false,
 			hover: null,
 			dive: null
 		}
-	},
-	components: {
-		'aya-logo': Logo,
-		'aya-menu': Menu,
-		'aya-znk': ByZenika
 	},
 	methods: {
 		loaded () {

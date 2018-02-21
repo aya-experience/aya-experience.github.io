@@ -1,30 +1,26 @@
 <template>
 	<div class="container" :style="{ backgroundColor: work.bgColor }">
-		<work-bg v-show="showBgCompany"
+		<work-bg 
+			v-show="showBgCompany"
 			@hideWork="hideWork"
-			:menuBg="work.menu_bg.url"
-			:projectName="work.project_name"
-			:bgColor="work.bgColor">
-		</work-bg>
+			:menuBg="work.menuBg.url"
+			:projectName="work.projectName"
+			:bgColor="work.bgColor"
+		/>
 		
 		<div v-show="!showBgCompany">
-			<work-detail @clickImage="displayWork" :work="work" :titleColor="work.titleColor" ></work-detail>
+			<work-detail @clickImage="displayWork" :work="work" :titleColor="work.titleColor" />
 			<div class="other-company">
 				<nuxt-link class="link" v-show="!prevButtonHide" :to="go(-1)">
-					<img src="~/assets/icons/arrow.svg"
-						class="reversed-arrow"
-						:class="work.arrowInvert"
-					>
+					<img src="~/assets/icons/arrow.svg" class="reversed-arrow" :class="work.arrowInvert">
 				</nuxt-link>
 				<p :style="{ color: work.titleColor }">OTHER COMPANY</p>
 				<nuxt-link class="link" v-show="!nextButtonHide" :to="go(1)">
-					<img src="~/assets/icons/arrow.svg"
-						:class="work.arrowInvert"
-					>
+					<img src="~/assets/icons/arrow.svg" :class="work.arrowInvert">
 				</nuxt-link>
 			</div>
 		</div>
-    </div>
+	</div>
 </template>
 
 <style scoped>
@@ -112,6 +108,17 @@ export default {
 			showBgCompany: false
 		}
 	},
+	computed: {
+		work () {
+			const currentWork = works.findIndex((item) => { return item.slug === this.$route.params.slug })
+			return works[currentWork]
+		}
+	},
+	created () {
+		const currentWork = works.findIndex((item) => { return item.slug === this.$route.params.slug })
+		this.nextButtonHide = currentWork === (works.length - 1)
+		this.prevButtonHide = currentWork === 0
+	},
 	methods: {
 		go (direction) {
 			if (this.prevButtonHide && direction < 0) { return '' }
@@ -126,14 +133,6 @@ export default {
 
 		hideWork () {
 			this.showBgCompany = false
-		}
-	},
-	computed: {
-		work () {
-			const currentWork = works.findIndex((item) => { return item.slug === this.$route.params.slug })
-			this.nextButtonHide = currentWork === (works.length - 1)
-			this.prevButtonHide = currentWork === 0
-			return works[currentWork]
 		}
 	}
 }

@@ -2,7 +2,7 @@
 	<nuxt-link to="/">
 		<span>&lt;</span>
 		<aya-kanji size="50px"/>
-		<div class="back"></div>
+		<div class="back"/>
 	</nuxt-link>
 </template>
 
