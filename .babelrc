@@ -5,6 +5,9 @@
         {
           "targets": {
             "node": 9
+          },
+          "test": {
+            "plugins": ["rewire"]
           }
         }
       ]

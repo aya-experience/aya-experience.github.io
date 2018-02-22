@@ -37,11 +37,11 @@ h2 {
 </style>
 
 <script>
-import BackButton from '~/components/BackButton.vue'
-import Kanji from '~/components/Kanji.vue'
-import Social from '~/components/contact/Social.vue'
-import Other from '~/components/contact/Other.vue'
-import MentionsButton from '~/components/MentionsButton.vue'
+import BackButton from '~/components/BackButton.vue';
+import Kanji from '~/components/Kanji.vue';
+import Social from '~/components/contact/Social.vue';
+import Other from '~/components/contact/Other.vue';
+import MentionsButton from '~/components/MentionsButton.vue';
 
 
 export default {
@@ -52,5 +52,5 @@ export default {
 		'aya-other': Other,
 		'mentions-link': MentionsButton
 	}
-}
+};
 </script>
