@@ -41,9 +41,9 @@ p {
 </style>
 
 <script>
-import Kanji from '~/components/Kanji'
+import Kanji from '~/components/Kanji';
 
-import isMobile from '~/utils/test-mobile'
+import isMobile from '~/utils/test-mobile';
 
 export default {
 	components: {
@@ -52,5 +52,5 @@ export default {
 	methods: {
 		isMobile
 	}
-}
+};
 </script>

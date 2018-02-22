@@ -1,17 +1,22 @@
 <template>
-	<main 
+	<main
 		:class="{
 			dive: dive !== null,
 			hover: hover !== null
 	}">
 		<div
-			class="kanji-background"
-			ref="bg"
-			:style="{ backgroundImage: kanjiBackground }"
-		/>
-		<kanji/>
-		<svg class="AYA" viewBox="0 0 215 175">
-			<g transform="matrix(.5 0 0 .5 53 82)">
+			class="splash-background"
+			:style="{
+				backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/photos/nasa-89125.jpg')`
+			}"
+		>
+			<slot/>
+		</div>
+		
+		<Kanji class="kanji" ref="bg"/>
+	
+		<svg class="AYA" viewBox="28 48 155 115">
+			<g transform="matrix(.5 0 0 .5 53 52)">
 				<!-- /\ du premier A -->
 				<path class="line a-main" d="M 0,90 38,0 76,90"/>
 				<!-- - du premier A -->
@@ -26,8 +31,11 @@
 				<path class="line a-main" d="M 209,90 172,0 135,90"/>
 				<!-- - du second A -->
 				<path class="line a-bar" d="M 197,60 148,60"/>
-				<text x="112" y="135">
-					code & design
+				<text x="25" y="148">
+					&lt; CODE &nbsp;
+				</text>
+				<text x="118" y="148">
+					&nbsp; DESIGN &gt;
 				</text>
 			</g>
 		</svg>
@@ -40,64 +48,51 @@ main {
 	width: 100vw;
 }
 
-.dive .kanji-background {
-	transition-property: top, left, height, width;
-	transition-duration: 0.5s;
-	transition-timing-function: ease;
+.dive main {
+	animation-name: zoomin;
+	animation-duration: 2s;
+	animation-timing-function: ease-in;
 }
 
-.dive .kanji-background {
-	top: 0;
-	left: 0;
-	height: 100%;
-	width: 100%;
-}
-
-.kanji-background {
-	position: absolute;
-	top: calc(10.5vh);
-	left: calc(50vw - 39.5vh);
-	height: calc(79vh);
-	width: calc(79vh);
-	background-color: white;
-	background-size: cover;
+.splash-background {
+	height: 100vh;
+	width: 100vw;
 	background-position: center;
-	opacity: .5;
+	background-size: cover;
 }
 
-.loading .kanji-background {
-	animation-name: appear;
-	animation-duration: 3s;
-	animation-timing-function: linear;
-}
-
-.hover .kanji-background {
-	animation-name: kanji-image;
-	animation-duration: 1s;
+.loading .splash-background {
+	animation-name: background-appear;
+	animation-duration: 4s;
 	animation-timing-function: ease;
-	opacity: 1;
 }
 
-.dive .kanji-background {
-	animation-name: kanji-background-dive;
+.dive .splash-background {
+	animation-name: background-disappear;
 	animation-duration: 2s;
 	animation-timing-function: ease;
-	animation-fill-mode: forwards;
 }
 
->>> .kanji {
+.kanji {
 	position: absolute;
-	top: 10vh;
-	left: calc(50vw - 40vh);
-	height: 80vh;
-	width: 80vh;
-	fill: black;
+	top: calc(45vh);
+	left: calc(50% - (28vh / 2));
+	height: calc(30vh);
+	width: calc(30vh);
+	transform: scale(0.60);
+	z-index: 1;
 }
 
-.dive >>> .kanji {
+.loading .kanji {
+	animation-name: kanji-reduce;
+	animation-duration: 4s;
+	animation-timing-function: cubic-bezier(0.1, 0.5, 0.6, 0.1);
+}
+
+.dive .kanji {
 	animation-name: kanji-dive;
 	animation-duration: 2s;
-	animation-timing-function: ease;
+	animation-timing-function: ease-in;
 }
 
 .AYA {
@@ -110,31 +105,26 @@ main {
 	transition: opacity 1s ease;
 }
 
-.hover .AYA {
-	opacity: 0.2;
-}
-
 .dive .AYA {
 	opacity: 0;
 }
 
 .AYA text {
-	fill: #EBB815;
-	font-family: sans-serif;
-	font-size: 18px;
+	fill: white;
+	font-size: 16px;
 	font-weight: 100;
-	text-anchor: middle;
+	letter-spacing: 1px;
 	animation-name: text;
-	animation-duration: 3s;
+	animation-duration: 6s;
 	animation-timing-function: linear;
 	animation-fill-mode: both;
 }
 
 .AYA .line {
-	stroke: #EBB815;
-	stroke-width: 2;
+	stroke: white;
+	stroke-width: 1.5;
 	stroke-linejoin: bevel;
-	animation-duration: 3s;
+	animation-duration: 5s;
 	animation-timing-function: linear;
 	animation-fill-mode: both;
 }
@@ -143,26 +133,17 @@ main {
 	animation-name: a-main;
 	stroke-dasharray: 200px;
 }
-
 .a-bar {
 	animation-name: a-bar;
 	stroke-dasharray: 60px;
 }
-
 .y-bar {
 	animation-name: y-bar;
 	stroke-dasharray: 60px;
 }
-
 .y-bar-center {
 	animation-name: y-bar-center;
 	stroke-dasharray: 60px;
-}
-
-@keyframes appear {
-	0% { opacity: 0; }
-	50% { opacity: 1; }
-	100% { opacity: 0.5; }
 }
 
 @keyframes a-main {
@@ -197,56 +178,65 @@ main {
 	100% { opacity: 1 }
 }
 
-@keyframes kanji-image {
-	0% {  background-image: none; opacity: 0.5 }
-	30% { opacity: 0 }
+@keyframes background-appear {
+	0% { opacity: 0 }
+	80% { opacity: 0 }
 	100% { opacity: 1 }
+}
+
+@keyframes background-disappear {
+	0% { opacity: 1 }
+	20% { opacity: 1 }
+	100% { opacity: 0 }
+}
+
+@keyframes zoomin {
+  0% {
+		transform: scale(1);
+	}
+  100% {
+		transform: scale(100);
+	}
+}
+
+@keyframes kanji-reduce {
+	0% {
+		opacity: 0.1;
+		transform: scale(3);
+	}
+	80% {
+		opacity: 1;
+		transform: scale(0.50);
+	}
+	100% {
+		opacity: 1;
+		transform: scale(0.50);
+	}
 }
 
 @keyframes kanji-dive {
 	0% {
-		top: 10vh;
-		left: calc(50vw - 40vh);
-		height: 80vh;
-		width: 80vh;
+		top: calc(44vh);
+		left: calc(50% - (28.2vh / 2));
+		height: calc(30vh);
+		width: calc(30vh);
+		transform: scale(0.60);
 	}
 	100% {
-		top: -1000vh;
-		left: calc(50vw - 4720vh);
-		height: 10000vh;
-		width: 10000vh;
-	}
-}
-
-@keyframes kanji-background-dive {
-	0% {
-		top: calc(10.5vh);
-		left: calc(50vw - 39.5vh);
-		height: calc(79vh);
-		width: calc(79vh);
-		opacity: 1;
-	}
-	25% {
-		top: 0;
-		left: 0;
-		height: 100%;
-		width: 100%;
-		opacity: 1;
-	}
-	70% {
-		opacity: 1;
-	}
-	100% {
-		opacity: 0;
+		top: calc(950vh);
+		left: calc(295vh);
+		height: calc(30vh);
+		width: calc(30vh);
+		transform: scale(90);
 	}
 }
 </style>
 
 <script>
-import animationComplete from '~/utils/animation-complete'
-import loadImage from '~/utils/load-image'
+import animationComplete from '~/utils/animation-complete';
+import loadImage from '~/utils/load-image';
 
-import Kanji from '~/components/KanjiMask.vue'
+import Kanji from '~/components/Logo.vue';
 
 export default {
 	components: {
@@ -266,44 +256,34 @@ export default {
 		return {
 			kanjiBackground: 'none',
 			imageLoaded: {}
-		}
+		};
 	},
 	watch: {
 		async hover (newVal, oldVal) {
 			if (newVal !== oldVal && this.dive === null) {
-				console.log('hover watch', newVal)
 				if (newVal === null) {
-					this.kanjiBackground = 'none'
+					this.kanjiBackground = 'none';
 				} else {
-					await this.loadImage(newVal.image)
-					this.kanjiBackground = `url("${newVal.image}")`
+					await this.loadImage(newVal.image);
+					this.kanjiBackground = `url("${newVal.image}")`;
 				}
 			}
 		},
 		async dive (newVal, oldVal) {
 			if (newVal !== oldVal && newVal !== null) {
-				await animationComplete(this.$refs.bg)
-				this.$emit('dive-done')
+				await animationComplete(this.$refs.bg);
+				this.$emit('dive-done');
 			}
 		}
-	},
-	async mounted () {
-		const current = new Date().getTime()
-		const domLoading = performance.timing.domLoading
-		if (current < domLoading + 4000) { // 5s animation - error margin
-			await animationComplete(this.$refs.bg)
-		}
-		this.loaded = true
-		this.$emit('loaded')
 	},
 	methods: {
 		async loadImage (image) {
 			if (this.imageLoaded[image]) {
-				return Promise.resolve()
+				return Promise.resolve();
 			}
-			await loadImage(image)
-			this.imageLoaded[image] = true
+			await loadImage(image);
+			this.imageLoaded[image] = true;
 		}
 	}
-}
+};
 </script>

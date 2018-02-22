@@ -8,6 +8,9 @@
 # install dependencies
 $ npm install # Or yarn install
 
+# post-installation
+$ npm run extract
+
 # serve with hot reload at localhost:3000
 $ npm run dev
 
