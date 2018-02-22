@@ -1,16 +1,16 @@
 <template>
 	<div>
-		<div class="flex-header">
-			<h2 
-				:style="{ color: titleColor }"
-				class="name-company flex-header-item"
-			>
-				{{ work.clientName }}
-			</h2>
-			<img class="img-company flex-header-item" :src="work.logo.url">
-		</div>
 		<div class="wrapper">
 			<div class="aside aside-1">
+				<div class="flex-header">
+					<img class="img-company flex-header-item" :src="work.logo.url">
+					<h2 :style="{ color: work.titleColor }" class="name-company flex-header-item">
+						{{ work.clientName }}
+					</h2>
+					<h1 :style="{ color: work.titleColor }" class="project-name flex-header-item">
+						{{ work.projectName }}
+					</h1>
+				</div>
 				<p>{{ work.description }}</p>
 				<ul>
 					<li v-for="tag in work.tags" :key="tag">
@@ -18,7 +18,7 @@
 					</li>
 				</ul>
 			</div>
-			<img class="aside aside-2" @click="displayWork" :src="work.menuBg.url">
+			<img class="aside aside-2" :src="work.menuBg.url">
 		</div>
 	</div>
 </template>
@@ -26,49 +26,55 @@
 <style scoped>
 .flex-header {
 	display: flex;
-	justify-content: space-between;
-	align-items: center;
+	flex-direction: column;
+	align-items: flex-start;
 	margin-bottom: 3vh;
-	margin-left: 5vw;
+	margin-left: 0;
 	margin-right: 5vw;
-}
-
-.flex-header-item {
-	margin-top: 5vh;
 }
 
 .flex-header img {
 	width: auto;
 	height: auto;
 	max-height: 10vh;
-	max-width: 40vw;
+	max-width: 25vw;
+	filter: invert(100%);
 }
 
 .name-company {
-	color: #EFEFEF;
 	font-family: Lato;
 	font-size: 4rem;
 	font-weight: bold;
 	margin-bottom: 0;
+	line-height: 5vh;
+}
+
+.project-name {
+	font-family: Lato;
+	font-size: 3rem;
+	font-weight: bold;
+	margin-bottom: 0;
+	line-height: 5vh;
 }
 
 .wrapper {
-	margin-left: 5vw;
-	margin-right: 5vw;
-	display: flex;  
+	display: flex;
 	flex-flow: row wrap;
 	text-align: center;
-	background-color: rgba(19,11,41,0.8);
 	font-family: Lato;
 	font-size: 2rem;
 	line-height: 2.5rem;
-	max-height: 70vh;
+	max-height: 100vh;
+	color: black;
+	overflow: auto;
+	justify-content: space-between;
 }
 
 .aside-1 {
-	max-width: 40%;
+	max-width: 30%;
 	text-align: left;
 	padding: 10px 30px 0 30px;
+	margin-top: 13vh;
 }
 
 .aside-1 ul {
@@ -78,16 +84,18 @@
 }
 .aside-2 {
 	object-fit: cover;
-	opacity: 0.4;
-	max-width: 60%;
+	max-width: 70%;
 	max-height: auto;
-	cursor: pointer;
+	width: 100%;
+	height: auto;
+	box-shadow: 0 5px 20px;
 }
 
 @media all and (max-width: 800px) {
 	.aside { max-width: 100%; }
 	.aside-2 { max-height: 40vh; width: 100%; }
 	.wrapper { max-height: 200vh; }
+	.adjustable { order: 0; }
 }
 
 </style>
@@ -98,15 +106,6 @@ export default {
 		work: {
 			type: Object,
 			required: true
-		},
-		titleColor: {
-			type: String,
-			required: true
-		}
-	},
-	methods: {
-		displayWork () {
-			this.$emit('clickImage')
 		}
 	}
 }

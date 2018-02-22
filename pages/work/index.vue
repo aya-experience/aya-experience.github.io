@@ -24,7 +24,7 @@
 							<div class="skills-container">
 								<ul>
 									<li v-for="(skill, index) in work.skills" :key="index">
-										{{ skill.title }}
+										{{ skill.title }}
 									</li>
 								</ul>
 							</div>

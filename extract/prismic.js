@@ -18,9 +18,10 @@ const workMapper = (data, index) => ({
 		: data.data.description[0].text,
 	// TODO: complete tags in prismic.
 	tags: data.tags,
-	titleColor: index % 2 === 0 ? '#FFF' : '#000',
-	bgColor: index % 2 === 0 ? '#000' : '#FFF',
-	arrowInvert: index % 2 === 0 ? 'normal' : 'inverted',
+	titleColor: '#000',
+	bgColor: '#FFF',
+	arrowInvert: 'inverted',
+	orientation: index % 2 === 0,
 	logo: {
 		url: data.data.logo.url,
 		dimensions: data.data.logo.dimensions
