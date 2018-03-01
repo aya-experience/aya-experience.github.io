@@ -16,10 +16,11 @@
   },
   "dependencies": {
     "@nuxtjs/pwa": "^2.0.5",
-    "@nuxtjs/sitemap": "0.0.3",
     "config": "^1.29.4",
     "fs-extra": "^5.0.0",
     "nuxt": "^1.1.1",
+    "nuxt-cname-module": "^1.0.0",
+    "nuxt-seo-module": "^1.0.0-alpha.2",
     "prismic-javascript": "^1.4.0",
     "slug": "^0.9.1",
     "vue-touch": "^2.0.0-beta.4"
