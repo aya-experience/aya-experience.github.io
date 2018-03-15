@@ -26,6 +26,7 @@ module.exports = {
 		'capitalized-comments': 'off',
 		'no-irregular-whitespace': 'off',
 		'max-statements-per-line': ["error", { "max": 2 }],
+		"no-mixed-spaces-and-tabs": 'error',
 		'vue/no-unused-vars': 'error',
 		'vue/valid-v-on': 'error',
 		'vue/valid-template-root': 'error',

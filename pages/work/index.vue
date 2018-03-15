@@ -49,8 +49,8 @@
 <style scoped>
 
 .slider {
-	 display: flex;
-	 justify-content: space-around;
+	display: flex;
+	justify-content: space-around;
 }
 
 input[type=range] {
