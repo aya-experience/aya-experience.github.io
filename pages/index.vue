@@ -10,6 +10,7 @@
 		<aya-logo :hover="hover" :dive="dive" @loaded="loaded" @dive-done="diveEnd"/>
 		<aya-menu @enter="enter" @leave="leave" @go="diveStart"/>
 		<aya-znk/>
+		<mentions-link/>
 	</section>
 </template>
 
@@ -26,6 +27,7 @@ section.container {
 import Logo from '~/components/splash/Logo.vue'
 import Menu from '~/components/splash/Menu.vue'
 import ByZenika from '~/components/splash/ByZenika.vue'
+import MentionsButton from '~/components/MentionsButton.vue'
 
 import isMobile from '~/utils/test-mobile'
 
@@ -33,7 +35,8 @@ export default {
 	components: {
 		'aya-logo': Logo,
 		'aya-menu': Menu,
-		'aya-znk': ByZenika
+		'aya-znk': ByZenika,
+		'mentions-link': MentionsButton
 	},
 	data () {
 		return {

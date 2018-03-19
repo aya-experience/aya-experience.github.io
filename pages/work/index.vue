@@ -1,6 +1,7 @@
 <template>
 	<div class="container" ref="container">
 		<aya-back/>
+		<mentions-link/>
 		<div class="work-container" :style="{ width: containerWidth }">
 			<no-ssr>
 				<v-touch class="work-container" :style="{ width: containerWidth }" @swipe="onSwipe">
@@ -300,6 +301,8 @@ a.work-preview div.skills-container img {
 import works from '~/content/work.json'
 
 import BackButton from '~/components/BackButton'
+import MentionsButton from '~/components/MentionsButton'
+
 
 import isMobile from '~/utils/test-mobile'
 
@@ -309,7 +312,8 @@ const RIGHT_PAD = 39
 
 export default {
 	components: {
-		'aya-back': BackButton
+		'aya-back': BackButton,
+		'mentions-link': MentionsButton,
 	},
 	data () {
 		return {
