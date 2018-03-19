@@ -1,24 +1,14 @@
 <template>
 	<div class="container" :style="{ backgroundColor: work.bgColor }">
-		<work-bg 
-			v-show="showBgCompany"
-			@hideWork="hideWork"
-			:menuBg="work.menuBg.url"
-			:projectName="work.projectName"
-			:bgColor="work.bgColor"
-		/>
-		
-		<div v-show="!showBgCompany">
-			<work-detail @clickImage="displayWork" :work="work" :titleColor="work.titleColor" />
-			<div class="other-company">
-				<nuxt-link class="link" v-show="!prevButtonHide" :to="go(-1)">
-					<img src="~/assets/icons/arrow.svg" class="reversed-arrow" :class="work.arrowInvert">
-				</nuxt-link>
-				<p :style="{ color: work.titleColor }">OTHER COMPANY</p>
-				<nuxt-link class="link" v-show="!nextButtonHide" :to="go(1)">
-					<img src="~/assets/icons/arrow.svg" :class="work.arrowInvert">
-				</nuxt-link>
-			</div>
+		<aya-back page="/work"/>
+		<work-detail :work="work"/>
+		<div class="other-company">
+			<nuxt-link class="link" v-show="!prevButtonHide" :to="go(-1)">
+				<img src="~/assets/icons/arrow.svg">
+			</nuxt-link>
+			<nuxt-link class="link" v-show="!nextButtonHide" :to="go(1)">
+				<img src="~/assets/icons/arrow.svg" class="reversed-arrow">
+			</nuxt-link>
 		</div>
 	</div>
 </template>
@@ -33,11 +23,11 @@
 
 .other-company {
 	display: flex;
-	margin-right: 9vh;
-	margin-top: 2vh;
 	justify-content: flex-end;
-	font-size: 1.5rem;
 	align-items: flex-start;
+	position: fixed;
+	bottom: 2vh;
+	right: 72vw;
 }
 
 .reversed-arrow {
@@ -60,7 +50,7 @@ normal {
 
 .container {
 	transition: all .6s cubic-bezier(.55,0,.1,1);
-	min-height: 140vh;
+	min-height: 100vh;
 }
 	
 /* Slide animation */
@@ -87,19 +77,19 @@ normal {
 <script>
 import works from '~/content/work.json'
 import Detail from '~/components/work/Detail'
-import DetailBackground from '~/components/work/DetailBackground'
+import BackButton from '~/components/BackButton.vue'
 
 export default {
 	// Transition can be slide right/left depending the direction
 	transition (to, from) {
-		if (!from || from.params.slug === undefined) return ''
-		const toIndex = works.findIndex((item) => { return item.slug === to.params.slug })
-		const fromIndex = works.findIndex((item) => { return item.slug === from.params.slug })
-		return toIndex < fromIndex ? 'slide-right' : 'slide-left'
+		if (!from || from.params.slug === undefined) return '';
+		const toIndex = works.findIndex((item) => { return item.slug === to.params.slug });
+		const fromIndex = works.findIndex((item) => { return item.slug === from.params.slug });
+		return toIndex < fromIndex ? 'slide-right' : 'slide-left';
 	},
 	components: {
 		'work-detail': Detail,
-		'work-bg': DetailBackground
+		'aya-back' : BackButton
 	},
 	data () {
 		return {
@@ -110,29 +100,22 @@ export default {
 	},
 	computed: {
 		work () {
-			const currentWork = works.findIndex((item) => { return item.slug === this.$route.params.slug })
-			return works[currentWork]
+			const currentWork = works.findIndex(item => item.slug === this.$route.params.slug);
+			return works[currentWork];
 		}
 	},
 	created () {
-		const currentWork = works.findIndex((item) => { return item.slug === this.$route.params.slug })
-		this.nextButtonHide = currentWork === (works.length - 1)
-		this.prevButtonHide = currentWork === 0
+		const currentWork = works.findIndex(item => item.slug === this.$route.params.slug);
+		this.nextButtonHide = currentWork === (works.length - 1);
+		this.prevButtonHide = currentWork === 0;
 	},
 	methods: {
 		go (direction) {
-			if (this.prevButtonHide && direction < 0) { return '' }
-			if (this.nextButtonHide && direction > 0) { return '' }
-			const newWorkIndex = works.findIndex((item) => { return item.slug === this.work.slug }) + direction
-			const newWork = works[newWorkIndex]
-			return `/work/${newWork.slug}`
-		},
-		displayWork () {
-			this.showBgCompany = true
-		},
-
-		hideWork () {
-			this.showBgCompany = false
+			if (this.prevButtonHide && direction < 0) { return '' };
+			if (this.nextButtonHide && direction > 0) { return '' };
+			const newWorkIndex = works.findIndex(item => item.slug === this.work.slug) + direction;
+			const newWork = works[newWorkIndex];
+			return `/work/${newWork.slug}`;
 		}
 	}
 }
