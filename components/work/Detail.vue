@@ -4,9 +4,6 @@
 			<div class="aside aside-1">
 				<div class="flex-header">
 					<img class="img-company flex-header-item" :src="work.logo.url">
-					<h2 :style="{ color: work.titleColor }" class="name-company flex-header-item">
-						{{ work.clientName }}
-					</h2>
 					<h1 :style="{ color: work.titleColor }" class="project-name flex-header-item">
 						{{ work.projectName }}
 					</h1>

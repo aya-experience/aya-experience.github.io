@@ -2,14 +2,14 @@
 	<div class="container" :style="{ backgroundColor: work.bgColor }">
 		<aya-back page="/work"/>
 		<work-detail :work="work"/>
-		<div class="other-company">
+		<!--<div class="other-company">
 			<nuxt-link class="link" v-show="!prevButtonHide" :to="go(-1)">
 				<img src="~/assets/icons/arrow.svg">
 			</nuxt-link>
 			<nuxt-link class="link" v-show="!nextButtonHide" :to="go(1)">
 				<img src="~/assets/icons/arrow.svg" class="reversed-arrow">
 			</nuxt-link>
-		</div>
+		</div>-->
 	</div>
 </template>
 
