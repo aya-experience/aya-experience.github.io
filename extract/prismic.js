@@ -12,11 +12,9 @@ const workMapper = (data, index) => ({
 	slug: slug(`${data.data.client_name[0].text} + - + ${data.data.project_name[0].text}`),
 	clientName: data.data.client_name[0].text,
 	projectName: data.data.project_name[0].text,
-	// TODO: complete description in prismic.
 	description: !data.data.description[0] || data.data.description[0].text === ''
 		? `Le projet ${data.data.project_name[0].text} est en cours de réalisation par AYA, une description de cette réalisation sera disponible prochainement.`
 		: data.data.description[0].text,
-	// TODO: complete tags in prismic.
 	tags: data.tags,
 	titleColor: '#000',
 	bgColor: '#FFF',
