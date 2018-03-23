@@ -9,19 +9,20 @@
 						v-for="(work, index) in works"
 						:key="index"
 						class="work-preview"
-						:class="{'work-preview-active': hoverIndex === index && !isMobile}"
 						@click="go(work)"
+						@mouseenter="enter(index)"
+						@mouseleave="leave()"
+						@keyup.left.prevent="handleKeyup"
 						:style="{
 							'background-image' : background(work, index),
 							'width': workWidth(index)
 						}"
 					>
-						<div class="work-title" :class="{'work-title-active': hoverIndex === index && !isMobile }">
+						<div class="work-title">
 							<div class="client-logo-container">
 								<img :src="work.logo.url">
-								{{ work.projectName }}
+								<h1>{{ work.projectName }}</h1>
 							</div>
-							<h2>{{ work.project_name }}</h2>
 							<div class="skills-container">
 								<ul>
 									<li v-for="(skill, index) in work.skills" :key="index">
@@ -194,7 +195,7 @@ a.work-preview {
 	align-items: center;
 }
 
-a.work-preview-active {
+a.work-preview:hover {
 	background-size: auto 100%;
 }
 
@@ -214,18 +215,14 @@ a.work-preview .work-title {
 	align-items: center;
 }
 
-a.work-preview .work-title h1,
-a.work-preview .work-title h2 {
+a.work-preview .work-title h1{
 	font-weight: normal;
 	transition: all 0.2s ease;
-}
-
-a.work-preview .work-title-active h1 {
-	font-size: 3rem;
-}
-
-a.work-preview .work-title-active h2 {
 	font-size: 2rem;
+}
+
+a.work-preview .work-title:hover h1 {
+	font-size: 3rem;
 }
 
 div.client-logo-container {
@@ -248,12 +245,12 @@ a.work-preview .client-logo-container img {
 	transition: all 0.2s ease;
 }
 
-a.work-preview-active div.client-logo-container {
+a.work-preview:hover div.client-logo-container {
 	width: 30vh;
 	height: 30vh;
 }
 
-a.work-preview-active .client-logo-container img {
+a.work-preview:hover .client-logo-container img {
 	max-width: 30vh;
 	max-height: 30vh;
 }
@@ -262,6 +259,7 @@ div.skills-container {
 	height: 15vh;
 	text-align: left;
 	position: relative;
+	margin-top: 5vh;
 }
 
 div.skills-container ul {
@@ -274,7 +272,7 @@ div.skills-container ul {
 	transition: all 0.5s ease;
 }
 
-a.work-preview-active div.skills-container ul {
+a.work-preview:hover div.skills-container ul {
 	top: 0;
 	opacity: 1;
 }
@@ -336,123 +334,117 @@ export default {
 	},
 	computed: {
 		containerWidth () {
-			const width = isMobile() ? 90 : 20
+			const width = isMobile() ? 100 : 20;
 			
-			return `${this.works.length * width}vw`
+			return `${this.works.length * width}vw`;
 		},
 		workWidthPx () {
-			return parseFloat(this.workWidth().slice(0, -2)) * (this.$refs.container.clientWidth / 100)
+			return parseFloat(this.workWidth().slice(0, -2)) * (this.$refs.container.clientWidth / 100);
 		},
 		mouseEvent () {
 			// Check if its Firefox , change to scroll and override it to determine delta !
-			return (/Firefox/i.test(navigator.userAgent))? 'DOMMouseScroll' : 'mousewheel'
+			return (/Firefox/i.test(navigator.userAgent))? 'DOMMouseScroll' : 'mousewheel';
 		},
 		isMobile() {
-			return isMobile()
+			return isMobile();
 		}
 	},
 	created () {
 		if (process.browser) {
-			window.addEventListener('keyup', this.handleKeyup)
+			window.addEventListener('keyup', this.handleKeyup);
 		}
 	},
 	mounted () {
-		this.$refs.container.addEventListener(this.mouseEvent, this.handleWheel)
+		this.$refs.container.addEventListener(this.mouseEvent, this.handleWheel);
 	},
 	beforeDestroy () {
-		this.$refs.container.removeEventListener(this.mouseEvent, this.handleWheel)
+		this.$refs.container.removeEventListener(this.mouseEvent, this.handleWheel);
 	},
 	destroyed () {
 		if (process.browser) {
-			window.removeEventListener('keyup', this.handleKeyup)
+			window.removeEventListener('keyup', this.handleKeyup);
 		}
 	},
 	methods: {
 		workWidth (index) {
 			const width = this.isMobile
-				? 90
-				: this.hoverIndex === index ? 30 : 20
+				? 100
+				: this.hoverIndex === index ? 30 : 20;
 
-			return `${width}vw`
+			return `${width}vw`;
 		},
 		background (work, index) {
-			const image = `url(${work.menuBg.url})`
+			const image = `url(${work.menuBg.url})`;
 
-			if (this.isMobile) { return `${this.activeGradient(index)}, ${image}` }
+			if (this.isMobile) { return `${this.activeGradient(index)}, ${image}` };
 			const gradient =
 				this.hoverIndex === index
 					? this.activeGradient(index)
-					: this.inactiveGradient(index)
-			return `${gradient}, ${image}`
+					: this.inactiveGradient(index);
+			return `${gradient}, ${image}`;
 		},
 		inactiveGradient (index) {
-			return index % 2 === 0 ? this.gradients.even : this.gradients.odd
+			return index % 2 === 0 ? this.gradients.even : this.gradients.odd;
 		},
 		activeGradient (index) {
-			return this.gradients.hover[index % this.gradients.hover.length]
+			return this.gradients.hover[index % this.gradients.hover.length];
 		},
 		smoothScroll (orientation, width, repeat) {
-			const i = 10
-			const w = width || 0
-			const r = repeat || 1
+			const i = 10;
+			const w = width || 0;
+			const r = repeat || 1;
 			
 			if (w < this.workWidthPx * r) {
 				setTimeout(() => {
-					this.$refs.container.scrollLeft += (i * orientation)
+					this.$refs.container.scrollLeft += (i * orientation);
 					// ScrollValue is updated so that if we scroll with other methods and come back to scroll, it works
-					this.scrollValue += (i * orientation)
-					this.smoothScroll(orientation, w + 10, r)
+					this.scrollValue += (i * orientation);
+					this.smoothScroll(orientation, w + 10, r);
 				}, 10/r)
 			}
 		},
 		handleWheel (event) {
-			event.preventDefault()
-
-			const delta = event.deltaY || event.detail
-
-			// Negation of : Are we at the end of the screen and the user want to scroll more ?
-			if (!(this.hoverIndex === this.works.length - 1 && delta > 0)) {
-				this.scrollValue = Math.max(0, this.scrollValue + delta)
-				this.$refs.container.scrollLeft += delta
-				this.hoverIndex = Math.max(0, 
-					Math.min(Math.floor((this.scrollValue + (this.workWidthPx / 2)) / this.workWidthPx)
-						, this.works.length - 1))
-			}
+			event.preventDefault();
+			this.$refs.container.scrollLeft += event.deltaY;
 		},
 		handleKeyup (event) {
-			event.preventDefault()
+			event.preventDefault();
 			
-			const orientation = event.keyCode === RIGHT_PAD ? 1 : (event.keyCode === LEFT_PAD ? -1 : null)
+			const orientation = event.keyCode === RIGHT_PAD ? 1 : (event.keyCode === LEFT_PAD ? -1 : null);
 
 			if (orientation) {
-				this.doScroll(orientation)
+				this.smoothScroll(orientation, 0, 2);
 			}
 
 			if (event.keyCode === ENTER) {
-				this.go(works[this.hoverIndex])
+				this.go(this.works[this.hoverIndex]);
 			}
 		},
 		onSwipe (event) {
-			const orientation = event.direction === 2 ? 1 : -1
-			this.doScroll(orientation)
+			const orientation = event.direction === 2 ? 1 : -1;
+			this.doScroll(orientation);
 		},
 		doScroll(orientation) {
-			this.hoverIndex = Math.max(0, Math.min(this.works.length - 1, this.hoverIndex + orientation))
-			if (this.hoverIndex <= this.works.length - 1) {
-				this.smoothScroll(orientation, 0, 1)
-			}
+			this.enter(Math.max(0, Math.min(this.works.length - 1, this.hoverIndex + orientation)));
+			this.smoothScroll(orientation, 0, 1);
 		},
 		onChangeRange (value) {
-			const v = parseInt(value, 10)
-			const repeat = Math.abs(v - this.hoverIndex)
-			const orientation = v > this.hoverIndex ? 1 : -1
+			const v = parseInt(value, 10);
+			const repeat = Math.abs(v - this.hoverIndex);
+			const orientation = v > this.hoverIndex ? 1 : -1;
 
-			this.hoverIndex = v
-			this.smoothScroll(orientation, 0, repeat)
+			this.enter(v);
+			this.smoothScroll(orientation, 0, repeat);
 		},
 		go (selectedWork) {
-			this.$router.push({ path: `/work/${selectedWork.slug}`, props: true })
-		}
+			this.$router.push({ path: `/work/${selectedWork.slug}`, props: true });
+		},
+		enter (index) {
+			this.hoverIndex = index;
+		},
+		leave () {
+			this.hoverIndex = null;
+		},
 	}
 }
 </script>

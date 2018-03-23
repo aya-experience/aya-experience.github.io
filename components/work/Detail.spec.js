@@ -9,8 +9,7 @@ describe("Detail realisation component", () => {
 	beforeEach(() => {
 		cmp = mount(Detail, {
 			propsData: {
-				work: singleWork,
-				titleColor: "#FFFF"
+				work: singleWork
 			}
 		});
 	});
