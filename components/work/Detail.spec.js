@@ -20,10 +20,6 @@ describe("Detail realisation component", () => {
 			expect(cmp.find("h1").text()).toBe("B4All");
 		});
 
-		it("has an h2 containing the client name", () => {
-			expect(cmp.find("h2").text()).toBe("Enedis");
-		});
-
 		it("has a p containing the description", () => {
 			expect(cmp.find("p").text()).toBe(
 				"Le projet B4All est en cours de réalisation par AYA, une description de cette réalisation sera disponible prochainement."
