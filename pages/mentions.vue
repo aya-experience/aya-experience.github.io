@@ -99,13 +99,13 @@ address {
 </style>
 
 <script>
-import BackButton from '~/components/BackButton.vue'
+import BackButton from '~/components/BackButton.vue';
 
 export default {
 	components: {
 		'aya-back': BackButton
 	}
-}
+};
 </script>
 
 

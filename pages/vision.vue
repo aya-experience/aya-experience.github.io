@@ -22,9 +22,9 @@
 </template>
 
 <script>
-import BackButton from '~/components/BackButton.vue'
-import Slider from '~/components/slides/Slider.vue'
-import MentionsButton from '~/components/MentionsButton.vue'
+import BackButton from '~/components/BackButton.vue';
+import Slider from '~/components/slides/Slider.vue';
+import MentionsButton from '~/components/MentionsButton.vue';
 
 export default {
 	components: {
@@ -32,5 +32,5 @@ export default {
 		'aya-slider': Slider,
 		'mentions-link': MentionsButton
 	}
-}
+};
 </script>

@@ -75,16 +75,16 @@ normal {
 </style>
 
 <script>
-import works from '~/content/work.json'
-import Detail from '~/components/work/Detail'
-import BackButton from '~/components/BackButton.vue'
+import works from '~/content/work.json';
+import Detail from '~/components/work/Detail';
+import BackButton from '~/components/BackButton.vue';
 
 export default {
 	// Transition can be slide right/left depending the direction
 	transition (to, from) {
 		if (!from || from.params.slug === undefined) return '';
-		const toIndex = works.findIndex((item) => { return item.slug === to.params.slug });
-		const fromIndex = works.findIndex((item) => { return item.slug === from.params.slug });
+		const toIndex = works.findIndex((item) => { return item.slug === to.params.slug; });
+		const fromIndex = works.findIndex((item) => { return item.slug === from.params.slug; });
 		return toIndex < fromIndex ? 'slide-right' : 'slide-left';
 	},
 	components: {
@@ -96,7 +96,7 @@ export default {
 			prevButtonHide: false,
 			nextButtonHide: false,
 			showBgCompany: false
-		}
+		};
 	},
 	computed: {
 		work () {
@@ -111,12 +111,12 @@ export default {
 	},
 	methods: {
 		go (direction) {
-			if (this.prevButtonHide && direction < 0) { return '' };
-			if (this.nextButtonHide && direction > 0) { return '' };
+			if (this.prevButtonHide && direction < 0) { return ''; };
+			if (this.nextButtonHide && direction > 0) { return ''; };
 			const newWorkIndex = works.findIndex(item => item.slug === this.work.slug) + direction;
 			const newWork = works[newWorkIndex];
 			return `/work/${newWork.slug}`;
 		}
 	}
-}
+};
 </script>

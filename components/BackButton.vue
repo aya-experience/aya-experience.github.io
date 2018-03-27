@@ -29,7 +29,7 @@ span {
 }
 
 a >>> div.kanji-background,
-a >>> svg.kanji {
+a >>> svg.kanji-mask {
 	z-index: 1;
 }
 
@@ -37,7 +37,7 @@ a:hover {
 	color: #EBB815;
 }
 
-a:hover >>> .kanji {
+a:hover >>> .kanji-mask {
 	background-color: #EBB815;
 }
 
@@ -54,7 +54,7 @@ a:hover >>> .kanji {
 </style>
 
 <script>
-import Kanji from '~/components/Kanji'
+import Kanji from '~/components/Kanji';
 
 export default {
 	components: {
@@ -66,5 +66,5 @@ export default {
 			default: "/"
 		},
 	}
-}
+};
 </script>

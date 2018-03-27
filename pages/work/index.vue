@@ -296,17 +296,17 @@ a.work-preview div.skills-container img {
 </style>
 
 <script>
-import works from '~/content/work.json'
+import works from '~/content/work.json';
 
-import BackButton from '~/components/BackButton'
-import MentionsButton from '~/components/MentionsButton'
+import BackButton from '~/components/BackButton';
+import MentionsButton from '~/components/MentionsButton';
 
 
-import isMobile from '~/utils/test-mobile'
+import isMobile from '~/utils/test-mobile';
 
-const ENTER = 13
-const LEFT_PAD = 37
-const RIGHT_PAD = 39
+const ENTER = 13;
+const LEFT_PAD = 37;
+const RIGHT_PAD = 39;
 
 export default {
 	components: {
@@ -330,7 +330,7 @@ export default {
 				]
 			},
 			link: { title: 'Detail', path: '/detail' }
-		}
+		};
 	},
 	computed: {
 		containerWidth () {
@@ -376,7 +376,7 @@ export default {
 		background (work, index) {
 			const image = `url(${work.menuBg.url})`;
 
-			if (this.isMobile) { return `${this.activeGradient(index)}, ${image}` };
+			if (this.isMobile) { return `${this.activeGradient(index)}, ${image}`; };
 			const gradient =
 				this.hoverIndex === index
 					? this.activeGradient(index)
@@ -400,7 +400,7 @@ export default {
 					// ScrollValue is updated so that if we scroll with other methods and come back to scroll, it works
 					this.scrollValue += (i * orientation);
 					this.smoothScroll(orientation, w + 10, r);
-				}, 10/r)
+				}, 10/r);
 			}
 		},
 		handleWheel (event) {
@@ -446,5 +446,5 @@ export default {
 			this.hoverIndex = null;
 		},
 	}
-}
+};
 </script>

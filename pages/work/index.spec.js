@@ -20,7 +20,7 @@ describe("Realisations menu page", () => {
 			expect(cmp.findAll("a").length).toBe(13);
 		});
 		it("has an h2 containing the project name", () => {
-			expect(cmp.findAll("a").at(0).find("h1").text()).toBe("B4All")
+			expect(cmp.findAll("a").at(0).find("h1").text()).toBe("B4All");
 		});
 		it("has an input range", () => {
 			expect(cmp.contains("input")).toBe(true);
@@ -98,8 +98,8 @@ describe("Realisations menu page", () => {
 		describe("handleKeyup", () => {
 			it("should call smoothscroll function given right arrow", () => {
 				const stub = jest.fn();
-				cmp.setMethods({ smoothScroll: stub })
-				cmp.update()
+				cmp.setMethods({ smoothScroll: stub });
+				cmp.update();
 
 				const event = new Event('keyup');
 				event.keyCode = 39;
@@ -110,8 +110,8 @@ describe("Realisations menu page", () => {
 			});
 			it("should call smoothscroll function given left arrow", () => {
 				const stub = jest.fn();
-				cmp.setMethods({ smoothScroll: stub })
-				cmp.update()
+				cmp.setMethods({ smoothScroll: stub });
+				cmp.update();
 
 				const event = new Event('keyup');
 				event.keyCode = 37;
@@ -122,9 +122,9 @@ describe("Realisations menu page", () => {
 			});
 			it("should call go function given enter keycode", () => {
 				const stub = jest.fn();
-				cmp.setMethods({ go: stub })
-				cmp.setData({ works })
-				cmp.update()
+				cmp.setMethods({ go: stub });
+				cmp.setData({ works });
+				cmp.update();
 
 				const event = new Event('keyup');
 				event.keyCode = 13;
@@ -157,8 +157,8 @@ describe("Realisations menu page", () => {
 		describe("onSwipe", () => {
 			it("should call doScroll methods with 1 (positive direction)", () => {
 				const stub = jest.fn();
-				cmp.setMethods({ doScroll: stub })
-				cmp.update()
+				cmp.setMethods({ doScroll: stub });
+				cmp.update();
 
 				const event = new Event('swipe');
 				event.direction = 2;
@@ -170,8 +170,8 @@ describe("Realisations menu page", () => {
 
 			it("should call doScroll methods with -1 (positive direction)", () => {
 				const stub = jest.fn();
-				cmp.setMethods({ doScroll: stub })
-				cmp.update()
+				cmp.setMethods({ doScroll: stub });
+				cmp.update();
 
 				const event = new Event('swipe');
 				event.direction = 1;
