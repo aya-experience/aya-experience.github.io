@@ -31,10 +31,6 @@
 }
 
 .reversed-arrow {
-	/* TODO: Check Prefixer */
-	/* Rotate arrow */
-    -ms-transform: rotateY(180deg); /* IE 9 */
-    -webkit-transform: rotateY(180deg); /* Safari 3-8 */
 	transform: rotateY(180deg);
 }
 
