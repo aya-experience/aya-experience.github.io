@@ -8,11 +8,16 @@
 		}"
 	>
 		<div class="splash-overflow">
-			<aya-logo :hover="hover" :dive="dive" @loaded="loaded" @dive-done="diveEnd"/>
+			<aya-logo 
+				:hover="hover"
+				:loaded="isLoaded"
+				:dive="dive"
+				@loaded="loaded"
+				@dive-done="diveEnd"/>
 		</div>
 		<aya-menu @enter="enter" @leave="leave" @go="diveStart"/>
 		<aya-znk/>
-		<canvas ref="canvas"/>
+		<canvas v-if="dive === null" ref="canvas"/>
 	</section>
 	
 </template>
@@ -42,6 +47,7 @@ import Menu from '~/components/splash/Menu.vue';
 import ByZenika from '~/components/splash/ByZenika.vue';
 
 import animate from '~/utils/animation.js';
+import isMobile from '~/utils/test-mobile.js';
 
 export default {
 	components: {
@@ -53,8 +59,7 @@ export default {
 		return {
 			isLoaded: false,
 			hover: null,
-			dive: null,
-			id: null
+			dive: null
 		};
 	},
 	async mounted () {
@@ -71,7 +76,11 @@ export default {
 			this.hover = null;
 		},
 		diveStart (link) {
-			this.$router.push(link.path);
+			if (isMobile()) {
+				this.$router.push(link.path);
+				return;
+			}
+			this.dive = link;
 		},
 		diveEnd () {
 			this.$router.push(this.dive.path);

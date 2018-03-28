@@ -14,10 +14,6 @@ describe("Logo", () => {
 		it("should contain a Kanji component", () => {
 			expect(cmp.contains(Kanji)).toBe(true);
 		});
-
-		it("should contain a div of splash-background class", () => {
-			expect(cmp.find("div").classes()).toContain('splash-background');
-		});
 	});
 
 	describe("Properties validation", () => {

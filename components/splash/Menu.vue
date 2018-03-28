@@ -23,7 +23,7 @@ nav {
 	flex-direction: row;
 	justify-content: center;
 	text-align: center;
-	font-size: 3vh;
+	font-size: 2.5rem;
 	font-weight: lighter;
 
 	animation-name: menu-appear;
@@ -38,7 +38,7 @@ nav {
 a {
 	color: white;
 	letter-spacing: 4px;
-	margin: 10px 40px;
+	margin: 1vh 5vw;
 	cursor: pointer;
 	transition: color 0.5s ease;
 }
@@ -69,9 +69,8 @@ a:hover:after {
 
 @media (max-width: 600px) {
 	nav {
-		position: relative;
 		flex-direction: column;
-		top: 0;
+		top: -73vh;
 		left: 0;
 		text-align: center;
 		display: flex;
