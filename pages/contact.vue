@@ -8,6 +8,7 @@
 			<h2>Zenika, c'est aussi :</h2>
 			<aya-other/>
 		</div>
+		<mentions-link/>
 	</section>
 </template>
 
@@ -40,13 +41,16 @@ import BackButton from '~/components/BackButton.vue'
 import Kanji from '~/components/Kanji.vue'
 import Social from '~/components/contact/Social.vue'
 import Other from '~/components/contact/Other.vue'
+import MentionsButton from '~/components/MentionsButton.vue'
+
 
 export default {
 	components: {
 		'aya-back': BackButton,
 		'aya-kanji': Kanji,
 		'aya-social': Social,
-		'aya-other': Other
+		'aya-other': Other,
+		'mentions-link': MentionsButton
 	}
 }
 </script>

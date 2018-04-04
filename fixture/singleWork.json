@@ -1,0 +1,72 @@
+{
+	"id": "WnB4OB4AALIMeJKD",
+	"uid": "enedis-b4all",
+	"slug": "Enedis-B4All",
+	"clientName": "Enedis",
+	"projectName": "B4All",
+	"description":
+		"Le projet B4All est en cours de réalisation par AYA, une description de cette réalisation sera disponible prochainement.",
+	"tags": [],
+	"titleColor": "#000",
+	"bgColor": "#FFF",
+	"arrowInvert": "inverted",
+	"orientation": true,
+	"logo": {
+		"url":
+			"https://prismic-io.s3.amazonaws.com/app-aya/aaf33bb0de9e8bbf37da7d825e1df42b587ee595_white.png",
+		"dimensions": { "width": 987, "height": 311 }
+	},
+	"skills": [
+		{
+			"id": "WnBwGR4AAFULeG4-",
+			"title": "Redux",
+			"icon": {
+				"url":
+					"https://prismic-io.s3.amazonaws.com/app-aya/e7f1e5e5d21ab20972d783329eddab37d663aea6_redux.png",
+				"dimensions": { "width": 100, "height": 100 }
+			}
+		},
+		{
+			"id": "WnBLSx4AAF4Cd8qP",
+			"title": "React",
+			"icon": {
+				"url":
+					"https://prismic-io.s3.amazonaws.com/app-aya/266fd7e8dcd0e30f3000475016899cf5ccfb0fde_react.png",
+				"dimensions": { "width": 100, "height": 100 }
+			}
+		},
+		{
+			"id": "WnBLlR4AAF4Cd8vf",
+			"title": "UI",
+			"icon": {
+				"url":
+					"https://prismic-io.s3.amazonaws.com/app-aya/fe968f5c55a80d12c59c53ab868dcfa5d683541e_ui.png",
+				"dimensions": { "width": 100, "height": 100 }
+			}
+		},
+		{
+			"id": "WdI-8iIAAAyHP9Tf",
+			"title": "UX",
+			"icon": {
+				"url":
+					"https://prismic-io.s3.amazonaws.com/app-aya/c30979bdcb8cbb3b7f2a100382fe5b1500260214_ux.png",
+				"dimensions": { "width": 100, "height": 100 }
+			}
+		},
+		{
+			"id": "WdI_EiIAAAyHP9Vw",
+			"title": "JavaScript",
+			"icon": {
+				"url":
+					"https://prismic-io.s3.amazonaws.com/app-aya/c277efa683b2ed9c31b39fa619798695038c3fc8_js.png",
+				"dimensions": { "width": 100, "height": 100 }
+			}
+		}
+	],
+	"menuBg": {
+		"url":
+			"https://prismic-io.s3.amazonaws.com/app-aya/0bc776840bb7f0e837029f4507cb9e12a0a0b41f_b4all.jpg",
+		"dimensions": { "width": 1000, "height": 1000 }
+	},
+	"illustrations": [{}]
+}

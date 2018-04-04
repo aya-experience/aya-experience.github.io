@@ -1,8 +1,8 @@
 <template>
-	<nuxt-link to="/">
+	<nuxt-link :to="page">
 		<span>&lt;</span>
 		<aya-kanji size="50px"/>
-		<div class="back"></div>
+		<div class="back"/>
 	</nuxt-link>
 </template>
 
@@ -59,6 +59,12 @@ import Kanji from '~/components/Kanji'
 export default {
 	components: {
 		'aya-kanji': Kanji
+	},
+	props: {
+		page: {
+			type: String,
+			default: "/"
+		},
 	}
 }
 </script>

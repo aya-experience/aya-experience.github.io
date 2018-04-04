@@ -1,6 +1,6 @@
 <template>
 	<div class="by-zenika">
-		<img src="/logos/zenika.png" alt="Zenika"/>
+		<img src="/logos/zenika.png" alt="Zenika">
 		<p>Digital Agency<br>by Zenika</p>
 	</div>
 </template>
