@@ -12,7 +12,6 @@
 						@click="go(work)"
 						@mouseenter="enter(index)"
 						@mouseleave="leave()"
-						@keyup.left.prevent="handleKeyup"
 						:style="{
 							'background-image' : background(work, index),
 							'width': workWidth(index)
@@ -296,24 +295,23 @@ a.work-preview div.skills-container img {
 </style>
 
 <script>
-import works from '~/content/work.json'
+import works from '~/content/work.json';
 
-import BackButton from '~/components/BackButton'
-import MentionsButton from '~/components/MentionsButton'
+import BackButton from '~/components/BackButton';
+import MentionsButton from '~/components/MentionsButton';
 
+import isMobile from '~/utils/test-mobile';
 
-import isMobile from '~/utils/test-mobile'
-
-const ENTER = 13
-const LEFT_PAD = 37
-const RIGHT_PAD = 39
+const ENTER = 13;
+const LEFT_PAD = 37;
+const RIGHT_PAD = 39;
 
 export default {
 	components: {
 		'aya-back': BackButton,
-		'mentions-link': MentionsButton,
+		'mentions-link': MentionsButton
 	},
-	data () {
+	data() {
 		return {
 			works,
 			scrollValue: 0,
@@ -330,86 +328,88 @@ export default {
 				]
 			},
 			link: { title: 'Detail', path: '/detail' }
-		}
+		};
 	},
 	computed: {
-		containerWidth () {
+		containerWidth() {
 			const width = isMobile() ? 100 : 20;
-			
+
 			return `${this.works.length * width}vw`;
 		},
-		workWidthPx () {
+		workWidthPx() {
 			return parseFloat(this.workWidth().slice(0, -2)) * (this.$refs.container.clientWidth / 100);
 		},
-		mouseEvent () {
+		mouseEvent() {
 			// Check if its Firefox , change to scroll and override it to determine delta !
-			return (/Firefox/i.test(navigator.userAgent))? 'DOMMouseScroll' : 'mousewheel';
+			return (/Firefox/i.test(navigator.userAgent)) ? 'DOMMouseScroll' : 'mousewheel';
 		},
 		isMobile() {
 			return isMobile();
 		}
 	},
-	created () {
+	created() {
 		if (process.browser) {
 			window.addEventListener('keyup', this.handleKeyup);
 		}
 	},
-	mounted () {
+	mounted() {
 		this.$refs.container.addEventListener(this.mouseEvent, this.handleWheel);
 	},
-	beforeDestroy () {
+	beforeDestroy() {
 		this.$refs.container.removeEventListener(this.mouseEvent, this.handleWheel);
 	},
-	destroyed () {
+	destroyed() {
 		if (process.browser) {
 			window.removeEventListener('keyup', this.handleKeyup);
 		}
 	},
 	methods: {
-		workWidth (index) {
+		workWidth(index) {
 			const width = this.isMobile
 				? 100
 				: this.hoverIndex === index ? 30 : 20;
 
 			return `${width}vw`;
 		},
-		background (work, index) {
+		background(work, index) {
 			const image = `url(${work.menuBg.url})`;
 
-			if (this.isMobile) { return `${this.activeGradient(index)}, ${image}` };
+			if (this.isMobile) {
+				return `${this.activeGradient(index)}, ${image}`;
+			}
 			const gradient =
 				this.hoverIndex === index
 					? this.activeGradient(index)
 					: this.inactiveGradient(index);
 			return `${gradient}, ${image}`;
 		},
-		inactiveGradient (index) {
+		inactiveGradient(index) {
 			return index % 2 === 0 ? this.gradients.even : this.gradients.odd;
 		},
-		activeGradient (index) {
+		activeGradient(index) {
 			return this.gradients.hover[index % this.gradients.hover.length];
 		},
-		smoothScroll (orientation, width, repeat) {
+		smoothScroll(orientation, width, repeat) {
 			const i = 10;
 			const w = width || 0;
 			const r = repeat || 1;
-			
+
 			if (w < this.workWidthPx * r) {
 				setTimeout(() => {
 					this.$refs.container.scrollLeft += (i * orientation);
 					// ScrollValue is updated so that if we scroll with other methods and come back to scroll, it works
 					this.scrollValue += (i * orientation);
 					this.smoothScroll(orientation, w + 10, r);
-				}, 10/r)
+				}, 10 / r);
 			}
 		},
-		handleWheel (event) {
+		handleWheel(event) {
 			event.preventDefault();
 			this.$refs.container.scrollLeft += event.deltaY;
 		},
-		handleKeyup (event) {
+		handleKeyup(event) {
 			event.preventDefault();
-			
+
 			const orientation = event.keyCode === RIGHT_PAD ? 1 : (event.keyCode === LEFT_PAD ? -1 : null);
 
 			if (orientation) {
@@ -420,7 +420,7 @@ export default {
 				this.go(this.works[this.hoverIndex]);
 			}
 		},
-		onSwipe (event) {
+		onSwipe(event) {
 			const orientation = event.direction === 2 ? 1 : -1;
 			this.doScroll(orientation);
 		},
@@ -428,7 +428,7 @@ export default {
 			this.enter(Math.max(0, Math.min(this.works.length - 1, this.hoverIndex + orientation)));
 			this.smoothScroll(orientation, 0, 1);
 		},
-		onChangeRange (value) {
+		onChangeRange(value) {
 			const v = parseInt(value, 10);
 			const repeat = Math.abs(v - this.hoverIndex);
 			const orientation = v > this.hoverIndex ? 1 : -1;
@@ -436,15 +436,15 @@ export default {
 			this.enter(v);
 			this.smoothScroll(orientation, 0, repeat);
 		},
-		go (selectedWork) {
+		go(selectedWork) {
 			this.$router.push({ path: `/work/${selectedWork.slug}`, props: true });
 		},
-		enter (index) {
+		enter(index) {
 			this.hoverIndex = index;
 		},
-		leave () {
+		leave() {
 			this.hoverIndex = null;
-		},
+		}
 	}
-}
+};
 </script>

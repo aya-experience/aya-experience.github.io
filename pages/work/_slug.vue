@@ -52,7 +52,7 @@ normal {
 	transition: all .6s cubic-bezier(.55,0,.1,1);
 	min-height: 100vh;
 }
-	
+
 /* Slide animation */
 .slide-left-enter,
 .slide-right-leave-active {
@@ -75,48 +75,58 @@ normal {
 </style>
 
 <script>
-import works from '~/content/work.json'
-import Detail from '~/components/work/Detail'
-import BackButton from '~/components/BackButton.vue'
+import works from '~/content/work.json';
+import Detail from '~/components/work/Detail';
+import BackButton from '~/components/BackButton.vue';
 
 export default {
 	// Transition can be slide right/left depending the direction
-	transition (to, from) {
-		if (!from || from.params.slug === undefined) return '';
-		const toIndex = works.findIndex((item) => { return item.slug === to.params.slug });
-		const fromIndex = works.findIndex((item) => { return item.slug === from.params.slug });
+	transition(to, from) {
+		if (!from || from.params.slug === undefined) {
+			return '';
+		}
+		const toIndex = works.findIndex(item => {
+			return item.slug === to.params.slug;
+		});
+		const fromIndex = works.findIndex(item => {
+			return item.slug === from.params.slug;
+		});
 		return toIndex < fromIndex ? 'slide-right' : 'slide-left';
 	},
 	components: {
 		'work-detail': Detail,
-		'aya-back' : BackButton
+		'aya-back': BackButton
 	},
-	data () {
+	data() {
 		return {
 			prevButtonHide: false,
 			nextButtonHide: false,
 			showBgCompany: false
-		}
+		};
 	},
 	computed: {
-		work () {
+		work() {
 			const currentWork = works.findIndex(item => item.slug === this.$route.params.slug);
 			return works[currentWork];
 		}
 	},
-	created () {
+	created() {
 		const currentWork = works.findIndex(item => item.slug === this.$route.params.slug);
 		this.nextButtonHide = currentWork === (works.length - 1);
 		this.prevButtonHide = currentWork === 0;
 	},
 	methods: {
-		go (direction) {
-			if (this.prevButtonHide && direction < 0) { return '' };
-			if (this.nextButtonHide && direction > 0) { return '' };
+		go(direction) {
+			if (this.prevButtonHide && direction < 0) {
+				return '';
+			}
+			if (this.nextButtonHide && direction > 0) {
+				return '';
+			}
 			const newWorkIndex = works.findIndex(item => item.slug === this.work.slug) + direction;
 			const newWork = works[newWorkIndex];
 			return `/work/${newWork.slug}`;
 		}
 	}
-}
+};
 </script>

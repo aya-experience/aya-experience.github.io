@@ -26,7 +26,7 @@
 				<img src="~/assets/icons/linkedin.svg">
 			</div>
 			<h3>LinkedIn</h3>
-			<p>AYA &lt;​creative experience&gt;</p>
+			<p>AYA &lt;creative experience&gt;</p>
 		</a>
 		<a class="social-media" href="https://twitter.com/AyaExperience" target="_blank" rel="noreferrer">
 			<div class="icon-container">
