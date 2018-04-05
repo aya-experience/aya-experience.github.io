@@ -1,6 +1,6 @@
 <template>
 	<nav>
-		<a 
+		<a
 			v-for="(link, index) of links"
 			:key="index"
 			class="link"
@@ -68,10 +68,10 @@ a:hover {
 </style>
 
 <script>
-import isMobile from '~/utils/test-mobile'
+import isMobile from '~/utils/test-mobile';
 
 export default {
-	data () {
+	data() {
 		return {
 			links: [
 				{ title: 'Vision', path: '/vision', image: '/photos/rails.jpg' },
@@ -79,24 +79,24 @@ export default {
 				// { title: 'Méthode', path: '/method', image: '/photos/matrix.jpg' },
 				{ title: 'Contact', path: '/contact', image: '/photos/matrix.jpg' }
 			]
-		}
+		};
 	},
 	methods: {
-		curvMargin (index) {
+		curvMargin(index) {
 			if (!isMobile()) {
-				return `${Math.sqrt(this.links.length - index) * 10}vh`
+				return `${Math.sqrt(this.links.length - index) * 10}vh`;
 			}
-			return ''
+			return '';
 		},
-		enter (link) {
-			this.$emit('enter', link)
+		enter(link) {
+			this.$emit('enter', link);
 		},
-		leave () {
-			this.$emit('leave')
+		leave() {
+			this.$emit('leave');
 		},
-		go (link) {
-			this.$emit('go', link)
+		go(link) {
+			this.$emit('go', link);
 		}
 	}
-}
+};
 </script>

@@ -6,14 +6,15 @@
   "private": true,
   "scripts": {
     "dev": "nuxt",
-    "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "node extract && nuxt generate",
-    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
-    "precommit": "npm run lint",
     "extract": "node extract",
-    "test": "npm run lint && npm run extract && npm run build && jest",
-    "unit": "jest"
+    "build-nuxt": "nuxt build",
+    "generate": "nuxt generate",
+    "build": "npm run extract && npm run generate",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "unit": "jest",
+    "tdd": "jest --watch",
+    "test": "npm run lint && npm run unit"
   },
   "dependencies": {
     "@nuxtjs/pwa": "^2.0.5",
@@ -42,8 +43,7 @@
     "eslint-plugin-standard": "^3.0.1",
     "eslint-plugin-vue": "^4.2.2",
     "jest": "^22.4.2",
-    "vue-jest": "^2.2.1",
-    "vue-test-utils": "^1.0.0-beta.11"
+    "vue-jest": "^2.2.1"
   },
   "config": {
     "nuxt": {

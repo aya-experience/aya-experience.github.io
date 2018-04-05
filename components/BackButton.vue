@@ -54,7 +54,7 @@ a:hover >>> .kanji {
 </style>
 
 <script>
-import Kanji from '~/components/Kanji'
+import Kanji from '~/components/Kanji';
 
 export default {
 	components: {
@@ -63,8 +63,8 @@ export default {
 	props: {
 		page: {
 			type: String,
-			default: "/"
-		},
+			default: '/'
+		}
 	}
-}
+};
 </script>

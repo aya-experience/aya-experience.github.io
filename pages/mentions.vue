@@ -27,7 +27,7 @@
 			aya-experience.com font l’objet d’un traitement automatisé par Zenika. Le droit d’accès et de
 			rectification portant sur les données le concernant peut être exercé par courrier à
 			l’adresse suivante :
-		</p>		
+		</p>
 		<address class="location">
 			Zenika<br>
 			Service Marketing<br>
@@ -99,13 +99,12 @@ address {
 </style>
 
 <script>
-import BackButton from '~/components/BackButton.vue'
+import BackButton from '~/components/BackButton.vue';
 
 export default {
 	components: {
 		'aya-back': BackButton
 	}
-}
+};
 </script>
-
 

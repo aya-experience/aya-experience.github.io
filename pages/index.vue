@@ -24,12 +24,12 @@ section.container {
 </style>
 
 <script>
-import Logo from '~/components/splash/Logo.vue'
-import Menu from '~/components/splash/Menu.vue'
-import ByZenika from '~/components/splash/ByZenika.vue'
-import MentionsButton from '~/components/MentionsButton.vue'
+import Logo from '~/components/splash/Logo.vue';
+import Menu from '~/components/splash/Menu.vue';
+import ByZenika from '~/components/splash/ByZenika.vue';
+import MentionsButton from '~/components/MentionsButton.vue';
 
-import isMobile from '~/utils/test-mobile'
+import isMobile from '~/utils/test-mobile';
 
 export default {
 	components: {
@@ -38,34 +38,34 @@ export default {
 		'aya-znk': ByZenika,
 		'mentions-link': MentionsButton
 	},
-	data () {
+	data() {
 		return {
 			isLoaded: false,
 			hover: null,
 			dive: null
-		}
+		};
 	},
 	methods: {
-		loaded () {
-			this.isLoaded = true
+		loaded() {
+			this.isLoaded = true;
 		},
-		enter (link) {
-			this.hover = link
+		enter(link) {
+			this.hover = link;
 		},
-		leave () {
-			this.hover = null
+		leave() {
+			this.hover = null;
 		},
-		diveStart (link) {
+		diveStart(link) {
 			if (isMobile()) {
-				this.$router.push(link.path)
-				return
+				this.$router.push(link.path);
+				return;
 			}
 
-			this.dive = link
+			this.dive = link;
 		},
-		diveEnd () {
-			this.$router.push(this.dive.path)
+		diveEnd() {
+			this.$router.push(this.dive.path);
 		}
 	}
-}
+};
 </script>
