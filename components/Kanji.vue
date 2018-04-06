@@ -34,7 +34,7 @@ div.container >>> svg.kanji {
 </style>
 
 <script>
-import Kanji from '~/components/KanjiMask'
+import Kanji from '~/components/KanjiMask';
 
 export default {
 	components: {
@@ -50,5 +50,5 @@ export default {
 			default: 'white'
 		}
 	}
-}
+};
 </script>

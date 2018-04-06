@@ -69,50 +69,50 @@ export default {
 			required: true
 		}
 	},
-	mounted () {
+	mounted() {
 		if (this.$route.fullPath === this.path) {
-			this.$router.push(`${this.path}/${this.slides[0]}`)
+			this.$router.push(`${this.path}/${this.slides[0]}`);
 		}
 	},
-	created () {
+	created() {
 		if (process.browser) {
-			window.addEventListener('keyup', this.handleKeyup)
+			window.addEventListener('keyup', this.handleKeyup);
 		}
 	},
-	destroyed () {
+	destroyed() {
 		if (process.browser) {
-			window.removeEventListener('keyup', this.handleKeyup)
+			window.removeEventListener('keyup', this.handleKeyup);
 		}
 	},
 	methods: {
-		getIndex () {
-			const relative = this.$route.fullPath.replace(`${this.path}/`, '')
-			return this.slides.indexOf(relative)
+		getIndex() {
+			const relative = this.$route.fullPath.replace(`${this.path}/`, '');
+			return this.slides.indexOf(relative);
 		},
-		hasNext () {
-			return this.getIndex() < this.slides.length - 1
+		hasNext() {
+			return this.getIndex() < this.slides.length - 1;
 		},
-		hasPrevious () {
-			return this.getIndex() > 0
+		hasPrevious() {
+			return this.getIndex() > 0;
 		},
-		previous () {
+		previous() {
 			if (this.hasPrevious()) {
-				this.$router.push(`${this.path}/${this.slides[this.getIndex() - 1]}`)
+				this.$router.push(`${this.path}/${this.slides[this.getIndex() - 1]}`);
 			}
 		},
-		next () {
+		next() {
 			if (this.hasNext()) {
-				this.$router.push(`${this.path}/${this.slides[this.getIndex() + 1]}`)
+				this.$router.push(`${this.path}/${this.slides[this.getIndex() + 1]}`);
 			}
 		},
-		handleKeyup (event) {
+		handleKeyup(event) {
 			if (event.keyCode === 39) {
-				this.next()
+				this.next();
 			}
 			if (event.keyCode === 37) {
-				this.previous()
+				this.previous();
 			}
 		}
 	}
-}
+};
 </script>

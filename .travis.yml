@@ -11,8 +11,9 @@ cache:
     - node_modules
 
 script:
+- npm run extract # TODO: remove that after usin VueX
 - npm run test
-- env NODE_ENV=$TRAVIS_BRANCH npm run generate
+- env NODE_ENV=$TRAVIS_BRANCH npm run build
 
 
 deploy:

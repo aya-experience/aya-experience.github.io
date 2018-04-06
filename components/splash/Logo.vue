@@ -1,5 +1,5 @@
 <template>
-	<main 
+	<main
 		:class="{
 			dive: dive !== null,
 			hover: hover !== null
@@ -243,10 +243,10 @@ main {
 </style>
 
 <script>
-import animationComplete from '~/utils/animation-complete'
-import loadImage from '~/utils/load-image'
+import animationComplete from '~/utils/animation-complete';
+import loadImage from '~/utils/load-image';
 
-import Kanji from '~/components/KanjiMask.vue'
+import Kanji from '~/components/KanjiMask.vue';
 
 export default {
 	components: {
@@ -262,48 +262,48 @@ export default {
 			default: null
 		}
 	},
-	data () {
+	data() {
 		return {
 			kanjiBackground: 'none',
 			imageLoaded: {}
-		}
+		};
 	},
 	watch: {
-		async hover (newVal, oldVal) {
+		async hover(newVal, oldVal) {
 			if (newVal !== oldVal && this.dive === null) {
-				console.log('hover watch', newVal)
+				console.log('hover watch', newVal);
 				if (newVal === null) {
-					this.kanjiBackground = 'none'
+					this.kanjiBackground = 'none';
 				} else {
-					await this.loadImage(newVal.image)
-					this.kanjiBackground = `url("${newVal.image}")`
+					await this.loadImage(newVal.image);
+					this.kanjiBackground = `url("${newVal.image}")`;
 				}
 			}
 		},
-		async dive (newVal, oldVal) {
+		async dive(newVal, oldVal) {
 			if (newVal !== oldVal && newVal !== null) {
-				await animationComplete(this.$refs.bg)
-				this.$emit('dive-done')
+				await animationComplete(this.$refs.bg);
+				this.$emit('dive-done');
 			}
 		}
 	},
-	async mounted () {
-		const current = new Date().getTime()
-		const domLoading = performance.timing.domLoading
+	async mounted() {
+		const current = new Date().getTime();
+		const domLoading = performance.timing.domLoading;
 		if (current < domLoading + 4000) { // 5s animation - error margin
-			await animationComplete(this.$refs.bg)
+			await animationComplete(this.$refs.bg);
 		}
-		this.loaded = true
-		this.$emit('loaded')
+		this.loaded = true;
+		this.$emit('loaded');
 	},
 	methods: {
-		async loadImage (image) {
+		async loadImage(image) {
 			if (this.imageLoaded[image]) {
-				return Promise.resolve()
+				return Promise.resolve();
 			}
-			await loadImage(image)
-			this.imageLoaded[image] = true
+			await loadImage(image);
+			this.imageLoaded[image] = true;
 		}
 	}
-}
+};
 </script>
