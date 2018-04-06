@@ -1,0 +1,5 @@
+[
+    { "title": "VISION", "path": "/vision", "image": "/photos/rails.jpg" },
+    { "title": "RÉALISATION", "path": "/work", "image": "/photos/mac.jpg" },
+    { "title": "CONTACT", "path": "/contact", "image": "/photos/matrix.jpg" }
+]
