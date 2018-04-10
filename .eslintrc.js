@@ -19,6 +19,7 @@ module.exports = {
 		'object-curly-spacing': ['error', 'always'],
 		'operator-linebreak': 'off',
 		'capitalized-comments': 'off',
+		'no-mixed-operators': 'off',
 		'vue/no-unused-vars': 'error',
 		'vue/valid-v-on': 'error',
 		'vue/valid-template-root': 'error',
