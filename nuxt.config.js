@@ -98,7 +98,7 @@ module.exports = {
 			robots: true
 		}],
 		['@nuxtjs/pwa', { icon: false, manifest: false, onesignal: false }],
-		['nuxt-cname-module', { cname: config.generateCNAME }]
+		['nuxt-cname-module', { generateCNAME: config.generateCNAME }]
 	],
 	plugins: [
 		{ src: '~plugins/vue-touch', ssr: false },

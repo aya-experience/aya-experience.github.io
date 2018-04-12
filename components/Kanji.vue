@@ -15,7 +15,6 @@
 div.container {
 	position: relative;
 }
-
 div.container .kanji-background {
 	position: absolute;
 	top: 1px;
@@ -23,7 +22,6 @@ div.container .kanji-background {
 	left: 1px;
 	right: 1px;
 }
-
 div.container >>> svg.kanji {
 	position: absolute;
 	top: 0px;
@@ -34,8 +32,7 @@ div.container >>> svg.kanji {
 </style>
 
 <script>
-import Kanji from '~/components/KanjiMask'
-
+import Kanji from '~/components/KanjiMask';
 export default {
 	components: {
 		'aya-kanji': Kanji
@@ -50,5 +47,5 @@ export default {
 			default: 'white'
 		}
 	}
-}
+};
 </script>

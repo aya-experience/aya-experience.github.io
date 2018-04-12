@@ -16,13 +16,13 @@
 </style>
 
 <script>
-import Background from '~/components/slides/Background'
-import TextBlock from '~/components/slides/TextBlock'
+import Background from '~/components/slides/Background';
+import TextBlock from '~/components/slides/TextBlock';
 
 export default {
 	components: {
 		'aya-bg': Background,
 		'aya-block': TextBlock
 	}
-}
+};
 </script>

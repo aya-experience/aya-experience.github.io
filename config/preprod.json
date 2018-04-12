@@ -1,3 +1,4 @@
 {
-	"baseUrl": "http://aya-experience.surge.sh/"
+	"baseUrl": "http://aya-experience.surge.sh/",
+	"generateCNAME": true
 }

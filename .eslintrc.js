@@ -9,25 +9,17 @@ module.exports = {
 		jest: true
 	},
 	extends: [
-		'xo',
 		'xo/esnext',
-		'plugin:vue/essential',
-		'plugin:vue/strongly-recommended',
-		'plugin:vue/recommended',
-		'prettier'
+		'plugin:vue/recommended'
 	],
 	// required to lint *.vue files
 	plugins: ['vue'],
 	// add your custom rules here
 	rules: {
-		'no-tabs': 'off',
-		indent: ['error', 'tab'],
 		'object-curly-spacing': ['error', 'always'],
 		'operator-linebreak': 'off',
 		'capitalized-comments': 'off',
-		'no-irregular-whitespace': 'off',
-		'max-statements-per-line': ["error", { "max": 2 }],
-		"no-mixed-spaces-and-tabs": 'error',
+		'no-mixed-operators': 'off',
 		'vue/no-unused-vars': 'error',
 		'vue/valid-v-on': 'error',
 		'vue/valid-template-root': 'error',
