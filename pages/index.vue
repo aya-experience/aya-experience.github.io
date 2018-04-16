@@ -88,6 +88,10 @@ export default {
 				this.$router.push(link.path);
 				return;
 			}
+			if (link.path === '/path') {
+				document.querySelector('body').style.background = 'url(/photos/lune.jpg)';
+				document.querySelector('body').style.backgroundSize = 'cover';
+			}
 			this.dive = link;
 		},
 		diveEnd() {
