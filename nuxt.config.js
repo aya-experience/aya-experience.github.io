@@ -81,7 +81,7 @@ module.exports = {
 				);
 			}
 		},
-		vendor: ['vue-touch']
+		vendor: ['vue-touch', 'aframe']
 	},
 	modules: [
 		['nuxt-seo-module', {
@@ -102,7 +102,8 @@ module.exports = {
 	],
 	plugins: [
 		{ src: '~plugins/vue-touch', ssr: false },
-		{ src: '~plugins/google-analytics.js', ssr: false }
+		{ src: '~plugins/google-analytics.js', ssr: false },
+		{ src: '~plugins/aframe.js', ssr: false }
 	],
 	env: {
 		baseUrl: config.baseUrl
