@@ -95,7 +95,8 @@ export default {
 				{ title: 'RÉALISATION', path: '/work', image: '/photos/mac.jpg' },
 				// { title: 'Méthode', path: '/method', image: '/photos/matrix.jpg' },
 				{ title: 'CONTACT', path: '/contact', image: '/photos/matrix.jpg' },
-				{ title: 'AGENCE', path: '/agence', image: '/photos/mac.jpg' }
+				{ title: 'AGENCE', path: '/agence', image: '/photos/mac.jpg' },
+				{ title: 'EQUIPE', path: '/team', image: '/photos/lune.jpg' }
 			],
 			animationStart: true
 		};

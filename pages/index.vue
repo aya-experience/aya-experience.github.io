@@ -18,7 +18,7 @@
 		<aya-menu @enter="enter" @leave="leave" @go="diveStart"/>
 		<aya-znk/>
 		<canvas v-if="dive === null" ref="canvas"/>
-		<mentions-link v-if="isLoaded"/>
+		<mentions-link v-if="isLoaded && dive === null"/>
 	</section>
 
 </template>
