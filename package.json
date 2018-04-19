@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "@nuxtjs/pwa": "^2.0.5",
-    "aframe": "^0.8.2",
+    "aframe": "^0.7.1",
     "config": "^1.29.4",
     "fs-extra": "^5.0.0",
     "nuxt": "^1.1.1",
