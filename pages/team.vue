@@ -1,33 +1,35 @@
 <!--eslint-disable-->
 <template>
 <div>
-	<img v-if="!loaded" class="center" src="/photos/lune.jpg">
+	<img :class="this.loaded ? '' : 'loading'" class="center" src="/photos/lune.jpg">
 	<no-ssr>
 		<a-scene>
         <a-assets>
             <a-asset-item id="island-obj" src="/vr/scene/model.obj"></a-asset-item>
             <a-asset-item id="island-mtl" src="/vr/scene/materials.mtl"></a-asset-item>
         </a-assets>
-        <a-entity rotation="75 90 0" position="0 1.5 1" camera look-controls>
+		<a-entity rotation="90 90 0" position="0 1.5 1" >
+        <a-entity camera look-controls>
             <a-entity cursor="fuse: true; fuseTimeout: 500"
             		position="0 0 -0.4"
 					scale="0.3 0.3 0.3"
             		geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
             		material="color: black; shader: flat">
 			</a-entity>
-			<a-animation attribute="position"
+        </a-entity>
+		<a-animation attribute="position"
                dur="8000"
                fill="forwards"
 			   from="0 1.5 1"
-               to="0 1.5 0"
+               to="0 1.5 0.5"
                repeat="0"></a-animation>
-			<a-animation attribute="rotation"
+		<a-animation attribute="rotation"
                dur="8000"
                fill="forwards"
 			   from="90 90 0"
-               to="0 90 0"
+               to="0 75 0"
                repeat="0"></a-animation>
-        </a-entity>
+		</a-entity>
         <a-sky radius="10" src="/vr/space.jpg"></a-sky>
         <a-entity position="0 1.3 0" obj-model="obj: #island-obj; mtl: #island-mtl"></a-entity>
 
@@ -45,10 +47,14 @@
 
 <style scoped>
 .center {
-	top: 0;
-	left: 0;
+	top: -6.1vh;
 	height: 100%;
 	width: 100%;
+	position: relative;
+}
+
+.loading{
+	z-index: 1;
 }
 </style>
 
@@ -64,8 +70,7 @@ export default {
 	mounted() {
 		setTimeout(() => {
 			this.loaded = true;
-			document.querySelector('body').style.background = 'none';
-		}, 3000);
+		}, 2000);
 	},
 	methods: {
 		handleClick() {

@@ -18,7 +18,7 @@
 		<aya-menu @enter="enter" @leave="leave" @go="diveStart"/>
 		<aya-znk/>
 		<canvas v-if="dive === null" ref="canvas"/>
-		<mentions-link v-if="isLoaded"/>
+		<mentions-link v-if="isLoaded && dive === null"/>
 	</section>
 
 </template>
@@ -87,10 +87,6 @@ export default {
 			if (isMobile()) {
 				this.$router.push(link.path);
 				return;
-			}
-			if (link.path === '/path') {
-				document.querySelector('body').style.background = 'url(/photos/lune.jpg)';
-				document.querySelector('body').style.backgroundSize = 'cover';
 			}
 			this.dive = link;
 		},
