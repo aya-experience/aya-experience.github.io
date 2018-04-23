@@ -26,11 +26,11 @@ describe('Realisations menu page', () => {
 	});
 
 	describe('HTML content', () => {
-		it('has 13 project in <a></a> tag', () => {
-			expect(cmp.findAll('a').length).toBe(13);
+		it('has 8 project in <a></a> tag', () => {
+			expect(cmp.findAll('a').length).toBe(8);
 		});
 		it('has an h2 containing the project name', () => {
-			expect(cmp.findAll('a').at(0).find('h1').text()).toBe('B4All');
+			expect(cmp.findAll('a').at(0).find('h1').text()).toBe('Partnaire');
 		});
 		it('has an input range', () => {
 			expect(cmp.contains('input')).toBe(true);
@@ -270,28 +270,11 @@ describe('Realisations menu page', () => {
 		});
 
 		describe('activeGradient', () => {
-			it('should return 1st gradient given 0', () => {
-				const gradient = cmp.vm.activeGradient(0);
-
-				expect(gradient).toBe('linear-gradient(150deg, #786CF0E0, #000000E0 70%)');
-			});
-
-			it('should return 1st gradient given 3', () => {
-				const gradient = cmp.vm.activeGradient(3);
-
-				expect(gradient).toBe('linear-gradient(150deg, #786CF0E0, #000000E0 70%)');
-			});
-
-			it('should return 2nd gradient given 4', () => {
-				const gradient = cmp.vm.activeGradient(4);
-
-				expect(gradient).toBe('linear-gradient(150deg, #C54E4EE0, #000000E0 70%)');
-			});
-
-			it('should return last gradient given 5', () => {
-				const gradient = cmp.vm.activeGradient(5);
-
-				expect(gradient).toBe('linear-gradient(150deg, #5E9848F0, #000000E0 70%)');
+			it('should return the corresponding gradient given an index', () => {
+				for (let index = 0; index < works.length; index++) {
+					const gradient = cmp.vm.activeGradient(index);
+					expect(gradient).toBe(`linear-gradient(150deg, ${(works[index].gradient) || '#ff9804'}, #000000E0 70%)`);
+				}
 			});
 		});
 
@@ -301,7 +284,7 @@ describe('Realisations menu page', () => {
 				const image = `url(${works[0].menuBg.url})`;
 				const background = cmp.vm.background(works[0], 0);
 
-				expect(background).toBe('linear-gradient(150deg, #786CF0E0, #000000E0 70%), ' + image);
+				expect(background).toBe(`linear-gradient(150deg, ${(works[0].gradient) || '#ff9804'}, #000000E0 70%), ` + image);
 			});
 		});
 	});

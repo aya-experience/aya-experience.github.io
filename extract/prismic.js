@@ -39,7 +39,8 @@ const workMapper = (data, index) => ({
 	illustrations: data.data.illustrations.map(data => ({
 		url: data.illustration.url,
 		dimensions: data.illustration.dimensions
-	}))
+	})),
+	gradient: data.data.gradient[0].text
 });
 
 async function work() {
