@@ -86,6 +86,9 @@ module.exports = {
 	generate: {
 		routes: works.map(work => (`/work/${work.slug}`))
 	},
+	generate: {
+		routes: works.map(work => (`/work/${work.slug}`))
+	},
 	modules: [
 		['nuxt-seo-module', {
 			sitemap: [{
