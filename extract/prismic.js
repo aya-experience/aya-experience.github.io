@@ -49,7 +49,6 @@ async function work() {
 		Predicates.at('document.type', 'references'),
 		{ fetchLinks: ['skills.title', 'skills.icon'] }
 	);
-	console.log(JSON.stringify(response, null, 2));
 	return response.results.map((data, index) => {
 		return workMapper(data, index);
 	});
