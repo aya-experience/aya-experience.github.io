@@ -83,6 +83,9 @@ module.exports = {
 		},
 		vendor: ['vue-touch']
 	},
+	generate: {
+		routes: works.map(work => (`/work/${work.slug}`))
+	},
 	modules: [
 		['nuxt-seo-module', {
 			sitemap: [{
