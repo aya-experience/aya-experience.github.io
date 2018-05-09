@@ -1,6 +1,6 @@
 <!--eslint-disable-->
 <template>
-<div>
+<div class="container">
 	<img :class="this.loaded ? '' : 'loading'" class="center" src="/photos/lune.jpg">
 	<no-ssr>
 		<a-scene>
@@ -19,6 +19,7 @@
 
 			<img id="hud" src="/vr/HUD/hudLine.png">
 			<img id="sky" src="/vr/space.jpg">
+			<img id="exit" src="/vr/menu/exit.png">
         </a-assets>
 
 		<my-camera/>
@@ -28,6 +29,7 @@
 			<my-character :member="florent" position="-1.047 0.869 0.057" rotation="-10.463 48 3.140"/>
 			<my-character :member="justine" friend="obj: #pen-obj; mtl: #pen-mtl" position="-0.737 0.898 0.832" rotation="0 84 0"/>
 		</a-world>
+		<a-menu/>
       </a-scene>
 	</no-ssr>
 	</div>
@@ -44,18 +46,32 @@
 .loading{
 	z-index: 1;
 }
+
+.container {
+  transition: all .5s cubic-bezier(.55,0,.1,1);
+}
+
+.page-leave-active {
+  transition: opacity .5s
+}
+.page-leave-active {
+  opacity: 0
+}
+
 </style>
 
 <script>
 import Camera from '~/components/team/camera.vue';
 import World from '~/components/team/world.vue';
 import Character from '~/components/team/character.vue';
+import Menu from '~/components/team/Menu.vue';
 
 export default {
 	components: {
 		'my-camera': Camera,
 		'my-character': Character,
-		'a-world': World
+		'a-world': World,
+		'a-menu': Menu
 	},
 	data() {
 		return {
