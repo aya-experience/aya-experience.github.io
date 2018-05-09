@@ -1,9 +1,14 @@
-<!--eslint-disable-->
 <template>
 	<a-entity id="world">
-		<a-entity :position="position" scale="0.002 0.002 0.002" :gltf-model="type"/>
-		
-		<slot/>
+		<a-entity :position="position">
+			<a-entity
+				v-for="item in type"
+				:key="item.part"
+				position="0 0 0"
+				scale="0.002 0.002 0.002"
+				:gltf-part="`src: #map; part: ${item.part}`"/>
+			<slot/>
+		</a-entity>
 	</a-entity>
 </template>
 
@@ -11,14 +16,13 @@
 export default {
 	props: {
 		type: {
+			type: Array,
+			default: () => []
+		},
+		position: {
 			type: String,
-			default: '/vr/island/scene.gltf'
+			default: '0 0 0'
 		}
-	},
-	data() {
-		return {
-			position: '4.738 0.768 0.000'
-		};
 	}
 };
 </script>
