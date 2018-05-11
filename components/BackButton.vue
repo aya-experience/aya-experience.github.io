@@ -1,16 +1,14 @@
 <template>
 	<nuxt-link :to="page">
-		<span>&lt;</span>
-		<aya-kanji size="50px"/>
-		<div class="back"/>
+		<aya-kanji size="45px" shadow/>
 	</nuxt-link>
 </template>
 
 <style scoped>
 a {
 	position: fixed;
-	top: 20px;
-	left: 20px;
+	top: 5px;
+	left: 50%;
 	height: 50px;
 	width: 60px;
 	display: flex;
@@ -21,40 +19,13 @@ a {
 	cursor: pointer;
 	transition: color .5s ease;
 	z-index: 3;
+	transform: translate(-50%, 0);
 }
 
-span {
-	width: 10px;
-	z-index: 1;
-}
-
-a >>> div.kanji-background,
-a >>> svg.kanji {
-	z-index: 1;
-}
-
-a:hover {
-	color: #EBB815;
-}
-
-a:hover >>> .kanji {
-	background-color: #EBB815;
-}
-
-.back {
-	position: fixed;
-	background-color: black;
-	top: -50px;
-	left: -50px;
-	width: 400px;
-	height: 90px;
-	transform: rotate(-20deg);
-	box-shadow: 0px 0px 10px 10px black;
-}
 </style>
 
 <script>
-import Kanji from '~/components/Kanji';
+import Kanji from '~/components/Logo';
 
 export default {
 	components: {
