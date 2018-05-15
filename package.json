@@ -23,6 +23,7 @@
     "nuxt": "^1.1.1",
     "nuxt-cname-module": "^1.1.1",
     "nuxt-seo-module": "^1.0.0-alpha.2",
+    "parallax-js": "^3.1.0",
     "prismic-javascript": "^1.4.0",
     "slug": "^0.9.1",
     "vue-touch": "^2.0.0-beta.4"
