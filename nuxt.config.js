@@ -81,7 +81,7 @@ module.exports = {
 				);
 			}
 		},
-		vendor: ['vue-touch', 'aframe']
+		vendor: ['vue-touch', 'aframe', 'parallax-js']
 	},
 	generate: {
 		routes: works.map(work => (`/work/${work.slug}`))
@@ -106,7 +106,8 @@ module.exports = {
 	plugins: [
 		{ src: '~plugins/vue-touch', ssr: false },
 		{ src: '~plugins/google-analytics.js', ssr: false },
-		{ src: '~plugins/aframe.js', ssr: false }
+		{ src: '~plugins/aframe.js', ssr: false },
+		{ src: '~plugins/parallax.js', ssr: false }
 	],
 	env: {
 		baseUrl: config.baseUrl
