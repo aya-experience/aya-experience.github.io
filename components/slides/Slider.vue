@@ -1,59 +1,89 @@
 <template>
 	<v-touch @swipeleft="next" @swiperight="previous">
-		<a class="left" @click="previous" v-if="hasPrevious()">
-			<div class="triangle"/>
+		<a class="link__layer link__layer--left" @click="previous" v-if="hasPrevious()">
+			<svg
+				class="arrow"
+				version="1.1"
+				id="f6261eb3-a4d3-4517-b10d-168a1b6a1672"
+				xmlns="http://www.w3.org/2000/svg"
+				xmlns:xlink="http://www.w3.org/1999/xlink"
+				x="0px"
+				y="0px"
+				viewBox="0 0 18.5 30"
+				style="enable-background:new 0 0 18.5 30;"
+				xml:space="preserve">
+				<title>arrow</title>
+				<polygon class="st0 arrow" points="0.8,15 9.8,29.2 17.3,29.2 4.6,9 "/>
+				<path
+					class="st1"
+					d="M18.4,29.4L5.1,8.3l4.7-7.5h7.5l-6.4,10c-0.1,0.2-0.1,0.4,0,0.6c0,0,0,0,0.1,0c0.2,0.1,0.4,0.1,0.5-0.1
+					l6.9-10.7V0.2C18.3,0,18.2,0,18,0H9.6C9.4,0,9.3,0,9.2,0.2L0,14.7v0.2l0,0v0.2l9.2,14.7C9.3,29.9,9.4,30,9.6,30H18l0.4-0.2
+					L18.4,29.4z M9.8,29.2L0.8,15l3.8-6l12.7,20.2H9.8z"/>
+			</svg>
 		</a>
 		<div class="content">
 			<slot/>
 		</div>
-		<a class="right" @click="next" v-if="hasNext()">
-			<div class="triangle"/>
+		<a class="link__layer link__layer--right" @click="next" v-if="hasNext()">
+			<svg
+				class="arrow reversed-arrow"
+				version="1.1"
+				id="f6261eb3-a4d3-4517-b10d-168a1b6a1672"
+				xmlns="http://www.w3.org/2000/svg"
+				xmlns:xlink="http://www.w3.org/1999/xlink"
+				x="0px"
+				y="0px"
+				viewBox="0 0 18.5 30"
+				style="enable-background:new 0 0 18.5 30;"
+				xml:space="preserve">
+				<title>arrow</title>
+				<polygon class="st0 arrow" points="0.8,15 9.8,29.2 17.3,29.2 4.6,9 "/>
+				<path
+					class="st1"
+					d="M18.4,29.4L5.1,8.3l4.7-7.5h7.5l-6.4,10c-0.1,0.2-0.1,0.4,0,0.6c0,0,0,0,0.1,0c0.2,0.1,0.4,0.1,0.5-0.1
+					l6.9-10.7V0.2C18.3,0,18.2,0,18,0H9.6C9.4,0,9.3,0,9.2,0.2L0,14.7v0.2l0,0v0.2l9.2,14.7C9.3,29.9,9.4,30,9.6,30H18l0.4-0.2
+					L18.4,29.4z M9.8,29.2L0.8,15l3.8-6l12.7,20.2H9.8z"/>
+			</svg>
 		</a>
 	</v-touch>
 </template>
 
 <style scoped>
-a {
-	position: fixed;
-	top: 0;
-	height: 100%;
-	width: 10%;
-	display: flex;
-	align-items: center;
-	cursor: pointer;
+.link__layer {
+  position: fixed;
+  top: 0;
+  height: 100%;
+  width: 10%;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
 }
 
-.left {
-	left: 0;
+.link__layer--left {
+  left: 0;
 }
 
-.right {
-	right: 0;
-	justify-content: flex-end;
+.link__layer--right {
+  right: 0;
+  justify-content: flex-end;
 }
 
-.triangle {
-	border-top: 5vw solid transparent;
-	border-bottom: 5vw solid transparent;
-	transition: border-color .5s ease;
+.arrow {
+  width: 10vw;
+  height: 10vh;
+  fill: rgba(255, 255, 255, 0.58824);
 }
 
-.left .triangle {
-	margin-left: 3vw;
-	border-right: 5vw solid #FFFFFF30;
+.link__layer--right:hover .arrow {
+  fill: #F5F5F5;
 }
 
-.right .triangle {
-	margin-right: 3vw;
-	border-left: 5vw solid #FFFFFF30;
+.link__layer--left:hover .arrow {
+  fill: #F5F5F5;
 }
 
-.left:hover .triangle {
-	border-right: 5vw solid #EBB815;
-}
-
-.right:hover .triangle {
-	border-left: 5vw solid #EBB815;
+.reversed-arrow {
+	transform: rotateY(180deg);
 }
 </style>
 
@@ -87,6 +117,7 @@ export default {
 	methods: {
 		getIndex() {
 			const relative = this.$route.fullPath.replace(`${this.path}/`, '');
+
 			return this.slides.indexOf(relative);
 		},
 		hasNext() {
