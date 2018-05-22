@@ -6,16 +6,19 @@ module.exports = {
 	env: {
 		browser: true,
 		node: true,
-		jest: true
+		jest: true,
+		"cypress/globals": true
 	},
 	extends: [
 		'xo/esnext',
 		'plugin:vue/recommended'
 	],
 	// required to lint *.vue files
-	plugins: ['vue'],
+	plugins: ['vue', 'cypress', 'chai-friendly'],
 	// add your custom rules here
 	rules: {
+		"no-unused-expressions": 0,
+		"chai-friendly/no-unused-expressions": 2,
 		'object-curly-spacing': ['error', 'always'],
 		'operator-linebreak': 'off',
 		'capitalized-comments': 'off',

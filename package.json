@@ -14,7 +14,9 @@
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "unit": "jest",
     "tdd": "jest --watch",
-    "test": "npm run lint && npm run unit"
+    "test": "npm run lint && npm run unit && npm run e2e",
+    "e2e": "$(npm bin)/cypress run --record",
+    "cypress:open": "cypress open"
   },
   "dependencies": {
     "@nuxtjs/pwa": "^2.0.5",
@@ -36,11 +38,14 @@
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.1",
     "babel-jest": "^22.4.1",
+    "cypress": "^2.1.0",
     "eslint": "^4.17.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-config-standard": "^10.2.1",
     "eslint-config-xo": "^0.20.1",
     "eslint-loader": "^1.9.0",
+    "eslint-plugin-chai-friendly": "^0.4.1",
+    "eslint-plugin-cypress": "^2.0.1",
     "eslint-plugin-html": "^3.1.1",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-node": "^5.1.1",
@@ -48,7 +53,8 @@
     "eslint-plugin-standard": "^3.0.1",
     "eslint-plugin-vue": "^4.2.2",
     "jest": "^22.4.2",
-    "vue-jest": "^2.2.1"
+    "vue-jest": "^2.2.1",
+    "wait-on": "^2.1.0"
   },
   "config": {
     "nuxt": {
