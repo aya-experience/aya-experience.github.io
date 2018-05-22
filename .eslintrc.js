@@ -46,7 +46,7 @@ module.exports = {
 				"allowFirstLine": false
 			}
 		}],
-		'vue/attribute-hyphenation': [2, 'never']
+		'vue/attribute-hyphenation': [2, 'always']
 	},
 	globals: {}
 }

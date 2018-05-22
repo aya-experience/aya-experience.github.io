@@ -1,4 +1,3 @@
-<!--eslint-disable-->
 <template>
 	<a-entity rotation="90 90 0" position="0 1.5 1" >
 		<a-entity id="camera" camera look-controls>

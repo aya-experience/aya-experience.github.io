@@ -1,4 +1,3 @@
-<!--eslint-disable-->
 <template>
 	<a-entity :position="position">
 		<a-entity @mouseenter="activateHUD" @mouseleave="hideHUD" @mouseout="hideHUD">
