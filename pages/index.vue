@@ -1,11 +1,11 @@
 <template>
 	<section
-		class="container"
 		:class="{
 			loading: !isLoaded,
 			loaded: isLoaded,
 			dive: dive !== null
 		}"
+		class="container"
 	>
 		<div class="splash-overflow">
 			<aya-logo

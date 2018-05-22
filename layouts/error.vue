@@ -1,6 +1,6 @@
 <template>
 	<div class="container">
-		<div class="wrapper" id="scene">
+		<div id="scene" class="wrapper">
 			<div class="astro-container" data-depth="0.6">
 				<img class="astro" src="/404/ayastronaut.svg">
 			</div>

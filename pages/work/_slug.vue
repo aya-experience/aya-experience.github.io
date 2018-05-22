@@ -1,5 +1,5 @@
 <template>
-	<div class="container" :style="{ backgroundColor: work.bgColor }">
+	<div :style="{ backgroundColor: work.bgColor }" class="container">
 		<aya-back page="/work"/>
 		<work-detail :work="work"/>
 		<!--<div class="other-company">

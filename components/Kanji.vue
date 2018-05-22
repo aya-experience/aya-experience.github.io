@@ -1,11 +1,11 @@
 <template>
 	<div
-		class="container"
 		:style="{ width: size, height: size }"
+		class="container"
 	>
 		<div
-			class="kanji-background"
 			:style="{ background: kanjiBg }"
+			class="kanji-background"
 		/>
 		<aya-kanji/>
 	</div>

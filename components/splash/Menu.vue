@@ -94,7 +94,8 @@ export default {
 				{ title: 'VISION', path: '/vision', image: '/photos/rails.jpg' },
 				{ title: 'RÉALISATION', path: '/work', image: '/photos/mac.jpg' },
 				// { title: 'Méthode', path: '/method', image: '/photos/matrix.jpg' },
-				{ title: 'CONTACT', path: '/contact', image: '/photos/matrix.jpg' }
+				{ title: 'CONTACT', path: '/contact', image: '/photos/matrix.jpg' },
+				{ title: 'AGENCE', path: '/agence', image: '/photos/mac.jpg' }
 			],
 			animationStart: true
 		};

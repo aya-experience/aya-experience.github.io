@@ -15,10 +15,6 @@ describe('Logo', () => {
 		it('should contain a nav tag', () => {
 			expect(cmp.contains('nav')).toBe(true);
 		});
-
-		it('should contain 3 a tag', () => {
-			expect(cmp.findAll('a').length).toBe(3);
-		});
 	});
 
 	describe('Events', () => {
