@@ -23,6 +23,6 @@ static/robots.txt
 static/sw.*
 static/CNAME
 
-
-#vscode
-.vscode
+#cypress
+cypress/videos
+cypress/screenshots
