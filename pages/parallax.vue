@@ -7,6 +7,9 @@
 				<p class="intro__text">Nous proposons une démarche complète pour <br> la réalisation de votre produit numérique</p>
 				<img class="intro__line intro__line-rigth" src="/agence/line.svg">
 			</div>
+			<div class="parallax__layer parallax__layer--stars" :class="debug ? 'parallax__layer__debug' : ''">
+				<img class="stars" src="/agence/stars.svg">
+			</div>
 		</div>
 		<div id="zenika" class="parallax__group" :class="debug ? 'parallax__group__debug' : ''">
 			<div class="zenika parallax__layer parallax__layer--base" :class="debug ? 'parallax__layer__debug' : ''">
@@ -18,8 +21,10 @@
 					avec le kanji du logo, kanji est un caractère ascii
 				</p>
 			</div>
-			<div class="parallax__layer parallax__layer--planets" :class="debug ? 'parallax__layer__debug' : ''">
+			<div class="parallax__layer parallax__layer--earth" :class="debug ? 'parallax__layer__debug' : ''">
 				<img class="earth" src="/agence/terre.png">
+			</div>
+			<div class="parallax__layer parallax__layer--moon" :class="debug ? 'parallax__layer__debug' : ''">
 				<img class="moon" src="/agence/lune.png">
 			</div>
 		</div>
@@ -40,7 +45,7 @@
 
 <style>
 html {
-	background-color: rgb(4, 0, 44) !important;
+	background-color: rgb(3, 0, 32) !important;
 }
 
 .parallax {
@@ -50,12 +55,13 @@ html {
 	overflow-x: auto;
 	overflow-y: hidden;
 	display: flex;
+	scroll-behavior: smooth;
 }
 
 .parallax__group {
   position: relative;
   height: 100vh;
-  width: 100%;
+  width: 100vw;
   transform-style: preserve-3d;
 }
 
@@ -81,11 +87,25 @@ html {
     z-index: 4;
 }
 
-.parallax__layer--planets {
-    transform: translateZ(-800px) scale(8);
-    z-index: 1;
-	left: -200vw;;
+.parallax__layer--earth {
+	transform: translateZ(-90px) scale(1.9);
+    height: 100vh;
+}
+
+.parallax__layer--moon {
+	transform: translateZ(-75px) scale(1.75);
+    height: 100vh;
+}
+
+.parallax__layer--stars {
+	transform: translateZ(-400px) scale(5);
+	width: 300vw;
+}
+
+.stars {
+	object-fit: cover;
 	height: 100vh;
+	max-width: 300vw;
 }
 
 .intro {
@@ -166,13 +186,55 @@ html {
 	height: 30vh;
 	width: auto;
 	left: 30%;
+	top: 3vh;
 }
 
 .moon {
 	position: relative;
 	height: 15vh;
 	width: auto;
-	left: 29%;
+	left: 50%;
+	top: 3vh;
+}
+
+@media all and (max-width: 800px){
+	.intro__text {
+		font-size: 1.75rem;
+	}
+
+	.intro__line {
+		height: 0.4vh;
+		width: auto;
+	}
+
+	.intro__line-left {
+		left: -28vw;
+	}
+
+	.intro__line-rigth {
+		left: 28vw;
+	}
+
+	.zenika__text {
+		top: 0;
+		font-size: 1.2rem;
+		letter-spacing: 0.5px;
+	}
+
+	.aya__text {
+		top: 0;
+		font-size: 1.2rem;
+		letter-spacing: 0.5px;
+	}
+
+	.cadre {
+		top: 10vh;
+		height: 11vh;
+	}
+
+	.intro__img {
+		width: auto;
+	}
 }
 </style>
 
