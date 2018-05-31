@@ -2,13 +2,15 @@
 	<div class="parallax">
 		<div id="intro" class="parallax__group" :class="debug ? 'parallax__group__debug' : ''">
 			<div class="intro parallax__layer parallax__layer--base">
-				<img class="intro__img" src="/agence/nebuleuse.png">
 				<img class="intro__line intro__line-left" src="/agence/line.svg">
 				<p class="intro__text">Nous proposons une démarche complète pour <br> la réalisation de votre produit numérique</p>
 				<img class="intro__line intro__line-rigth" src="/agence/line.svg">
 			</div>
-			<div class="parallax__layer parallax__layer--stars" :class="debug ? 'parallax__layer__debug' : ''">
-				<img class="stars" src="/agence/stars.svg">
+			<div class="parallax__layer parallax__layer--nebu1" :class="debug ? 'parallax__layer__debug' : ''">
+				<img class="intro__img" src="/agence/nebuleuse1.png">
+			</div>
+			<div class="parallax__layer parallax__layer--nebu2" :class="debug ? 'parallax__layer__debug' : ''">
+				<img class="intro__img" src="/agence/nebuleuse2.png">
 			</div>
 		</div>
 		<div id="zenika" class="parallax__group" :class="debug ? 'parallax__group__debug' : ''">
@@ -26,6 +28,9 @@
 			</div>
 			<div class="parallax__layer parallax__layer--moon" :class="debug ? 'parallax__layer__debug' : ''">
 				<img class="moon" src="/agence/lune.png">
+			</div>
+			<div class="parallax__layer parallax__layer--stars" :class="debug ? 'parallax__layer__debug' : ''">
+				<img class="stars" src="/agence/stars.svg">
 			</div>
 		</div>
 		<div id="aya" class="parallax__group" :class="debug ? 'parallax__group__debug' : ''">
@@ -97,6 +102,18 @@ html {
     height: 100vh;
 }
 
+.parallax__layer--nebu1 {
+	transform: translateZ(-20px) scale(1.2);
+    height: 100vh;
+	left: -20vw;
+}
+
+.parallax__layer--nebu2 {
+	transform: translateZ(-60px) scale(1.6);
+    height: 100vh;
+	left: -60vw;
+}
+
 .parallax__layer--stars {
 	transform: translateZ(-400px) scale(5);
 	width: 300vw;
@@ -119,7 +136,8 @@ html {
 	position: absolute;
 	object-fit: cover;
 	height: 100%;
-	width: 100%;
+	width: 80%;
+	opacity: 0.33;
 }
 
 .intro__text {
