@@ -3,7 +3,6 @@
 		<aya-back/>
 		<mentions-link/>
 		<aya-slider
-			path="/vision"
 			:slides="[
 				'intro',
 				'gui',
@@ -15,6 +14,7 @@
 				'tech',
 				'workflow'
 			]"
+			path="/vision"
 		>
 			<nuxt-child/>
 		</aya-slider>

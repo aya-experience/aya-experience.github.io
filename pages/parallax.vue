@@ -1,40 +1,42 @@
+<!--eslint-disable-->
 <template>
 	<div class="parallax">
-		<div id="intro" class="parallax__group" :class="debug ? 'parallax__group__debug' : ''">
+		<div id="intro" :class="debug ? 'parallax__group__debug' : ''" class="parallax__group">
 			<div class="intro parallax__layer parallax__layer--base">
 				<img class="intro__line intro__line-left" src="/agence/line.svg">
 				<p class="intro__text">Nous proposons une démarche complète pour <br> la réalisation de votre produit numérique</p>
 				<img class="intro__line intro__line-rigth" src="/agence/line.svg">
 			</div>
-			<div class="parallax__layer parallax__layer--nebu1" :class="debug ? 'parallax__layer__debug' : ''">
+			<div :class="debug ? 'parallax__layer__debug' : ''" class="parallax__layer parallax__layer--nebu1">
 				<img class="intro__img" src="/agence/nebuleuse1.png">
 			</div>
-			<div class="parallax__layer parallax__layer--nebu2" :class="debug ? 'parallax__layer__debug' : ''">
+			<div :class="debug ? 'parallax__layer__debug' : ''" class="parallax__layer parallax__layer--nebu2">
 				<img class="intro__img" src="/agence/nebuleuse2.png">
 			</div>
 		</div>
-		<div id="zenika" class="parallax__group" :class="debug ? 'parallax__group__debug' : ''">
-			<div class="zenika parallax__layer parallax__layer--base" :class="debug ? 'parallax__layer__debug' : ''">
+		<div id="zenika" :class="debug ? 'parallax__group__debug' : ''" class="parallax__group">
+			<div :class="debug ? 'parallax__layer__debug' : ''" class="zenika  parallax__layer parallax__layer--base">
 				<img class="zenika__logo" src="/agence/logo_zenika.svg">
 				<img class="cadre" src="/agence/cadre.svg">
-				<p class="zenika__text">Une marque de Zenika, prénom féminin multiculturelle, en arabe: <br>
+				<p data-scroll="toggle(.fromTopIn, .fromTopOut) centerHorizontal" class="zenika__text">
+					Une marque de Zenika, prénom féminin multiculturelle, en arabe: <br>
 					miracle, en japonais : « une certaine forme d'art ». Nom court à <br>
 					sonorité japonaise pour faire le lien avec Zenika, écrit en japonais<br>
 					avec le kanji du logo, kanji est un caractère ascii
 				</p>
 			</div>
-			<div class="parallax__layer parallax__layer--earth" :class="debug ? 'parallax__layer__debug' : ''">
+			<div :class="debug ? 'parallax__layer__debug' : ''" class="parallax__layer parallax__layer--earth">
 				<img class="earth" src="/agence/terre.png">
 			</div>
-			<div class="parallax__layer parallax__layer--moon" :class="debug ? 'parallax__layer__debug' : ''">
+			<div :class="debug ? 'parallax__layer__debug' : ''" class="parallax__layer parallax__layer--moon">
 				<img class="moon" src="/agence/lune.png">
 			</div>
-			<div class="parallax__layer parallax__layer--stars" :class="debug ? 'parallax__layer__debug' : ''">
+			<div :class="debug ? 'parallax__layer__debug' : ''" class="parallax__layer parallax__layer--stars">
 				<img class="stars" src="/agence/stars.svg">
 			</div>
 		</div>
-		<div id="aya" class="parallax__group" :class="debug ? 'parallax__group__debug' : ''">
-			<div class="aya parallax__layer parallax__layer--base" :class="debug ? 'parallax__layer__debug' : ''">
+		<div id="aya" :class="debug ? 'parallax__group__debug' : ''" class="parallax__group">
+			<div :class="debug ? 'parallax__layer__debug' : ''" class="aya parallax__layer parallax__layer--base">
 				<img class="aya__logo" src="/agence/logo_aya.svg">
 				<img class="cadre" src="/agence/cadre.svg">
 				<p class="aya__text">Nous sommes une équipe dans la société, qui réunie la <br>
@@ -215,6 +217,32 @@ html {
 	top: 3vh;
 }
 
+.hidden {
+  transition: opacity 1s ease;
+  opacity: 0.0;
+}
+
+.visible {
+  transition: opacity 1s ease;
+  opacity: 1.0;
+}
+
+.fromTopIn
+{
+	transition: transform 1.0s ease, opacity 1.0s ease;
+
+	transform: translate(0,0);
+	opacity: 1.0;
+}
+
+.fromTopOut
+{
+	transition: transform 1.0s ease, opacity 1.0s ease;
+
+	transform: translate(0,-10px);
+	opacity: 0.0;
+}
+
 @media all and (max-width: 800px){
 	.intro__text {
 		font-size: 1.75rem;
@@ -257,13 +285,17 @@ html {
 </style>
 
 <script>
+import ScrollTrigger from 'scrolltrigger-classes';
 export default {
 	data() {
 		return {
-			debug: false
+			debug: false,
+			animate: false
 		};
 	},
 	mounted() {
+		console.log(new ScrollTrigger());
+		(() => new ScrollTrigger())();
 		document.addEventListener('keydown', event => {
 			if (event.key === 'd') {
 				this.debug = !this.debug;

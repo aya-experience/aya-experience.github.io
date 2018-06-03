@@ -8,6 +8,7 @@
 		<div
 			class="kanji-background"
 			ref="bg"
+			:class="kanjiBgClass"
 			:style="{ backgroundImage: !loading || !animationStart ? kanjiBackground : ''}"
 		/>
 		<kanji v-if="!loading"/>
@@ -16,19 +17,19 @@
 		<svg class="AYA" viewBox="28 48 155 115">
 			<g transform="matrix(.5 0 0 .5 53 52)">
 				<!-- /\ du premier A -->
-				<path class="line" :class="animationStart ? 'a-main' : ''" d="M 0,90 38,0 76,90"/>
+				<path :class="animationStart ? 'a-main' : ''" class="line" d="M 0,90 38,0 76,90"/>
 				<!-- - du premier A -->
-				<path class="line" :class="animationStart ? 'a-bar' : ''" d="M 13,60 64,60"/>
+				<path :class="animationStart ? 'a-bar' : ''" class="line" d="M 13,60 64,60"/>
 				<!-- \ du Y -->
-				<path class="line" :class="animationStart ? 'y-bar' : ''" d="M 73,0 105,50"/>
+				<path :class="animationStart ? 'y-bar' : ''" class="line" d="M 73,0 105,50"/>
 				<!-- / du Y -->
-				<path class="line" :class="animationStart ? 'y-bar' : ''" d="M 137,0 105,50"/>
+				<path :class="animationStart ? 'y-bar' : ''" class="line" d="M 137,0 105,50"/>
 				<!-- | du Y -->
-				<path class="line" :class="animationStart ? 'y-bar-center' : ''" d="M 105,50 105,100"/>
+				<path :class="animationStart ? 'y-bar-center' : ''" class="line" d="M 105,50 105,100"/>
 				<!-- /\ du second A -->
-				<path class="line" :class="animationStart ? 'a-main' : ''" d="M 209,90 172,0 135,90"/>
+				<path :class="animationStart ? 'a-main' : ''" class="line" d="M 209,90 172,0 135,90"/>
 				<!-- - du second A -->
-				<path class="line" :class="animationStart ? 'a-bar' : ''" d="M 197,60 148,60"/>
+				<path :class="animationStart ? 'a-bar' : ''" class="line" d="M 197,60 148,60"/>
 				<text :class="animationStart ? 'animate-text' : ''" x="20" y="148">
 					&lt; CODE &nbsp;
 				</text>

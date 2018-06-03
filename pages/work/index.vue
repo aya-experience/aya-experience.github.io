@@ -1,21 +1,21 @@
 <template>
-	<div class="container" ref="container">
+	<div ref="container" class="container">
 		<aya-back/>
 		<mentions-link/>
-		<div class="work-container" :style="{ width: containerWidth }">
+		<div :style="{ width: containerWidth }" class="work-container">
 			<no-ssr>
-				<v-touch class="work-container" :style="{ width: containerWidth }" @swipe="onSwipe">
+				<v-touch :style="{ width: containerWidth }" class="work-container" @swipe="onSwipe">
 					<a
 						v-for="(work, index) in works"
 						:key="index"
-						class="work-preview"
-						@click="go(work)"
-						@mouseenter="enter(index)"
-						@mouseleave="leave()"
 						:style="{
 							'background-image' : background(work, index),
 							'width': workWidth(index)
 						}"
+						class="work-preview"
+						@click="go(work)"
+						@mouseenter="enter(index)"
+						@mouseleave="leave()"
 					>
 						<div class="work-title">
 							<div class="client-logo-container">
@@ -36,12 +36,12 @@
 		</div>
 		<div class="slider">
 			<input
-				type="range"
-				min="0"
 				:max="(works.length - 1)"
 				:value="hoverIndex"
-				@input="onChangeRange($event.target.value)"
+				type="range"
+				min="0"
 				onkeydown="return false;"
+				@input="onChangeRange($event.target.value)"
 			>
 		</div>
 	</div>
