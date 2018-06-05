@@ -39,7 +39,7 @@
 			<div :class="debug ? 'parallax__layer__debug' : ''" class="aya parallax__layer parallax__layer--base">
 				<img class="aya__logo" src="/agence/logo_aya.svg">
 				<img class="cadre" src="/agence/cadre.svg">
-				<p class="aya__text">Nous sommes une équipe dans la société, qui réunie la <br>
+				<p data-scroll="toggle(.fromTopIn, .fromTopOut) centerHorizontal" class="aya__text">Nous sommes une équipe dans la société, qui réunie la <br>
 					spécialité autour de l'interface utilisateur. Il n’y a pas <br>
 					de rupture entre les dev et les designers. Nous sommes <br>
 					actuellement à lyon et à paris mais peut intervenir dans <br>
@@ -91,7 +91,6 @@ html {
 }
 .parallax__layer--base {
 	transform: translateZ(0);
-    z-index: 4;
 }
 
 .parallax__layer--earth {
@@ -118,13 +117,30 @@ html {
 
 .parallax__layer--stars {
 	transform: translateZ(-400px) scale(5);
-	width: 300vw;
+	height: 100vh;
+	opacity: 0.8;
+	width: 100vw;
+	/* transform-origin: 90% center; */
+}
+
+.parallax__layer--deep {
+	transform: translateZ(-50px) scale(1.5);
+    height: 100vh;
+	width: 100vw;
+}
+
+.parallax__layer--wrapper {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 .stars {
 	object-fit: cover;
 	height: 100vh;
-	max-width: 300vw;
+	width: 100vw;
 }
 
 .intro {
@@ -143,20 +159,17 @@ html {
 }
 
 .intro__text {
-	z-index: 1;
 	font-size: 2.7rem;
 	text-align: center;
 }
 
 .intro__line-left {
-	z-index: 1;
 	position: relative;
 	left: -16vw;
 	top: 1vh;
 }
 
 .intro__line-rigth {
-	z-index: 1;
 	position: relative;
 	left: 16vw;
 	top: -1vh;
@@ -289,8 +302,7 @@ import ScrollTrigger from 'scrolltrigger-classes';
 export default {
 	data() {
 		return {
-			debug: false,
-			animate: false
+			debug: false
 		};
 	},
 	mounted() {
