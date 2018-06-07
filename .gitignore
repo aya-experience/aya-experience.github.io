@@ -22,3 +22,7 @@ static/sitemap.xml
 static/robots.txt
 static/sw.*
 static/CNAME
+
+#cypress
+cypress/videos
+cypress/screenshots

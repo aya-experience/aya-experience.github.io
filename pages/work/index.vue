@@ -320,12 +320,7 @@ export default {
 			gradients: {
 				custom: 'linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1))',
 				even: 'linear-gradient(#000000C0, #000000C0)',
-				odd: 'linear-gradient(#000000E0, #000000E0)',
-				hover: [
-					'linear-gradient(150deg, #786CF0E0, #000000E0 70%)',
-					'linear-gradient(150deg, #C54E4EE0, #000000E0 70%)',
-					'linear-gradient(150deg, #5E9848F0, #000000E0 70%)'
-				]
+				odd: 'linear-gradient(#000000E0, #000000E0)'
 			},
 			link: { title: 'Detail', path: '/detail' }
 		};
@@ -387,7 +382,7 @@ export default {
 			return index % 2 === 0 ? this.gradients.even : this.gradients.odd;
 		},
 		activeGradient(index) {
-			return this.gradients.hover[index % this.gradients.hover.length];
+			return `linear-gradient(150deg, ${(this.works[index].gradient) || '#ff9804'}, #000000E0 70%)`;
 		},
 		smoothScroll(orientation, width, repeat) {
 			const i = 10;

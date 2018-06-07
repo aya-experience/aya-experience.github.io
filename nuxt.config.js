@@ -81,7 +81,10 @@ module.exports = {
 				);
 			}
 		},
-		vendor: ['vue-touch']
+		vendor: ['vue-touch', 'parallax-js']
+	},
+	generate: {
+		routes: works.map(work => (`/work/${work.slug}`))
 	},
 	modules: [
 		['nuxt-seo-module', {
@@ -102,7 +105,8 @@ module.exports = {
 	],
 	plugins: [
 		{ src: '~plugins/vue-touch', ssr: false },
-		{ src: '~plugins/google-analytics.js', ssr: false }
+		{ src: '~plugins/google-analytics.js', ssr: false },
+		{ src: '~plugins/parallax.js', ssr: false }
 	],
 	env: {
 		baseUrl: config.baseUrl
