@@ -32,3 +32,9 @@ deploy:
     domain: aya-experience.surge.sh
     on:
       branch: preprod
+   - provider: surge
+    skip_cleanup: true
+    project: './dist/'
+    domain: agence-aya-experience.surge.sh
+    on:
+      branch: agence
