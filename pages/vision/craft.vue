@@ -5,6 +5,7 @@
 				Nous développons avec la passion du travail <strong>bien fait</strong>
 			</p>
 		</aya-block>
+		<mention-author name="Christopher Burns" surname="@christopher_burns"/>
 	</aya-bg>
 </template>
 
@@ -18,11 +19,13 @@
 <script>
 import Background from '~/components/slides/Background';
 import TextBlock from '~/components/slides/TextBlock';
+import Copyright from '~/components/slides/Copyright';
 
 export default {
 	components: {
 		'aya-bg': Background,
-		'aya-block': TextBlock
+		'aya-block': TextBlock,
+		'mention-author': Copyright
 	}
 };
 </script>

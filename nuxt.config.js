@@ -45,7 +45,7 @@ module.exports = {
 			{ rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#000000' },
 			{ rel: 'prefetch', href: '/photos/art.jpg' },
 			{ rel: 'prefetch', href: '/photos/cell.jpg' },
-			{ rel: 'prefetch', href: '/photos/cell2.jpg' },
+			{ rel: 'prefetch', href: '/photos/gui.jpg' },
 			{ rel: 'prefetch', href: '/photos/craft.jpg' },
 			{ rel: 'prefetch', href: '/photos/innovation.jpg' },
 			{ rel: 'prefetch', href: '/photos/mac.jpg' },

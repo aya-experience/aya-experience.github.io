@@ -1,6 +1,9 @@
 <template>
 	<v-touch @swipeleft="next" @swiperight="previous">
-		<a class="link__layer link__layer--left" @click="previous" v-if="hasPrevious()">
+		<div class="content">
+			<slot/>
+		</div>
+		<a class="link__layer link__layer--left" data-cy="left-arrow" @click="previous" v-if="hasPrevious()">
 			<svg
 				class="arrow"
 				version="1.1"
@@ -21,10 +24,7 @@
 					L18.4,29.4z M9.8,29.2L0.8,15l3.8-6l12.7,20.2H9.8z"/>
 			</svg>
 		</a>
-		<div class="content">
-			<slot/>
-		</div>
-		<a class="link__layer link__layer--right" @click="next" v-if="hasNext()">
+		<a class="link__layer link__layer--right" data-cy="right-arrow" @click="next" v-if="hasNext()">
 			<svg
 				class="arrow reversed-arrow"
 				version="1.1"
@@ -65,7 +65,6 @@
 
 .link__layer--right {
   right: 0;
-  justify-content: flex-end;
 }
 
 .arrow {
@@ -84,6 +83,12 @@
 
 .reversed-arrow {
 	transform: rotateY(180deg);
+}
+
+@media (max-width: 600px) {
+	.arrow {
+		height: 5vh;
+	}
 }
 </style>
 
