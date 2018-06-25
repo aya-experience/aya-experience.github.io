@@ -1,5 +1,5 @@
 <template>
-	<aya-bg image="/photos/matrix.jpg">
+	<aya-bg image="/photos/gui.jpg">
 		<aya-block>
 			<p>Le monde numérique devient omniprésent</p>
 			<p>
@@ -8,6 +8,7 @@
 				n'ont jamais eu un rôle aussi important
 			</p>
 		</aya-block>
+		<mention-author name="Francisco Gomes" surname="@thepip"/>
 	</aya-bg>
 </template>
 
@@ -21,11 +22,13 @@
 <script>
 import Background from '~/components/slides/Background';
 import TextBlock from '~/components/slides/TextBlock';
+import Copyright from '~/components/slides/Copyright';
 
 export default {
 	components: {
 		'aya-bg': Background,
-		'aya-block': TextBlock
+		'aya-block': TextBlock,
+		'mention-author': Copyright
 	}
 };
 </script>
