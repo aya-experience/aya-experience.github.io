@@ -36,6 +36,9 @@ const workMapper = (data, index) => ({
 		url: data.data.menu_bg.url,
 		dimensions: data.data.menu_bg.dimensions
 	},
+	detailBg: {
+		url: data.data.detail_vue.url ? data.data.detail_vue.url : data.data.menu_bg.url
+	},
 	illustrations: data.data.illustrations.map(data => ({
 		url: data.illustration.url,
 		dimensions: data.illustration.dimensions

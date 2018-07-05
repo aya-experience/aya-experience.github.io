@@ -15,7 +15,7 @@
 					</li>
 				</ul>
 			</div>
-			<img class="aside aside-2" :src="work.menuBg.url">
+			<img class="aside aside-2" :src="work.detailBg.url">
 		</div>
 	</div>
 </template>
