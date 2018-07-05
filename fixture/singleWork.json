@@ -68,5 +68,9 @@
 			"https://prismic-io.s3.amazonaws.com/app-aya/0bc776840bb7f0e837029f4507cb9e12a0a0b41f_b4all.jpg",
 		"dimensions": { "width": 1000, "height": 1000 }
 	},
+	"detailBg": {
+		"url":
+			"https://prismic-io.s3.amazonaws.com/app-aya/0bc776840bb7f0e837029f4507cb9e12a0a0b41f_b4all.jpg"
+	},
 	"illustrations": [{}]
 }
