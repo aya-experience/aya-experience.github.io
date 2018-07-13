@@ -1,5 +1,5 @@
 <template>
-	<div class="by-zenika" :class="animationStart ? 'animate-div' : ''">
+	<div :class="animationStart ? 'animate-div' : ''" class="by-zenika">
 		<p>by</p> &nbsp;
 		<img src="/logos/zenika-name.png" alt="Zenika">
 	</div>

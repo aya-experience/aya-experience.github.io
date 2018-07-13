@@ -1,9 +1,9 @@
 <template>
 	<div
-		class="slide-background"
 		:style="{
 			backgroundImage: `linear-gradient(rgba(0, 0, 0, ${darken}), rgba(0, 0, 0, ${darken})), url('${image}')`
 		}"
+		class="slide-background"
 	>
 		<slot/>
 	</div>
