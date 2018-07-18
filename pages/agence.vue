@@ -272,7 +272,7 @@
 	@media all and (max-width: 800px) {
 		.content__text {
 			align-self: center;
-			max-width: 100vw;
+			max-width: 80vw;
 		}
 		.intro__text {
 			max-width: 100vw;
@@ -303,11 +303,16 @@
 		}
 	}
 
+	@media all and (min-width: 1800px) {
+		.content__text {
+			font-size: 2.8rem;
+		}
+	}
+
 </style>
 
 <script>
 import ScrollTrigger from 'scrolltrigger-classes';
-import isMobile from '~/utils/test-mobile.js';
 import Cadre from '~/components/agence/cadre.vue';
 import BackButton from '~/components/BackButton.vue';
 
@@ -327,7 +332,7 @@ export default {
 	computed: {
 		ayaAnchorOffset() {
 			if (process.browser) {
-				const offset = isMobile() ? 'centerHorizontal' : 'offset(-800px, 0) addWidth';
+				const offset = 'centerHorizontal';
 				return `toggle(.visible, .invisible) ${offset}`;
 			}
 			return '';

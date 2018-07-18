@@ -81,7 +81,7 @@
 @media all and (max-width: 800px) {
 	.cadre {
 		height: 15vh;
-		width: 100vw;
+		max-width: 80vw;
 	}
 
 	.cadre-top {
