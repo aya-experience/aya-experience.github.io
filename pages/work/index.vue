@@ -199,7 +199,6 @@ a.work-preview:hover {
 }
 
 a.work-preview .work-title {
-	text-transform: uppercase;
 	width: 100%;
 	padding: 7px;
 	z-index: 1000;
@@ -216,7 +215,6 @@ a.work-preview .work-title {
 
 a.work-preview .work-title h1{
 	font-weight: normal;
-	transition: all 0.2s ease;
 	font-size: 2rem;
 }
 
@@ -256,7 +254,7 @@ a.work-preview:hover .client-logo-container img {
 
 div.skills-container {
 	height: 15vh;
-	text-align: left;
+	text-align: center;
 	position: relative;
 	margin-top: 5vh;
 }
@@ -335,8 +333,7 @@ export default {
 			return parseFloat(this.workWidth().slice(0, -2)) * (this.$refs.container.clientWidth / 100);
 		},
 		mouseEvent() {
-			// Check if its Firefox , change to scroll and override it to determine delta !
-			return (/Firefox/i.test(navigator.userAgent)) ? 'DOMMouseScroll' : 'mousewheel';
+			return 'wheel';
 		},
 		isMobile() {
 			return isMobile();
@@ -399,8 +396,10 @@ export default {
 			}
 		},
 		handleWheel(event) {
-			event.preventDefault();
-			this.$refs.container.scrollLeft += event.deltaY;
+			if (event.deltaY) {
+				event.preventDefault();
+			}
+			this.$refs.container.scrollLeft += event.deltaY || event.deltaX;
 		},
 		handleKeyup(event) {
 			event.preventDefault();
