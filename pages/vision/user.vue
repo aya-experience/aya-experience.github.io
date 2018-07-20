@@ -1,5 +1,5 @@
 <template>
-	<aya-bg image="/photos/woman.jpg">
+	<aya-bg :rot="160" :darken="1" image="/photos/woman.jpg">
 		<aya-block>
 			<section>
 				<p>

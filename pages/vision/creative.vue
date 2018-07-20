@@ -1,5 +1,5 @@
 <template>
-	<aya-bg image="/photos/innovation.jpg" :darken="0.4">
+	<aya-bg image="/photos/innovation.jpg" :darken="0.8" :rot="15">
 		<aya-block>
 			<p>
 				Nous apportons la <strong>démarche</strong>
