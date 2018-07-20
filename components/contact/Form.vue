@@ -1,7 +1,7 @@
 <template>
-	<div class="container">
+	<div>
 		<slot/>
-		<div v-if="displayForm" class="form">
+		<div v-if="displayForm" class="form" :class="displayForm ? 'visible' : ''">
 			<div @keyup.enter="submitName" class="section">
 				<label for="name">Cher client, comment vous appelez-vous ?</label>
 				<input v-model="name" id="name" type="text">
@@ -62,6 +62,13 @@ label {
 }
 .send {
 	align-self: flex-end;
+}
+.visible {
+	transition: fade-in 4s;
+}
+@keyframes fade-in {
+	from { opacity: 0}
+	to {opacity: 1}
 }
 </style>
 

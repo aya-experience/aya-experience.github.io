@@ -30,12 +30,12 @@
 	opacity: 0;
 }
 .selected {
-	order: 1;
 	position: relative;
 	width: 100vw;
 }
 .type--selected {
-	align-self: flex-start;
+	transition: 2s transform ease-in-out;
+	transform: translateX(-500px);
 }
 </style>
 
