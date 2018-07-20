@@ -1,5 +1,5 @@
 <template>
-	<aya-bg image="/photos/tech.jpg">
+	<aya-bg :darken="0.8" image="/photos/tech.jpg">
 		<aya-block>
 			<p>
 				Nous mettons en oeuvre les <strong>dernières technologies</strong>

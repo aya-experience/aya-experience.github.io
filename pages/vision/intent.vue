@@ -1,5 +1,5 @@
 <template>
-	<aya-bg image="/photos/cell.jpg">
+	<aya-bg :rot="-120" :darken="0.5" image="/photos/cell.jpg">
 		<aya-block>
 			<p>
 				Notre intention : créer de nouvelles
