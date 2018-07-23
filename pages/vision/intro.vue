@@ -106,6 +106,11 @@ export default {
 	},
 	methods: {
 		isMobile
+	},
+	head() {
+		return {
+			link: [{ rel: 'prefetch', href: '/photos/gui.jpg' }]
+		};
 	}
 };
 </script>

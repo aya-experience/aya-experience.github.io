@@ -25,6 +25,11 @@ export default {
 	components: {
 		'aya-bg': Background,
 		'aya-block': TextBlock
+	},
+	head() {
+		return {
+			link: [{ rel: 'prefetch', href: '/photos/innovation.jpg' }]
+		};
 	}
 };
 </script>

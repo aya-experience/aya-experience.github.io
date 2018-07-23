@@ -28,6 +28,11 @@ export default {
 		'aya-bg': Background,
 		'aya-block': TextBlock,
 		'mention-author': Copyright
+	},
+	head() {
+		return {
+			link: [{ rel: 'prefetch', href: '/photos/woman.jpg' }]
+		};
 	}
 };
 </script>
