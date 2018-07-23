@@ -344,8 +344,8 @@ export default {
 		scope.showZenikaSlide = () => this.showZenikaSlide();
 		scope.hideZenikaSlide = () => this.hideZenikaSlide();
 
-		this.$refs.container.addEventListener('wheel', this.handleWheel);
-		this.$refs.container.addEventListener('touchstart', this.swipe);
+		this.$refs.container.addEventListener('wheel', this.handleWheel, { passive: true });
+		this.$refs.container.addEventListener('touchstart', this.swipe, { passive: true });
 	},
 	beforeDestroy() {
 		this.$refs.container.removeEventListener('wheel', this.handleWheel);
