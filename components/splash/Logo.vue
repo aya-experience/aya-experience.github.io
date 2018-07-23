@@ -8,7 +8,6 @@
 		<div
 			class="kanji-background"
 			ref="bg"
-			:class="kanjiBgClass"
 			:style="{ backgroundImage: !loading || !animationStart ? kanjiBackground : ''}"
 		/>
 		<kanji v-if="!loading"/>

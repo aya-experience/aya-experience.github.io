@@ -2,7 +2,7 @@
 	<div ref="container" class="container">
 		<aya-back/>
 		<div id="zenika" class="content fixe-content" :class="isZenikaVisible ? 'visible' : 'invisible'">
-			<img class="zenika__img" src="/agence/logo_zenika.svg">
+			<zenika-logo/>
 			<cadre :show="isZenikaVisible">
 				<p class="content__text">
 					AYA est une équipe de Zenika. Nous apportons notre expertise
@@ -123,10 +123,6 @@
 	}
 	.slide__bg-rotate {
 		transform: rotate(180deg) !important;
-	}
-	.zenika__img {
-		width: auto;
-		height: 20vh;
 	}
 
 	/* parallax
@@ -315,11 +311,13 @@
 import ScrollTrigger from 'scrolltrigger-classes';
 import Cadre from '~/components/agence/cadre.vue';
 import BackButton from '~/components/BackButton.vue';
+import logoZenika from '~/components/agence/logoZenika.vue';
 
 export default {
 	components: {
 		Cadre,
-		'aya-back': BackButton
+		'aya-back': BackButton,
+		'zenika-logo': logoZenika
 	},
 	data() {
 		return {
@@ -346,8 +344,8 @@ export default {
 		scope.showZenikaSlide = () => this.showZenikaSlide();
 		scope.hideZenikaSlide = () => this.hideZenikaSlide();
 
-		this.$refs.container.addEventListener('wheel', this.handleWheel);
-		this.$refs.container.addEventListener('touchstart', this.swipe);
+		this.$refs.container.addEventListener('wheel', this.handleWheel, { passive: true });
+		this.$refs.container.addEventListener('touchstart', this.swipe, { passive: true });
 	},
 	beforeDestroy() {
 		this.$refs.container.removeEventListener('wheel', this.handleWheel);

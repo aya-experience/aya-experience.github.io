@@ -51,7 +51,10 @@ module.exports = {
 			{ rel: 'prefetch', href: '/photos/mac.jpg' },
 			{ rel: 'prefetch', href: '/photos/matrix.jpg' },
 			{ rel: 'prefetch', href: '/photos/rails.jpg' },
-			{ rel: 'prefetch', href: '/photos/woman.jpg' }
+			{ rel: 'prefetch', href: '/photos/woman.jpg' },
+			// Agence
+			{ rel: 'prefetch', href: '/agence/nebuleuse1.png' },
+			{ rel: 'prefetch', href: '/agence/nebuleuse2.png' }
 		]
 	},
 	/*
