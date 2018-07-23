@@ -1,5 +1,5 @@
 <template>
-	<img :style="{ width: size, height: size }" :class="shadow ? 'shadow' : ''" src="~/assets/icons/logo.svg">
+	<img :style="{ width: size, height: size }" alt="back button" :class="shadow ? 'shadow' : ''" src="~/assets/icons/logo.svg">
 </template>
 
 <style scoped>
