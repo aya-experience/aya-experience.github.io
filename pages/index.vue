@@ -7,6 +7,7 @@
 		}"
 		class="container"
 	>
+
 		<div class="splash-overflow">
 			<aya-logo
 				:hover="hover"
@@ -14,9 +15,9 @@
 				:dive="dive"
 				@loaded="loaded"
 				@dive-done="diveEnd"/>
+			<aya-znk/>
 		</div>
 		<aya-menu @enter="enter" @leave="leave" @go="diveStart"/>
-		<aya-znk/>
 		<canvas v-if="dive === null" ref="canvas"/>
 		<mentions-link v-if="isLoaded && dive === null"/>
 	</section>
@@ -24,7 +25,7 @@
 </template>
 
 <style>
-section .splash-overflow {
+.splash-overflow {
 	position: fixed;
 	width: 100%;
 	height: 100%;
@@ -38,6 +39,12 @@ section.container {
 	height: 100vh;
 	width: 100vw;
 	overflow-x: hidden;
+}
+
+@media (max-width: 670px) {
+	.splash-overflow {
+		top: 20vh;
+	}
 }
 </style>
 
