@@ -3,7 +3,7 @@
 		<div class="wrapper">
 			<div class="aside aside-1">
 				<div class="flex-header">
-					<img :src="work.logo.url" class="img-company flex-header-item">
+					<img :alt="work.clientName" :src="work.logo.url" class="img-company flex-header-item">
 					<h1 :style="{ color: work.titleColor }" class="project-name flex-header-item">
 						{{ work.projectName }}
 					</h1>
@@ -15,7 +15,7 @@
 					</li>
 				</ul>
 			</div>
-			<img :src="work.menuBg.url" class="aside aside-2">
+			<img :alt="work.projectName" :src="work.menuBg.url" class="aside aside-2">
 		</div>
 	</div>
 </template>

@@ -2,40 +2,44 @@
 	<div ref="container" class="container">
 		<aya-back/>
 		<mentions-link/>
-		<div :style="{ width: containerWidth }" class="work-container">
+		<section :style="{ width: containerWidth }" class="work-container">
 			<no-ssr>
 				<v-touch :style="{ width: containerWidth }" class="work-container" @swipe="onSwipe">
-					<a
+					<article
 						v-for="(work, index) in works"
-						:key="index"
-						:style="{
-							'background-image' : background(work, index),
-							'width': workWidth(index)
-						}"
-						class="work-preview"
-						@click="go(work)"
-						@mouseenter="enter(index)"
-						@mouseleave="leave()"
-					>
-						<div class="work-title">
-							<div class="client-logo-container">
-								<img :src="work.logo.url">
-								<h1>{{ work.projectName }}</h1>
+						:key="index">
+						<a
+							:style="{
+								'background-image' : background(work, index),
+								'width': workWidth(index)
+							}"
+							class="work-preview"
+							@click="go(work)"
+							@mouseenter="enter(index)"
+							@mouseleave="leave()"
+						>
+							<div class="work-title">
+								<div class="client-logo-container">
+									<img :alt="work.clientName" :src="work.logo.url">
+									<h1>{{ work.projectName }}</h1>
+								</div>
+								<div class="skills-container">
+									<ul>
+										<li v-for="(skill, index) in work.skills" :key="index">
+											{{ skill.title }}
+										</li>
+									</ul>
+								</div>
 							</div>
-							<div class="skills-container">
-								<ul>
-									<li v-for="(skill, index) in work.skills" :key="index">
-										{{ skill.title }}
-									</li>
-								</ul>
-							</div>
-						</div>
-					</a>
+						</a>
+					</article>
 				</v-touch>
 			</no-ssr>
-		</div>
+		</section>
 		<div class="slider">
+			<label for="scroll-controller" hidden>défilement</label>
 			<input
+				id="scroll-controller"
 				:max="(works.length - 1)"
 				:value="hoverIndex"
 				type="range"
@@ -204,7 +208,7 @@ a.work-preview .work-title {
 	z-index: 1000;
 	color: #ffffff;
 	font-weight: 300;
-	font-size: 13px;
+	font-size: 2rem;
 	text-shadow: 0px 0px 8px black;
 	transition: all 0.2s ease;
 	text-align: center;
