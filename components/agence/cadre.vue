@@ -70,12 +70,12 @@
 
 .cadre-top {
 	top: 12vh;
-	left: 10vw;
+	left: 8vw;
 }
 
 .cadre-bot {
 	top: -20vh;
-	left: -10vw;
+	left: -8vw;
 }
 
 @media all and (max-width: 800px) {
