@@ -6,7 +6,7 @@
 	}">
 
 		<div
-			class="kanji-background"
+			:class="kanjiBgClass"
 			ref="bg"
 			:style="{ backgroundImage: !loading || !animationStart ? kanjiBackground : ''}"
 		/>
@@ -56,20 +56,23 @@ main {
 	animation-duration: 4s;
 	animation-timing-function: ease;
 }
-.loading .kanji-background {
+.loading .kanji-background,
+.loading .kanji-background-vr {
 	animation-name: kanji-reduce;
 	animation-duration: 4s;
 	animation-timing-function: cubic-bezier(0.1, 0.5, 0.6, 0.1);
 	width: calc(18vh);
 	background-color: transparent;
 }
-.hover .kanji-background {
+.hover .kanji-background,
+.hover .kanji-background-vr {
 	animation-name: kanji-image;
 	animation-duration: 1s;
 	animation-timing-function: ease;
 	opacity: 1;
 }
-.kanji-background {
+.kanji-background,
+.kanji-background-vr {
 	position: absolute;
 	top: calc(49.5vh);
 	left: calc(51vw - 9.5vh);
@@ -80,12 +83,14 @@ main {
 	background-position: center;
 	opacity: 1;
 }
-.dive .kanji-background {
+.dive .kanji-background,
+.dive .kanji-background-vr {
 	transition-property: top, left, height, width;
 	transition-duration: 0.5s;
 	transition-timing-function: ease;
 }
-.dive .kanji-background {
+.dive .kanji-background,
+.dive .kanji-background-vr {
 	top: 0;
 	left: 0;
 	height: 100%;
@@ -97,6 +102,14 @@ main {
 	animation-timing-function: ease;
 	animation-fill-mode: forwards;
 }
+
+.dive .kanji-background-vr {
+	animation-name: kanji-background-dive-vr;
+	animation-duration: 2s;
+	animation-timing-function: ease;
+	animation-fill-mode: forwards;
+}
+
 .kanji {
 	position: absolute;
 	top: 49vh;
@@ -260,6 +273,7 @@ main {
 		left: 0;
 		height: 100%;
 		width: 100%;
+		background-size: cover;
 		opacity: 1;
 	}
 	70% {
@@ -269,6 +283,28 @@ main {
 		opacity: 0;
 	}
 }
+
+@keyframes kanji-background-dive-vr {
+	0% {
+		top: calc(10.5vh);
+		left: calc(50vw - 39.5vh);
+		height: calc(79vh);
+		width: calc(79vh);
+		opacity: 1;
+	}
+	25% {
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
+		opacity: 1;
+	}
+	100% {
+		opacity: 1;
+		z-index: 1;
+	}
+}
+
 @media (max-width: 600px) {
 	.AYA {
 		transform: scale(0.8);
@@ -309,7 +345,8 @@ export default {
 			kanjiBackground: 'none',
 			imageLoaded: {},
 			loading: true,
-			animationStart: true
+			animationStart: true,
+			kanjiBgClass: 'kanji-background'
 		};
 	},
 	watch: {
@@ -325,6 +362,9 @@ export default {
 		},
 		async dive(newVal, oldVal) {
 			if (newVal !== oldVal && newVal !== null) {
+				if (newVal.path === '/team') {
+					this.kanjiBgClass = 'kanji-background-vr';
+				}
 				await animationComplete(this.$refs.bg);
 				this.$emit('dive-done');
 			}

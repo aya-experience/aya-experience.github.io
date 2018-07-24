@@ -15,9 +15,9 @@
 <style scoped>
 nav {
 	position: absolute;
-	width: 100%;
+	width: 100vw;
 	bottom: 5vh;
-	left: 1vw;
+	left: 0;
 	z-index: 1;
 	display: flex;
 	flex-direction: row;
@@ -38,8 +38,10 @@ nav {
 a {
 	color: white;
 	letter-spacing: 4px;
-	margin: 1vh 5vw;
+	margin: 1vh 0;
 	cursor: pointer;
+	width: 20vw;
+	text-align: center;
 	transition: color 0.5s ease;
 }
 a:before {
@@ -64,20 +66,32 @@ a:hover:after {
   opacity: 1;
   right: 5px;
 }
-@media (max-width: 600px) {
+
+@media (max-width: 1150px) {
+	nav a {
+		font-size: 1.8rem;
+	}
+}
+
+@media (max-width: 900px) {
+	nav a {
+		font-size: 1.4rem;
+	}
+}
+
+@media (max-width: 670px) {
 	nav {
 		flex-direction: column;
-		top: -73vh;
+		top: 5vh;
 		left: 0;
+		height: 30vh;
 		text-align: center;
-		display: flex;
+		align-items: center;
+		justify-content: space-between;
 	}
 	nav a {
-		margin: 10px;
+		width: 50vw;
 	}
-	/* .loaded nav {
-		display: flex;
-	} */
 }
 @keyframes menu-appear {
 	0% { opacity: 0 }
@@ -93,9 +107,9 @@ export default {
 			links: [
 				{ title: 'VISION', path: '/vision', image: '/photos/rails.jpg' },
 				{ title: 'RÉALISATION', path: '/work', image: '/photos/mac.jpg' },
-				// { title: 'Méthode', path: '/method', image: '/photos/matrix.jpg' },
-				{ title: 'CONTACT', path: '/contact', image: '/photos/matrix.jpg' },
-				{ title: 'AGENCE', path: '/agence', image: '/photos/mac.jpg' }
+				{ title: 'AGENCE', path: '/agence', image: '/photos/mac.jpg' },
+				{ title: 'EQUIPE', path: '/team', image: '/photos/lune.jpg' },
+				{ title: 'CONTACT', path: '/contact', image: '/photos/matrix.jpg' }
 			],
 			animationStart: true
 		};
