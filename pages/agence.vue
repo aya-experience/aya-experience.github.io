@@ -65,21 +65,17 @@
 </template>
 
 <style>
-	html, body {
-		height: 100%;
-		overflow: hidden;
-	}
-
-	body {
+	.body-parallax {
 		scroll-behavior: smooth;
 		overflow-y: hidden;
-		background-color: rgb(3, 0, 32) !important;
+		background-color: rgb(3, 0, 32);
 		transform: translateZ(0); /* Fix paint issues in Edge && Safari H/W acceleration */
+		height: 100%;
+		overflow: hidden;
 	}
 </style>
 
 <style scoped>
-
 	/* slide layout
 	--------------------------------------------- */
 
@@ -140,31 +136,31 @@
 		transform-style: preserve-3d;
 	}
 	.slide__nebu1 {
-		transform: translateZ(160px) scale(.5);
+		transform: translate3d(0, 0, 160px) scale(.5);
 
 		position: absolute;
 		height: 100vh;
 		width: 100vw;
 	}
 	.slide__nebu2 {
-		transform: translateZ(90px) scale(.7);
+		transform: translate3d(0, 0, 90px) scale(.7);
 
 		position: absolute;
 		height: 100vh;
 		width: 100vw;
 	}
 	.parallax__layer--earth {
-		transform: translateZ(60px) scale(0.8);
+		transform: translate3d(0, 0, 60px) scale(0.8);
 
 		height: 100vh;
 	}
 	.parallax__layer--moon {
-		transform: translateZ(100px) scale(0.8);
+		transform: translate3d(0, 0, 100px) scale(0.8);
 
 		height: 100vh;
 	}
 	.slide__text {
-		transform: translateZ(180px) scale(.4);
+		transform: translate3d(0, 0, 180px) scale(.4);
 
 		height: 100vh;
 		font-size: 2rem;
@@ -346,12 +342,16 @@ export default {
 
 		this.$refs.container.addEventListener('wheel', this.handleWheel, { passive: true });
 		this.$refs.container.addEventListener('touchstart', this.swipe, { passive: true });
+
+		document.body.classList.add('body-parallax');
 	},
 	beforeDestroy() {
 		this.$refs.container.removeEventListener('wheel', this.handleWheel);
 		this.$refs.container.removeEventListener('touchstart', this.swipe);
 
 		this.trigger.destroyAll();
+
+		document.body.classList.remove('body-parallax');
 	},
 	methods: {
 		handleWheel(event) {
