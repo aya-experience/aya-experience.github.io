@@ -1,47 +1,51 @@
 <template>
-	<div class="container" ref="container">
+	<div ref="container" class="container">
 		<aya-back/>
 		<mentions-link/>
-		<div class="work-container" :style="{ width: containerWidth }">
+		<section :style="{ width: containerWidth }" class="work-container">
 			<no-ssr>
-				<v-touch class="work-container" :style="{ width: containerWidth }" @swipe="onSwipe">
-					<a
+				<v-touch :style="{ width: containerWidth }" class="work-container" @swipe="onSwipe">
+					<article
 						v-for="(work, index) in works"
-						:key="index"
-						class="work-preview"
-						@click="go(work)"
-						@mouseenter="enter(index)"
-						@mouseleave="leave()"
-						:style="{
-							'background-image' : background(work, index),
-							'width': workWidth(index)
-						}"
-					>
-						<div class="work-title">
-							<div class="client-logo-container">
-								<img :src="work.logo.url">
-								<h1>{{ work.projectName }}</h1>
+						:key="index">
+						<a
+							:style="{
+								'background-image' : background(work, index),
+								'width': workWidth(index)
+							}"
+							class="work-preview"
+							@click="go(work)"
+							@mouseenter="enter(index)"
+							@mouseleave="leave()"
+						>
+							<div class="work-title">
+								<div class="client-logo-container">
+									<img :alt="work.clientName" :src="work.logo.url">
+									<h1>{{ work.projectName }}</h1>
+								</div>
+								<div class="skills-container">
+									<ul>
+										<li v-for="(skill, index) in work.skills" :key="index">
+											{{ skill.title }}
+										</li>
+									</ul>
+								</div>
 							</div>
-							<div class="skills-container">
-								<ul>
-									<li v-for="(skill, index) in work.skills" :key="index">
-										{{ skill.title }}
-									</li>
-								</ul>
-							</div>
-						</div>
-					</a>
+						</a>
+					</article>
 				</v-touch>
 			</no-ssr>
-		</div>
+		</section>
 		<div class="slider">
+			<label for="scroll-controller" hidden>défilement</label>
 			<input
-				type="range"
-				min="0"
+				id="scroll-controller"
 				:max="(works.length - 1)"
 				:value="hoverIndex"
-				@input="onChangeRange($event.target.value)"
+				type="range"
+				min="0"
 				onkeydown="return false;"
+				@input="onChangeRange($event.target.value)"
 			>
 		</div>
 	</div>
@@ -199,13 +203,12 @@ a.work-preview:hover {
 }
 
 a.work-preview .work-title {
-	text-transform: uppercase;
 	width: 100%;
 	padding: 7px;
 	z-index: 1000;
 	color: #ffffff;
 	font-weight: 300;
-	font-size: 13px;
+	font-size: 2rem;
 	text-shadow: 0px 0px 8px black;
 	transition: all 0.2s ease;
 	text-align: center;
@@ -216,7 +219,6 @@ a.work-preview .work-title {
 
 a.work-preview .work-title h1{
 	font-weight: normal;
-	transition: all 0.2s ease;
 	font-size: 2rem;
 }
 
@@ -256,7 +258,7 @@ a.work-preview:hover .client-logo-container img {
 
 div.skills-container {
 	height: 15vh;
-	text-align: left;
+	text-align: center;
 	position: relative;
 	margin-top: 5vh;
 }
@@ -335,8 +337,7 @@ export default {
 			return parseFloat(this.workWidth().slice(0, -2)) * (this.$refs.container.clientWidth / 100);
 		},
 		mouseEvent() {
-			// Check if its Firefox , change to scroll and override it to determine delta !
-			return (/Firefox/i.test(navigator.userAgent)) ? 'DOMMouseScroll' : 'mousewheel';
+			return 'wheel';
 		},
 		isMobile() {
 			return isMobile();
@@ -399,8 +400,10 @@ export default {
 			}
 		},
 		handleWheel(event) {
-			event.preventDefault();
-			this.$refs.container.scrollLeft += event.deltaY;
+			if (event.deltaY) {
+				event.preventDefault();
+			}
+			this.$refs.container.scrollLeft += event.deltaY || event.deltaX;
 		},
 		handleKeyup(event) {
 			event.preventDefault();

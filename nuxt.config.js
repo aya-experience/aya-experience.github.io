@@ -43,15 +43,12 @@ module.exports = {
 			},
 			{ rel: 'manifest', href: '/manifest.json' },
 			{ rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#000000' },
-			{ rel: 'prefetch', href: '/photos/art.jpg' },
-			{ rel: 'prefetch', href: '/photos/cell.jpg' },
-			{ rel: 'prefetch', href: '/photos/cell2.jpg' },
-			{ rel: 'prefetch', href: '/photos/craft.jpg' },
-			{ rel: 'prefetch', href: '/photos/innovation.jpg' },
 			{ rel: 'prefetch', href: '/photos/mac.jpg' },
 			{ rel: 'prefetch', href: '/photos/matrix.jpg' },
 			{ rel: 'prefetch', href: '/photos/rails.jpg' },
-			{ rel: 'prefetch', href: '/photos/woman.jpg' }
+			// Agence
+			{ rel: 'prefetch', href: '/agence/nebuleuse1.png' },
+			{ rel: 'prefetch', href: '/agence/nebuleuse2.png' }
 		]
 	},
 	/*
@@ -81,7 +78,7 @@ module.exports = {
 				);
 			}
 		},
-		vendor: ['vue-touch', 'parallax-js']
+		vendor: ['vue-touch', 'parallax-js', 'aframe']
 	},
 	generate: {
 		routes: works.map(work => (`/work/${work.slug}`))
@@ -106,7 +103,8 @@ module.exports = {
 	plugins: [
 		{ src: '~plugins/vue-touch', ssr: false },
 		{ src: '~plugins/google-analytics.js', ssr: false },
-		{ src: '~plugins/parallax.js', ssr: false }
+		{ src: '~plugins/parallax.js', ssr: false },
+		{ src: '~plugins/aframe.js', ssr: false }
 	],
 	env: {
 		baseUrl: config.baseUrl

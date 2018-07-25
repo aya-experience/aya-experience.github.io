@@ -5,8 +5,9 @@
 <style scoped>
 div.slide-text-block {
 	position: fixed;
-	background-color: #00000080;
+	/* background-color: #000000C3; */
 	padding: 0 50px;
+	/* border-radius: 25px; */
 }
 
 div.slide-text-block >>> p {

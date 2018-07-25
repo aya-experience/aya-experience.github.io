@@ -1,5 +1,5 @@
 <template>
-	<aya-bg image="/photos/art.jpg">
+	<aya-bg :rot="170" :darken="1" image="/photos/art.jpg">
 		<aya-block>
 			<p>
 				Nous vous accompagnons
@@ -25,6 +25,11 @@ export default {
 	components: {
 		'aya-bg': Background,
 		'aya-block': TextBlock
+	},
+	head() {
+		return {
+			link: [{ rel: 'prefetch', href: '/photos/innovation.jpg' }]
+		};
 	}
 };
 </script>

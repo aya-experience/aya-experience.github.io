@@ -3,7 +3,6 @@
 		<aya-back/>
 		<mentions-link/>
 		<aya-slider
-			path="/vision"
 			:slides="[
 				'intro',
 				'gui',
@@ -15,11 +14,21 @@
 				'tech',
 				'workflow'
 			]"
+			path="/vision"
 		>
 			<nuxt-child/>
 		</aya-slider>
 	</div>
 </template>
+
+<style scoped>
+.page-enter-active, .page-leave-active {
+  transition: opacity .5s
+}
+.page-enter, .page-leave-active {
+  opacity: 0
+}
+</style>
 
 <script>
 import BackButton from '~/components/BackButton.vue';

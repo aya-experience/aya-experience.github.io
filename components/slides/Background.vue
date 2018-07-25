@@ -1,9 +1,9 @@
 <template>
 	<div
-		class="slide-background"
 		:style="{
-			backgroundImage: `linear-gradient(rgba(0, 0, 0, ${darken}), rgba(0, 0, 0, ${darken})), url('${image}')`
+			backgroundImage: `linear-gradient(${rot}deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, ${darken})), url('${image}')`
 		}"
+		class="slide-background"
 	>
 		<slot/>
 	</div>
@@ -26,6 +26,10 @@ export default {
 			required: true
 		},
 		darken: {
+			type: Number,
+			default: 0
+		},
+		rot: {
 			type: Number,
 			default: 0
 		}

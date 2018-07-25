@@ -1,5 +1,5 @@
 <template>
-	<aya-bg image="/photos/innovation.jpg" :darken="0.6">
+	<aya-bg image="/photos/innovation.jpg" :darken="0.8" :rot="15">
 		<aya-block>
 			<p>
 				Nous apportons la <strong>démarche</strong>
@@ -15,7 +15,7 @@
 <style scoped>
 >>> .slide-text-block {
 	right: 100px;
-	top: 50px;
+	top: 70px;
 }
 </style>
 
@@ -27,6 +27,11 @@ export default {
 	components: {
 		'aya-bg': Background,
 		'aya-block': TextBlock
+	},
+	head() {
+		return {
+			link: [{ rel: 'prefetch', href: '/photos/craft.jpg' }]
+		};
 	}
 };
 </script>

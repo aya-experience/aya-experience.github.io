@@ -20,6 +20,8 @@
 		font-size: 62.5%;
 		background-color: black;
 		color: white;
+		height: 100%;
+		overflow: hidden;
 	}
 	body {
 		margin: 0;
