@@ -70,4 +70,11 @@ describe('Logo', () => {
 			expect(stub).toBeCalled();
 		});
 	});
+
+	describe('animation start or not', () => {
+		it('should add a-main class to the first path of the logo svg', () => {
+			cmp.setProps({ animationStart: true });
+			expect(cmp.find('nav').attributes().class).toContain('animate-nav');
+		});
+	});
 });

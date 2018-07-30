@@ -42,6 +42,7 @@ import Kanji from '~/components/Kanji.vue';
 import Social from '~/components/contact/Social.vue';
 import Other from '~/components/contact/Other.vue';
 import MentionsButton from '~/components/MentionsButton.vue';
+import { disableSplashAnimation } from '~/utils/disableSplashAnimation.mixin';
 
 export default {
 	components: {
@@ -50,6 +51,7 @@ export default {
 		'aya-social': Social,
 		'aya-other': Other,
 		'mentions-link': MentionsButton
-	}
+	},
+	mixins: [disableSplashAnimation]
 };
 </script>

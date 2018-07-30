@@ -338,6 +338,10 @@ export default {
 		dive: {
 			type: Object,
 			default: null
+		},
+		animationStart: {
+			type: Boolean,
+			default: false
 		}
 	},
 	data() {
@@ -345,7 +349,6 @@ export default {
 			kanjiBackground: 'none',
 			imageLoaded: {},
 			loading: true,
-			animationStart: true,
 			kanjiBgClass: 'kanji-background'
 		};
 	},
@@ -371,18 +374,13 @@ export default {
 		}
 	},
 	async mounted() {
-		// TODO: change using VueX
-		if (window.noAnimation) {
-			this.animationStart = false;
-		} else {
-			this.animationStart = true;
+		if (this.animationStart) {
+			const current = new Date().getTime();
+			const domLoading = performance.timing ? performance.timing.domLoading : 0;
+			if (current < domLoading + 4000) { // 5s animation - error margin
+				await animationComplete(this.$refs.bg);
+			}
 		}
-		const current = new Date().getTime();
-		const domLoading = performance.timing ? performance.timing.domLoading : 0;
-		if (current < domLoading + 4000) { // 5s animation - error margin
-			await animationComplete(this.$refs.bg);
-		}
-		this.loaded = true;
 		this.loading = false;
 		this.$emit('loaded');
 	},

@@ -34,12 +34,14 @@
 import BackButton from '~/components/BackButton.vue';
 import Slider from '~/components/slides/Slider.vue';
 import MentionsButton from '~/components/MentionsButton.vue';
+import { disableSplashAnimation } from '~/utils/disableSplashAnimation.mixin';
 
 export default {
 	components: {
 		'aya-back': BackButton,
 		'aya-slider': Slider,
 		'mentions-link': MentionsButton
-	}
+	},
+	mixins: [disableSplashAnimation]
 };
 </script>

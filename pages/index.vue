@@ -10,14 +10,15 @@
 
 		<div class="splash-overflow">
 			<aya-logo
+				:animation-start="$store.state.animation.startAnimationSplash"
 				:hover="hover"
 				:loaded="isLoaded"
 				:dive="dive"
 				@loaded="loaded"
 				@dive-done="diveEnd"/>
-			<aya-znk/>
+			<aya-znk :animation-start="$store.state.animation.startAnimationSplash"/>
 		</div>
-		<aya-menu @enter="enter" @leave="leave" @go="diveStart"/>
+		<aya-menu :animation-start="$store.state.animation.startAnimationSplash" @enter="enter" @leave="leave" @go="diveStart"/>
 		<canvas v-if="dive === null" ref="canvas"/>
 		<mentions-link v-if="isLoaded && dive === null"/>
 	</section>
@@ -52,7 +53,7 @@ section.container {
 import Logo from '~/components/splash/Logo.vue';
 import Menu from '~/components/splash/Menu.vue';
 import ByZenika from '~/components/splash/ByZenika.vue';
-import animate from '~/utils/animation.js';
+import { animate } from '~/utils/animation.js';
 import isMobile from '~/utils/test-mobile.js';
 import MentionsButton from '~/components/MentionsButton';
 
@@ -72,13 +73,13 @@ export default {
 		};
 	},
 	async mounted() {
-		// TODO: Change with VueX
-		if (window.noAnimation) {
-			this.animationTime = 50;
-		} else {
-			window.noAnimation = true;
+		if (!this.$store.state.animation.startAnimationSplash) {
+			this.animationTime = 150;
 		}
 		await animate.call(this);
+	},
+	beforeDestroy() {
+		this.$store.commit('animation/disableSplashAnimation');
 	},
 	methods: {
 		loaded() {

@@ -1,6 +1,6 @@
 'use strict';
 
-function animate() {
+export function animate() {
 	const canvas = this.$refs.canvas;
 	canvas.width = window.innerWidth;
 	canvas.height = window.innerHeight;
@@ -110,5 +110,3 @@ function animate() {
 		window.cancelAnimationFrame(animationId);
 	}, this.animationTime);
 }
-
-export default animate;

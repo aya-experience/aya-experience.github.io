@@ -308,6 +308,7 @@ import ScrollTrigger from 'scrolltrigger-classes';
 import Cadre from '~/components/agence/cadre.vue';
 import BackButton from '~/components/BackButton.vue';
 import logoZenika from '~/components/agence/logoZenika.vue';
+import { disableSplashAnimation } from '~/utils/disableSplashAnimation.mixin';
 
 export default {
 	components: {
@@ -315,6 +316,7 @@ export default {
 		'aya-back': BackButton,
 		'zenika-logo': logoZenika
 	},
+	mixins: [disableSplashAnimation],
 	data() {
 		return {
 			isZenikaVisible: false,
@@ -344,6 +346,8 @@ export default {
 		this.$refs.container.addEventListener('touchstart', this.swipe, { passive: true });
 
 		document.body.classList.add('body-parallax');
+
+		this.$store.commit('animation/disableSplashAnimation');
 	},
 	beforeDestroy() {
 		this.$refs.container.removeEventListener('wheel', this.handleWheel);
