@@ -225,12 +225,15 @@ import Camera from '~/components/team/camera.vue';
 import Planet from '~/components/team/planet.vue';
 import Lego from '~/components/team/lego.vue';
 
+import { disableSplashAnimation } from '~/utils/disableSplashAnimation.mixin';
+
 export default {
 	components: {
 		'my-camera': Camera,
 		'a-lego': Lego,
 		'a-planet': Planet
 	},
+	mixins: [disableSplashAnimation],
 	data() {
 		return {
 			loaded: false

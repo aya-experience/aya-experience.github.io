@@ -53,17 +53,10 @@ p {
 
 <script>
 export default {
-	data() {
-		return {
-			animationStart: true
-		};
-	},
-	mounted() {
-		// TODO: change using VueX
-		if (window.noAnimation) {
-			this.animationStart = false;
-		} else {
-			this.animationStart = true;
+	props: {
+		animationStart: {
+			type: Boolean,
+			default: false
 		}
 	}
 };

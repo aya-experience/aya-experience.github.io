@@ -40,4 +40,15 @@ describe('Logo', () => {
 			expect(dive.type).toBe(Object);
 		});
 	});
+
+	describe('animation start or not', () => {
+		it('should add a-main class to the first path of the logo svg', () => {
+			cmp.setProps({ animationStart: true });
+			expect(cmp.find('path').attributes().class).toContain('a-main');
+		});
+		it('should not add a-main class to the first path of the logo svg when animationStart is false', () => {
+			cmp.setProps({ animationStart: false });
+			expect(cmp.find('path').attributes().class).not.toContain('a-main');
+		});
+	});
 });

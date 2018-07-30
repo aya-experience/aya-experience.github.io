@@ -8,15 +8,25 @@ import works from '~/fixture/work.json';
 
 import VueTouch from 'vue-touch';
 
+import Vuex from 'vuex';
+import { animationMutations, animationState } from '~/fixture/store/animation';
+
 const localVue = createLocalVue();
 localVue.use(VueTouch);
+localVue.use(Vuex);
 
 describe('Realisations menu page', () => {
 	let cmp;
+	let store;
 
 	beforeEach(() => {
+		store = new Vuex.Store({
+			state: animationState,
+			mutations: animationMutations
+		});
 		cmp = mount(index, {
 			localVue,
+			store,
 			stubs: {
 				'no-ssr': Fake,
 				'nuxt-link': Fake
@@ -286,6 +296,10 @@ describe('Realisations menu page', () => {
 
 				expect(background).toBe(`linear-gradient(150deg, ${(works[0].gradient) || '#ff9804'}, #000000E0 70%), ` + image);
 			});
+		});
+
+		it('should commit disableSplashAnimation when mount the component', () => {
+			expect(animationMutations['animation/disableSplashAnimation']).toHaveBeenCalled();
 		});
 	});
 });

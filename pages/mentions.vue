@@ -100,10 +100,15 @@ address {
 
 <script>
 import BackButton from '~/components/BackButton.vue';
+import { disableSplashAnimation } from '~/utils/disableSplashAnimation.mixin';
 
 export default {
 	components: {
 		'aya-back': BackButton
+	},
+	mixins: [disableSplashAnimation],
+	mounted() {
+		this.$store.commit('animation/disableSplashAnimation');
 	}
 };
 </script>

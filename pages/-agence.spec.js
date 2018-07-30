@@ -1,4 +1,4 @@
-import { shallow } from '@vue/test-utils';
+import { shallow, createLocalVue } from '@vue/test-utils';
 
 import * as dependency from '~/utils/test-mobile.js';
 
@@ -6,11 +6,26 @@ dependency.default = () => true;
 
 import Agence from '~/pages/agence.vue';
 
+import Vuex from 'vuex';
+import { animationMutations, animationState } from '~/fixture/store/animation';
+
+const localVue = createLocalVue();
+localVue.use(Vuex);
+
 describe('Agence page', () => {
 	let cmp;
+	let store;
 
 	beforeEach(() => {
-		cmp = shallow(Agence);
+		store = new Vuex.Store({
+			state: animationState,
+			mutations: animationMutations
+		});
+
+		cmp = shallow(Agence, {
+			store,
+			localVue
+		});
 	});
 
 	describe('Change props value to show aya & zenika div', () => {
@@ -90,5 +105,9 @@ describe('Agence page', () => {
 			cmp.vm.swipe(event);
 			expect(cmp.vm.scrollDelta).toBe(-1);
 		});
+	});
+
+	it('should commit disableSplashAnimation when mount the component', () => {
+		expect(animationMutations['animation/disableSplashAnimation']).toHaveBeenCalled();
 	});
 });

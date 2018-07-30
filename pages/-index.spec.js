@@ -1,25 +1,46 @@
-import { shallow } from '@vue/test-utils';
+import { shallow, createLocalVue } from '@vue/test-utils';
 
-import * as dependency from '~/utils/animation.js';
 import Index from '~/pages/index';
 
 import Logo from '~/components/splash/Logo.vue';
 import Menu from '~/components/splash/Menu.vue';
 import ByZenika from '~/components/splash/ByZenika.vue';
 
-dependency.default = jest.fn();
+import Vuex from 'vuex';
+import { animationMutations, animationState } from '~/fixture/store/animation';
 
-describe('Detail realisation component', () => {
+const localVue = createLocalVue();
+localVue.use(Vuex);
+
+import { animate } from '~/utils/animation.js';
+jest.mock('~/utils/animation.js', () => {
+	return {
+		animate: jest.fn()
+	};
+});
+
+describe('Index page', () => {
 	let cmp;
+	let store;
+
 	const $router = {
 		push: link => link
 	};
 
 	beforeEach(() => {
+		jest.resetModules();
+
+		store = new Vuex.Store({
+			state: animationState,
+			mutations: animationMutations
+		});
+
 		cmp = shallow(Index, {
 			mocks: {
 				$router
-			}
+			},
+			store,
+			localVue
 		});
 	});
 
@@ -93,6 +114,32 @@ describe('Detail realisation component', () => {
 				spy.mockReset();
 				spy.mockRestore();
 			});
+		});
+	});
+
+	describe('Animation splash', () => {
+		it('should launch animation on first visit to home page', () => {
+			expect(animate).toHaveBeenCalled();
+			expect(cmp.vm.animationTime).toEqual(6000);
+		});
+
+		it('should not launch animation when startAnimationSplash is false', () => {
+			store.state.animation.startAnimationSplash = false;
+			cmp = shallow(Index, {
+				mocks: {
+					$router
+				},
+				store,
+				localVue
+			});
+			expect(animate).toHaveBeenCalled();
+			expect(cmp.vm.animationTime).toEqual(150);
+		});
+
+		it('should commit disableSplashAnimation when mount the component', () => {
+			expect(animationMutations['animation/disableSplashAnimation']).not.toHaveBeenCalled();
+			cmp.destroy();
+			expect(animationMutations['animation/disableSplashAnimation']).toHaveBeenCalled();
 		});
 	});
 });
