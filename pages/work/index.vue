@@ -303,6 +303,7 @@ import BackButton from '~/components/BackButton';
 import MentionsButton from '~/components/MentionsButton';
 
 import isMobile from '~/utils/test-mobile';
+import { disableSplashAnimation } from '~/utils/disableSplashAnimation.mixin';
 
 const ENTER = 13;
 const LEFT_PAD = 37;
@@ -313,6 +314,7 @@ export default {
 		'aya-back': BackButton,
 		'mentions-link': MentionsButton
 	},
+	mixins: [disableSplashAnimation],
 	data() {
 		return {
 			works,

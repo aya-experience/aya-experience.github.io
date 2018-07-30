@@ -102,6 +102,12 @@ a:hover:after {
 
 <script>
 export default {
+	props: {
+		animationStart: {
+			type: Boolean,
+			default: false
+		}
+	},
 	data() {
 		return {
 			links: [
@@ -110,17 +116,8 @@ export default {
 				{ title: 'AGENCE', path: '/agence', image: '/photos/mac.jpg' },
 				{ title: 'EQUIPE', path: '/team', image: '/photos/lune.jpg' },
 				{ title: 'CONTACT', path: '/contact', image: '/photos/matrix.jpg' }
-			],
-			animationStart: true
+			]
 		};
-	},
-	mounted() {
-		// TODO: change using VueX
-		if (window.noAnimation) {
-			this.animationStart = false;
-		} else {
-			this.animationStart = true;
-		}
 	},
 	methods: {
 		enter(link) {
