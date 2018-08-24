@@ -23,6 +23,7 @@
 
 <script>
 import Menu from '~/components/team/Menu.vue';
+import io from 'socket.io-client';
 
 export default {
 	components: {
@@ -40,6 +41,7 @@ export default {
 	},
 	data() {
 		return {
+			currentMap: 0,
 			currentRotation: '-1.888 -150.023 -9.686',
 			nextRotation: '-1.888 -150.023 -9.686',
 			mapsPosition: ['-1.888 -150.023 -9.686',
@@ -48,7 +50,33 @@ export default {
 				'73.936 20.461 -90.848']
 		};
 	},
+	computed: {
+		planets() {
+			const arr = [...this.$store.state.vr.ayaTeam];
+			return [
+				arr.slice(0, 5),
+				arr.slice(5, 10),
+				arr.slice(11, 16),
+				arr.slice(16, 19)
+			];
+		}
+	},
 	mounted() {
+		const socket = io('http://192.168.1.127:2018');
+		socket.emit('connect-app');
+		socket.on('do-stuff-on-browser', data => {
+			console.log(data);
+			for (let counter = 0; counter < 4; counter++) {
+				const user = this.planets[this.currentMap].find(member => {
+					console.log(member.name, data.name, member.name === data.name);
+					return member.name === data.name;
+				});
+				if (user) {
+					return;
+				}
+				this.changeMap();
+			}
+		});
 		const animation = document.querySelector('#changeAnim');
 		setTimeout(() => {
 			document.querySelector('#planetObj').addEventListener('loaded', () => {
@@ -67,6 +95,7 @@ export default {
 				.then(() => {
 					document.querySelector('#changeAnim').emit('changeMap');
 				});
+			this.currentMap = (this.currentMap + 1) % 4;
 		}
 	}
 };

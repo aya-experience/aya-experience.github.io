@@ -46,6 +46,7 @@
 					<a-planet>
 						<!-- ICE -->
 						<a-lego
+							id="legoOne"
 							:member="ayaTeam[0]"
 							legl="-90 0 0"
 							legr="-90 0 0"
@@ -236,7 +237,9 @@ export default {
 	mixins: [disableSplashAnimation],
 	data() {
 		return {
-			loaded: false
+			loaded: false,
+			isConnected: false,
+			socketMessage: ''
 		};
 	},
 	computed: {
