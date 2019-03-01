@@ -4,7 +4,7 @@ import Logo from '~/components/splash/Logo.vue';
 import Aya from '~/components/Logo.vue';
 import Kanji from '~/components/KanjiMask.vue';
 
-describe('Logo', () => {
+xdescribe('Logo', () => {
 	let cmp;
 	beforeEach(() => {
 		cmp = shallow(Logo);
