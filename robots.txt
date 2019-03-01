@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: 
+Sitemap: http://travis-job-fb2ac403-33ab-44d8-a2ec-c413dab6350a/sitemap.xml
