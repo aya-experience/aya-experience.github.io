@@ -102,7 +102,6 @@ module.exports = {
 	],
 	plugins: [
 		{ src: '~plugins/vue-touch', ssr: false },
-		{ src: '~plugins/google-analytics.js', ssr: false },
 		{ src: '~plugins/parallax.js', ssr: false },
 		{ src: '~plugins/aframe.js', ssr: false }
 	],

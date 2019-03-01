@@ -5,15 +5,15 @@
 			hover: hover !== null
 	}">
 
-		<div
+		<!--<div
 			:class="kanjiBgClass"
 			ref="bg"
 			:style="{ backgroundImage: !loading || !animationStart ? kanjiBackground : ''}"
 		/>
-		<kanji v-if="!loading"/>
-		<aya-kanji v-else class="kanji"/>
+		<kanji v-if="loading"/> -->
+		<aya-kanji class="kanji"/>
 
-		<svg class="AYA" viewBox="28 48 155 115">
+		<svg class="AYA" v-if="false" viewBox="28 48 155 115">
 			<g transform="matrix(.5 0 0 .5 53 52)">
 				<!-- /\ du premier A -->
 				<path :class="animationStart ? 'a-main' : ''" class="line" d="M 0,90 38,0 76,90"/>
@@ -112,9 +112,9 @@ main {
 
 .kanji {
 	position: absolute;
-	top: 49vh;
+	top: 30vh;
 	left: calc(50vw - 40vh);
-	height: 19vh;
+	height: 40vh;
 	width: 80vh;
 	fill: black;
 }
@@ -234,11 +234,11 @@ main {
 	}
 	80% {
 		opacity: 1;
-		transform: scale(0.87);
+		transform: scale(1);
 	}
 	100% {
 		opacity: 1;
-		transform: scale(0.87);
+		transform: scale(1);
 	}
 }
 @keyframes kanji-dive {

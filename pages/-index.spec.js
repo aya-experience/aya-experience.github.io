@@ -3,7 +3,7 @@ import { shallow, createLocalVue } from '@vue/test-utils';
 import Index from '~/pages/index';
 
 import Logo from '~/components/splash/Logo.vue';
-import Menu from '~/components/splash/Menu.vue';
+// import Menu from '~/components/splash/Menu.vue';
 import ByZenika from '~/components/splash/ByZenika.vue';
 
 import Vuex from 'vuex';
@@ -59,10 +59,6 @@ describe('Index page', () => {
 
 		it('has a Logo component', () => {
 			expect(cmp.find(Logo).exists()).toBe(true);
-		});
-
-		it('has a Menu component', () => {
-			expect(cmp.find(Menu).exists()).toBe(true);
 		});
 
 		it('has a ByZenika component', () => {

@@ -18,7 +18,6 @@
 				@dive-done="diveEnd"/>
 			<aya-znk :animation-start="$store.state.animation.startAnimationSplash"/>
 		</div>
-		<aya-menu :animation-start="$store.state.animation.startAnimationSplash" @enter="enter" @leave="leave" @go="diveStart"/>
 		<canvas v-if="dive === null" ref="canvas"/>
 		<mentions-link v-if="isLoaded && dive === null"/>
 	</section>
